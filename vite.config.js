@@ -4,31 +4,21 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
+    // Disable native modules
     rollupOptions: {
+      external: ['@rollup/rollup-linux-x64-gnu'],
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'three-vendor';
-            }
-            if (id.includes('framer-motion')) {
-              return 'framer-vendor';
-            }
-            return 'vendor';
-          }
-        }
+        format: 'es',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     },
-    // Disable terser for Vercel compatibility
     minify: 'esbuild',
-    target: 'esnext'
+    target: 'es2020',
+    sourcemap: false,
+    // Reduce chunk size
+    chunkSizeWarningLimit: 1000
   },
-  // Enable caching
   optimizeDeps: {
     include: [
       'react', 
@@ -39,6 +29,7 @@ export default defineConfig({
       '@react-three/drei',
       'three'
     ],
+    exclude: ['@rollup/rollup-linux-x64-gnu'],
     esbuildOptions: {
       target: 'esnext'
     }
