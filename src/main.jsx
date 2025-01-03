@@ -3,28 +3,22 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/index.css';
 import { BrowserRouter } from 'react-router-dom';
-import ErrorBoundary from './components/ErrorBoundary';
-
-// Add error logging
-window.onerror = function(message, source, lineno, colno, error) {
-  console.error('Global error:', { message, source, lineno, colno, error });
-};
-
-window.addEventListener('unhandledrejection', function(event) {
-  console.error('Unhandled promise rejection:', event.reason);
-});
 
 // Use createRoot for better performance
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-// Wrap with ErrorBoundary
-const app = (
-  <ErrorBoundary>
+// Disable strict mode in production for better performance
+const app = import.meta.env.DEV ? (
+  <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </ErrorBoundary>
+  </React.StrictMode>
+) : (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
 
 root.render(app);
