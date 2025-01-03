@@ -14,6 +14,27 @@
     <!-- Add meta description for SEO -->
     <meta name="description" content="Professional software development services including web development, mobile apps, and full-stack solutions.">
     <title>NexaHCM</title>
+    <style>
+      #root:empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #0B1120;
+      }
+      #root:empty:before {
+        content: '';
+        width: 50px;
+        height: 50px;
+        border: 3px solid #3B82F6;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
