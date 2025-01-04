@@ -89,7 +89,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                     </svg>
                   </div>
                   <span>Feature/Aspect</span>
@@ -1049,8 +1049,8 @@ const ModuleDetail = ({ module, onClose }) => {
                       <div className={`w-1 h-6 ${colors.accent}`}></div>
                       <h3 className="text-xl font-semibold text-white">Process Steps</h3>
                     </div>
-                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border} overflow-x-auto`}>
-                      <div className="flex items-center justify-between min-w-[600px]">
+                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
+                      <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8 justify-center items-start max-w-4xl mx-auto">
                         {module.steps.map((step, index) => (
                           <ProcessStep
                             key={step.title}
@@ -1137,74 +1137,68 @@ const ServiceCard = ({ service, index, onClick }) => {
   );
 };
 
-const ProcessStep = ({ step, index, isLast }) => {
-  return (
-    <div className="flex flex-col items-center text-center px-4">
-      <div className="relative">
-        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-semibold">
-          {index + 1}
+const ProcessStep = ({ step, index, isLast }) => (
+  <div className="flex-1 relative group min-w-[150px] md:min-w-0">
+    <div className="flex flex-col items-center">
+      <div className="flex items-center justify-center w-full">
+        {/* Number circle */}
+        <div className="flex flex-col items-center relative z-10">
+          <div className="w-12 h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
+            <span className="text-lg">{index + 1}</span>
+          </div>
+          {/* Title below number */}
+          <div className="h-16 flex items-start justify-center">
+            <p className="text-sm text-white mt-3 text-center whitespace-normal w-32 px-2">
+              {step.title}
+            </p>
+          </div>
         </div>
-        {!isLast && (
-          <div className="absolute top-1/2 -right-full w-full h-[2px] bg-gradient-to-r from-blue-500/50 to-purple-500/50 transform -translate-y-1/2" />
-        )}
       </div>
-      <h4 className="mt-4 text-lg font-medium text-white whitespace-nowrap">{step.title}</h4>
-      <p className="mt-2 text-sm text-gray-400 max-w-[150px]">{step.description}</p>
     </div>
-  );
-};
+    
+    {/* Description tooltip on hover */}
+    <div className="absolute md:top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 
+                    top-[120%] md:left-1/2 md:-translate-x-1/2">
+      <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
+        <p className="text-xs text-gray-400">{step.description}</p>
+      </div>
+    </div>
+  </div>
+);
 
 const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#0B1120] relative overflow-hidden">
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
-      
-      {/* Subtle Gradient Accent */}
-      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
-      
-      <div className="container mx-auto px-4 py-20 relative pb-32">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our Services
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-            Comprehensive HR management solutions designed to transform and streamline your business operations
-          </p>
-        </div>
-
-        {selectedModule ? (
-          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
-            {modules.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
-            ))}
+    <motion.div 
+      className="min-h-screen bg-[#151923] text-white py-20 px-4 sm:px-6 lg:px-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {selectedModule ? (
+        <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
+      ) : (
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-bold mb-4">Our Services</h1>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Discover our comprehensive range of services designed to meet your needs
+            </p>
           </div>
-        )}
-      </div>
 
-      {/* Extra gradient at bottom to ensure no white space */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
-
-      <style jsx>{`
-        @keyframes subtleFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-
-        .service-card-hover {
-          transition: all 0.3s ease;
-        }
-
-        .service-card-hover:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
-        }
-      `}</style>
-    </div>
+          {/* Process Steps */}
+          <div className="mb-20">
+            <h2 className="text-2xl font-bold mb-8 text-center">Process Steps</h2>
+            <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8 justify-center items-start max-w-4xl mx-auto">
+              {modules.map((service, index) => (
+                <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </motion.div>
   );
 };
 
