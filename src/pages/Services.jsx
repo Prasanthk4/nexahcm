@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -152,6 +152,7 @@ const modules = [
   {
     id: 'recruitment',
     title: 'Recruitment Process',
+    bgColor: 'bg-[#1a237e]', // Deep blue
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -211,6 +212,7 @@ const modules = [
   {
     id: 'onboarding',
     title: 'Onboarding Process',
+    bgColor: 'bg-[#004d40]', // Dark teal
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -272,8 +274,9 @@ const modules = [
     overview: "The Onboarding Process module of NexaHCM simplifies and streamlines the process of integrating new hires into your organization. It ensures that employees have a smooth and well-coordinated start, reducing administrative workloads and enhancing the employee experience right from day one. With automated workflows and task management, this module helps HR teams effectively manage all onboarding activities, ensuring compliance and consistency."
   },
   {
-    id: 'attendance',
+    id: 'leave',
     title: 'Leave & Attendance',
+    bgColor: 'bg-[#00695c]', // Darker teal
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -343,11 +346,12 @@ const modules = [
     overview: "The Leave and Attendance Management module of NexaHCM streamlines the entire process of managing employee attendance and leave requests. It provides an efficient and transparent solution for tracking working hours, leave balances, and approvals, ensuring your organization stays compliant with company policies and labour regulations and it can be integrated with biometric machines."
   },
   {
-    id: 'lifecycle',
+    id: 'ess',
     title: 'ESS / Life Cycle',
+    bgColor: 'bg-[#4a148c]', // Deep purple
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 10 9 9v1zm0 0h6v-1a6 6 0 0110 0v1z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
     shortDesc: 'Comprehensive employee self-service portal for managing work life.',
@@ -408,6 +412,7 @@ const modules = [
   {
     id: 'payroll',
     title: 'Payroll',
+    bgColor: 'bg-[#283593]', // Indigo
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -461,8 +466,9 @@ const modules = [
     overview: "The Payroll module in NexaHCM seamlessly integrates leave and attendance management, allowing real-time tracking of employee leaves and their impact on salary. It automates the calculation of earnings and deductions, ensuring accurate payroll processing based on leave balances, statutory deductions, and allowances. Employees can easily access their Payslips, which are generated automatically after each payroll cycle. The system also creates bank-upload formats for salary disbursement and ensures compliance with all statutory requirements by generating reports like PF, ESI, LWF, and income tax reports, ensuring full regulatory compliance for both employees and employers."
   },
   {
-    id: 'travel-expenses',
+    id: 'travel',
     title: 'Travel & Expenses',
+    bgColor: 'bg-[#1b5e20]', // Dark green
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -518,6 +524,7 @@ const modules = [
   {
     id: 'performance',
     title: 'Performance Management',
+    bgColor: 'bg-[#3e2723]', // Dark brown
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -577,6 +584,7 @@ const modules = [
   {
     id: 'benefits',
     title: 'Employee Benefits',
+    bgColor: 'bg-[#006064]', // Dark cyan
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -636,6 +644,7 @@ const modules = [
   {
     id: 'askhr',
     title: 'Ask HR',
+    bgColor: 'bg-[#0d47a1]', // Strong blue
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -691,6 +700,7 @@ const modules = [
   {
     id: 'exit',
     title: 'Exit Management',
+    bgColor: 'bg-[#311b92]', // Deep purple
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -758,6 +768,7 @@ const modules = [
   {
     id: 'compliance',
     title: 'HR Compliance Calendar',
+    bgColor: 'bg-[#1a472a]', // Forest green
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -817,6 +828,7 @@ const modules = [
   {
     id: 'visitor',
     title: 'Visitor Management',
+    bgColor: 'bg-[#263238]', // Blue grey
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -878,8 +890,9 @@ const modules = [
     overview: "The Visitor Management process in NexaHCM ensures a seamless and efficient check-in and check-out experience for visitors. When a visitor arrives at the office premises, the security personnel or concerned person enters their details, including the name of the contact person they are visiting. Once this information is captured, the system automatically notifies the concerned employee, informing them of the visitor's arrival. This allows the employee to promptly acknowledge and prepare for the meeting. Additionally, employees can pre-schedule visits by requesting access for visitors beforehand. When the visitor arrives, their details are already verified in the system, allowing for quick identification and faster entry. The check-out process is similarly automated, ensuring accurate records of the visitor's time in and out of the premises."
   },
   {
-    id: 'tech-stack',
+    id: 'technology',
     title: 'Technology Stack',
+    bgColor: 'bg-[#4a0072]', // Deep violet
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -1126,15 +1139,7 @@ const ProcessStep = ({ step, index }) => (
 );
 
 const ServiceCard = ({ service, index, onClick }) => {
-  const bgColor = 
-    service.id === 'recruitment' ? 'bg-[#1a237e]' :
-    service.id === 'onboarding' ? 'bg-[#004d40]' :
-    service.id === 'leave' ? 'bg-[#00695c]' :
-    service.id === 'ess' ? 'bg-[#4a148c]' :
-    service.id === 'payroll' ? 'bg-[#1a237e]' :
-    service.id === 'travel' ? 'bg-[#5d1049]' :
-    service.id === 'performance' ? 'bg-[#3e2723]' :
-    'bg-[#004d40]';
+  const bgColor = service.bgColor;
   
   return (
     <motion.div
