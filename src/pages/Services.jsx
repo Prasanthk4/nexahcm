@@ -1113,15 +1113,15 @@ const ProcessStep = ({ step, index, isLast }) => (
     <div className="flex md:flex-col items-center">
       {/* Mobile: Horizontal layout with number on left, text on right */}
       {/* Desktop: Vertical layout with number on top, text below */}
-      <div className="flex md:flex-col items-center w-full">
+      <div className="flex md:flex-col items-center pl-4 md:pl-0">
         {/* Number circle */}
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
           <span className="text-base md:text-lg">{index + 1}</span>
         </div>
         
         {/* Title - next to number on mobile, below on desktop */}
-        <div className="ml-4 md:ml-0 md:mt-3 flex-1">
-          <p className="text-sm text-white md:text-center whitespace-normal">
+        <div className="ml-6 md:ml-0 md:mt-3">
+          <p className="text-sm text-white md:text-center whitespace-normal max-w-[200px] md:w-32">
             {step.title}
           </p>
         </div>
