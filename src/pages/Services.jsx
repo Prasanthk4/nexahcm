@@ -155,7 +155,7 @@ const modules = [
     bgColor: 'bg-[#1a237e]', // Deep blue
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
     shortDesc: 'Streamline your hiring process with our advanced recruitment module.',
@@ -1145,9 +1145,9 @@ const ServiceCard = ({ service, index, onClick }) => {
     <motion.div
       key={service.title}
       className={`group cursor-pointer ${bgColor} rounded-2xl p-6 
-        backdrop-blur-md bg-opacity-90 border border-white/10
-        shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
-        hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]
+        backdrop-blur-md bg-opacity-95 border border-white/20
+        shadow-[0_8px_30px_rgb(0,0,0,0.08)] 
+        hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
         backdrop-filter relative overflow-hidden
         transition-all duration-300 ease-in-out`}
       initial={{ opacity: 0, y: 20 }}
@@ -1160,13 +1160,13 @@ const ServiceCard = ({ service, index, onClick }) => {
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-10 rounded-2xl" />
       
       {/* Decorative circle */}
-      <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-white/5" />
-      <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-white/5" />
+      <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-white/10" />
+      <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-white/10" />
 
       {/* Content */}
       <div className="relative z-10">
         <div className="w-12 h-12 mb-4">
-          <div className={`w-full h-full rounded-lg bg-white/10 
+          <div className={`w-full h-full rounded-lg bg-white/20 
             flex items-center justify-center transform 
             group-hover:scale-110 transition-transform duration-300
             shadow-[0_4px_15px_rgb(0,0,0,0.1)]`}
@@ -1182,7 +1182,7 @@ const ServiceCard = ({ service, index, onClick }) => {
           {service.title}
         </h3>
 
-        <p className="text-white/80 text-sm leading-relaxed 
+        <p className="text-white/90 text-sm leading-relaxed 
           group-hover:text-white transition-colors duration-300">
           {service.description || service.shortDesc}
         </p>
@@ -1190,7 +1190,7 @@ const ServiceCard = ({ service, index, onClick }) => {
         {/* Hover indicator */}
         <div className="absolute bottom-4 right-6 opacity-0 transform translate-x-2 
           group-hover:opacity-100 group-hover:translate-x-0 
-          transition-all duration-300 text-white/60">
+          transition-all duration-300 text-white/80">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
               d="M9 5l7 7-7 7" />
@@ -1205,24 +1205,24 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-gray-100 to-indigo-50 
       py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -right-1/2 w-full h-full 
-          bg-gradient-to-bl from-blue-500/10 to-purple-500/10 blur-3xl" />
+          bg-gradient-to-bl from-blue-100/50 to-purple-100/50 blur-3xl" />
         <div className="absolute -bottom-1/2 -left-1/2 w-full h-full 
-          bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl" />
+          bg-gradient-to-tr from-emerald-100/50 to-cyan-100/50 blur-3xl" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
         </div>
