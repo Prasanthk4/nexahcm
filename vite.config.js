@@ -5,17 +5,9 @@ export default defineConfig({
   base: '/nexahcm/',
   plugins: [react()],
   build: {
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
-          'ui': ['./src/components/ui'],
-        }
-      }
-    },
-    // Enable minification
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -24,16 +16,8 @@ export default defineConfig({
       }
     }
   },
-  // Enable caching
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
-  },
-  // Enable fast refresh
   server: {
     port: 3000,
-    open: true,
-    hmr: {
-      overlay: true
-    }
+    open: true
   }
 });
