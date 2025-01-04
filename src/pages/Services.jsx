@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0H3m2 0h5m-9 0H0m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -1014,6 +1014,29 @@ const Services = () => {
   );
 };
 
+const ServiceCard = ({ service, index, onClick }) => {
+  return (
+    <motion.div
+      onClick={() => onClick(service)}
+      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor} hover:bg-opacity-90`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className={`w-12 h-12 rounded-lg ${service.bgColor} ${service.iconColor} flex items-center justify-center mb-4`}>
+        {service.icon}
+      </div>
+      <h3 className={`text-xl font-semibold text-gray-800 mb-3 group-hover:${service.iconColor} transition-colors`}>
+        {service.title}
+      </h3>
+      <p className="text-gray-600">
+        {service.shortDesc}
+      </p>
+    </motion.div>
+  );
+};
+
 const ModuleDetail = ({ module, onClose }) => {
   if (!module) return null;
 
@@ -1098,29 +1121,6 @@ const ModuleDetail = ({ module, onClose }) => {
           </div>
         </div>
       </motion.div>
-    </motion.div>
-  );
-};
-
-const ServiceCard = ({ service, index, onClick }) => {
-  return (
-    <motion.div
-      onClick={() => onClick({ ...service, colorIndex: index })}
-      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor} hover:bg-opacity-90`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02 }}
-    >
-      <div className={`w-12 h-12 rounded-lg ${service.bgColor} ${service.iconColor} flex items-center justify-center mb-4`}>
-        {service.icon}
-      </div>
-      <h3 className={`text-xl font-semibold text-gray-800 mb-3 group-hover:${service.iconColor} transition-colors`}>
-        {service.title}
-      </h3>
-      <p className="text-gray-600">
-        {service.shortDesc}
-      </p>
     </motion.div>
   );
 };
