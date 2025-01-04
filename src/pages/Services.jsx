@@ -89,7 +89,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                     </svg>
                   </div>
                   <span>Feature/Aspect</span>
@@ -943,19 +943,96 @@ const modules = [
   }
 ];
 
+const handleModuleClick = (module) => {
+  const completeModule = {
+    ...module,
+    overview: module.overview || module.description,
+    steps: module.steps || [
+      'Position Creation',
+      'Requisition Process',
+      'Multi-level Approval',
+      'Interview Feedback',
+      'Offer Generation',
+      'Onboarding'
+    ],
+    benefits: module.benefits || [
+      {
+        title: 'Streamlined Process',
+        description: 'Efficient and automated workflow'
+      },
+      {
+        title: 'Real-time Tracking',
+        description: 'Monitor progress instantly'
+      },
+      {
+        title: 'Enhanced Efficiency',
+        description: 'Accelerated processing and improved productivity'
+      },
+      {
+        title: 'Better Compliance',
+        description: 'Ensures adherence to policies and regulations'
+      }
+    ]
+  };
+  setSelectedModule(completeModule);
+};
+
+const Services = () => {
+  const [selectedModule, setSelectedModule] = useState(null);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          Our Services
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Comprehensive HR solutions designed to streamline your workforce management
+        </p>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
+        {selectedModule ? (
+          <ModuleDetail
+            module={selectedModule}
+            onClose={() => setSelectedModule(null)}
+          />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {modules.map((service, index) => (
+              <ServiceCard
+                key={service.title}
+                service={service}
+                index={index}
+                onClick={handleModuleClick}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const ModuleDetail = ({ module, onClose }) => {
+  if (!module) return null;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50`}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <motion.div
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.95 }}
         className={`bg-gradient-to-b ${module.cardColor} rounded-3xl p-8 shadow-lg relative w-full max-w-6xl max-h-[90vh] overflow-y-auto`}
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -975,7 +1052,7 @@ const ModuleDetail = ({ module, onClose }) => {
           <div className="lg:col-span-2">
             <div className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Overview</h3>
-              <p className="text-gray-600">{module.overview || module.description}</p>
+              <p className="text-gray-600">{module.overview || module.shortDesc}</p>
             </div>
 
             {module.steps && (
@@ -998,29 +1075,27 @@ const ModuleDetail = ({ module, onClose }) => {
             )}
           </div>
 
-          {module.benefits && (
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Key Benefits</h3>
-              <div className="space-y-4">
-                {module.benefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 rounded-xl ${module.bgColor} bg-opacity-90 shadow-sm`}
-                  >
-                    <div className="flex items-center mb-2">
-                      <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mr-3`}>
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <h4 className={`font-medium ${module.iconColor}`}>{benefit.title}</h4>
+          <div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Key Benefits</h3>
+            <div className="space-y-4">
+              {module.benefits?.map((benefit, index) => (
+                <div
+                  key={index}
+                  className={`p-4 rounded-xl ${module.bgColor} bg-opacity-90 shadow-sm`}
+                >
+                  <div className="flex items-center mb-2">
+                    <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mr-3`}>
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <p className="text-sm text-gray-700 ml-8">{benefit.description}</p>
+                    <h4 className={`font-medium ${module.iconColor}`}>{benefit.title}</h4>
                   </div>
-                ))}
-              </div>
+                  <p className="text-sm text-gray-700 ml-8">{benefit.description}</p>
+                </div>
+              ))}
             </div>
-          )}
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -1046,90 +1121,6 @@ const ServiceCard = ({ service, index, onClick }) => {
       <p className="text-gray-600">
         {service.shortDesc}
       </p>
-    </motion.div>
-  );
-};
-
-const Services = () => {
-  const [selectedModule, setSelectedModule] = useState(null);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0">
-          {/* Floating Elements */}
-          <div className="absolute inset-0">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <motion.div
-                key={index}
-                className="absolute"
-                initial={{ x: 0, y: 0 }}
-                animate={{ 
-                  x: [0, Math.random() * 100 - 50],
-                  y: [0, Math.random() * 100 - 50]
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }}
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: 100 + Math.random() * 100,
-                  height: 100 + Math.random() * 100,
-                }}
-              >
-                <div className="w-full h-full bg-slate-700/10 rounded-full backdrop-blur-sm border border-slate-600/10" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Our Services
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Comprehensive HR management solutions designed to transform and streamline your business operations
-          </motion.p>
-        </div>
-
-        {selectedModule ? (
-          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {modules.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                index={index}
-                onClick={setSelectedModule}
-              />
-            ))}
-          </div>
-        )}
-      </div>
     </motion.div>
   );
 };
