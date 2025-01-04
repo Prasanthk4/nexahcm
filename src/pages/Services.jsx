@@ -1108,6 +1108,40 @@ const ModuleDetail = ({ module, onClose }) => {
   );
 };
 
+const ProcessStep = ({ step, index, isLast }) => (
+  <div className="relative group md:flex-1">
+    <div className="flex md:flex-col items-center">
+      {/* Mobile: Horizontal layout with number on left, text on right */}
+      {/* Desktop: Vertical layout with number on top, text below */}
+      <div className="flex md:flex-col items-center">
+        {/* Number circle */}
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
+          <span className="text-base md:text-lg">{index + 1}</span>
+        </div>
+        
+        {/* Title - next to number on mobile, below on desktop */}
+        <div className="ml-4 md:ml-0 md:mt-3">
+          <p className="text-sm text-white md:text-center whitespace-normal max-w-[200px] md:w-32">
+            {step.title}
+          </p>
+        </div>
+      </div>
+
+      {/* Connector line - Only show on mobile */}
+      {!isLast && (
+        <div className="hidden md:block absolute top-5 left-full w-full h-[2px] bg-blue-500/20"></div>
+      )}
+    </div>
+    
+    {/* Description tooltip on hover */}
+    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-full md:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+      <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
+        <p className="text-xs text-gray-400">{step.description}</p>
+      </div>
+    </div>
+  </div>
+);
+
 const ServiceCard = ({ service, index, onClick }) => {
   const colors = getCardColor(index);
   
@@ -1126,7 +1160,7 @@ const ServiceCard = ({ service, index, onClick }) => {
             {service.icon}
           </div>
         </div>
-        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-opacity-90">
+        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
           {service.title}
         </h3>
         <p className="text-gray-300 text-sm leading-relaxed group-hover:text-opacity-90">
@@ -1136,35 +1170,6 @@ const ServiceCard = ({ service, index, onClick }) => {
     </div>
   );
 };
-
-const ProcessStep = ({ step, index, isLast }) => (
-  <div className="flex-1 relative group min-w-[150px] md:min-w-0">
-    <div className="flex flex-col items-center">
-      <div className="flex items-center justify-center w-full">
-        {/* Number circle */}
-        <div className="flex flex-col items-center relative z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
-            <span className="text-lg">{index + 1}</span>
-          </div>
-          {/* Title below number */}
-          <div className="h-16 flex items-start justify-center">
-            <p className="text-sm text-white mt-3 text-center whitespace-normal w-32 px-2">
-              {step.title}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    {/* Description tooltip on hover */}
-    <div className="absolute md:top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 
-                    top-[120%] md:left-1/2 md:-translate-x-1/2">
-      <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
-        <p className="text-xs text-gray-400">{step.description}</p>
-      </div>
-    </div>
-  </div>
-);
 
 const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
@@ -1190,7 +1195,7 @@ const Services = () => {
           {/* Process Steps */}
           <div className="mb-20">
             <h2 className="text-2xl font-bold mb-8 text-center">Process Steps</h2>
-            <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8 justify-center items-start max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
               {modules.map((service, index) => (
                 <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
               ))}
