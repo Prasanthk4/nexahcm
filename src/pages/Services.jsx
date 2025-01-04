@@ -152,13 +152,13 @@ const modules = [
   {
     id: 'recruitment',
     title: 'Recruitment Process',
-    bgColor: 'bg-blue-100',
-    cardColor: 'from-blue-50 to-blue-100',
-    iconColor: 'text-blue-600',
-    borderColor: 'border-blue-200',
+    bgColor: 'bg-blue-200',
+    cardColor: 'from-blue-100 to-blue-200',
+    iconColor: 'text-blue-700',
+    borderColor: 'border-blue-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
     shortDesc: 'Streamline your hiring process with our advanced recruitment module.',
@@ -215,10 +215,10 @@ const modules = [
   {
     id: 'onboarding',
     title: 'Onboarding Process',
-    bgColor: 'bg-emerald-100',
-    cardColor: 'from-emerald-50 to-emerald-100',
-    iconColor: 'text-emerald-600',
-    borderColor: 'border-emerald-200',
+    bgColor: 'bg-emerald-200',
+    cardColor: 'from-emerald-100 to-emerald-200',
+    iconColor: 'text-emerald-700',
+    borderColor: 'border-emerald-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -282,10 +282,10 @@ const modules = [
   {
     id: 'attendance',
     title: 'Leave & Attendance',
-    bgColor: 'bg-violet-100',
-    cardColor: 'from-violet-50 to-violet-100',
-    iconColor: 'text-violet-600',
-    borderColor: 'border-violet-200',
+    bgColor: 'bg-violet-200',
+    cardColor: 'from-violet-100 to-violet-200',
+    iconColor: 'text-violet-700',
+    borderColor: 'border-violet-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -357,10 +357,10 @@ const modules = [
   {
     id: 'lifecycle',
     title: 'ESS / Life Cycle',
-    bgColor: 'bg-orange-100',
-    cardColor: 'from-orange-50 to-orange-100',
-    iconColor: 'text-orange-600',
-    borderColor: 'border-orange-200',
+    bgColor: 'bg-orange-200',
+    cardColor: 'from-orange-100 to-orange-200',
+    iconColor: 'text-orange-700',
+    borderColor: 'border-orange-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
@@ -424,10 +424,10 @@ const modules = [
   {
     id: 'payroll',
     title: 'Payroll',
-    bgColor: 'bg-green-100',
-    cardColor: 'from-green-50 to-green-100',
-    iconColor: 'text-green-600',
-    borderColor: 'border-green-200',
+    bgColor: 'bg-green-200',
+    cardColor: 'from-green-100 to-green-200',
+    iconColor: 'text-green-700',
+    borderColor: 'border-green-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -483,10 +483,10 @@ const modules = [
   {
     id: 'travel-expenses',
     title: 'Travel & Expenses',
-    bgColor: 'bg-yellow-100',
-    cardColor: 'from-yellow-50 to-yellow-100',
-    iconColor: 'text-yellow-600',
-    borderColor: 'border-yellow-200',
+    bgColor: 'bg-amber-200',
+    cardColor: 'from-amber-100 to-amber-200',
+    iconColor: 'text-amber-700',
+    borderColor: 'border-amber-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -542,10 +542,10 @@ const modules = [
   {
     id: 'performance',
     title: 'Performance Management',
-    bgColor: 'bg-red-100',
-    cardColor: 'from-red-50 to-red-100',
-    iconColor: 'text-red-600',
-    borderColor: 'border-red-200',
+    bgColor: 'bg-red-200',
+    cardColor: 'from-red-100 to-red-200',
+    iconColor: 'text-red-700',
+    borderColor: 'border-red-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -605,10 +605,10 @@ const modules = [
   {
     id: 'benefits',
     title: 'Employee Benefits',
-    bgColor: 'bg-pink-100',
-    cardColor: 'from-pink-50 to-pink-100',
-    iconColor: 'text-pink-600',
-    borderColor: 'border-pink-200',
+    bgColor: 'bg-pink-200',
+    cardColor: 'from-pink-100 to-pink-200',
+    iconColor: 'text-pink-700',
+    borderColor: 'border-pink-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -668,10 +668,10 @@ const modules = [
   {
     id: 'askhr',
     title: 'Ask HR',
-    bgColor: 'bg-teal-100',
-    cardColor: 'from-teal-50 to-teal-100',
-    iconColor: 'text-teal-600',
-    borderColor: 'border-teal-200',
+    bgColor: 'bg-teal-200',
+    cardColor: 'from-teal-100 to-teal-200',
+    iconColor: 'text-teal-700',
+    borderColor: 'border-teal-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -727,10 +727,10 @@ const modules = [
   {
     id: 'exit',
     title: 'Exit Management',
-    bgColor: 'bg-gray-100',
-    cardColor: 'from-gray-50 to-gray-100',
-    iconColor: 'text-gray-600',
-    borderColor: 'border-gray-200',
+    bgColor: 'bg-slate-200',
+    cardColor: 'from-slate-100 to-slate-200',
+    iconColor: 'text-slate-700',
+    borderColor: 'border-slate-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -798,10 +798,10 @@ const modules = [
   {
     id: 'compliance',
     title: 'HR Compliance Calendar',
-    bgColor: 'bg-purple-100',
-    cardColor: 'from-purple-50 to-purple-100',
-    iconColor: 'text-purple-600',
-    borderColor: 'border-purple-200',
+    bgColor: 'bg-purple-200',
+    cardColor: 'from-purple-100 to-purple-200',
+    iconColor: 'text-purple-700',
+    borderColor: 'border-purple-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -861,10 +861,10 @@ const modules = [
   {
     id: 'visitor',
     title: 'Visitor Management',
-    bgColor: 'bg-indigo-100',
-    cardColor: 'from-indigo-50 to-indigo-100',
-    iconColor: 'text-indigo-600',
-    borderColor: 'border-indigo-200',
+    bgColor: 'bg-indigo-200',
+    cardColor: 'from-indigo-100 to-indigo-200',
+    iconColor: 'text-indigo-700',
+    borderColor: 'border-indigo-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -928,10 +928,10 @@ const modules = [
   {
     id: 'tech-stack',
     title: 'Technology Stack',
-    bgColor: 'bg-blue-100',
-    cardColor: 'from-blue-50 to-blue-100',
-    iconColor: 'text-blue-600',
-    borderColor: 'border-blue-200',
+    bgColor: 'bg-cyan-200',
+    cardColor: 'from-cyan-100 to-cyan-200',
+    iconColor: 'text-cyan-700',
+    borderColor: 'border-cyan-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -978,9 +978,9 @@ const ModuleDetail = ({ module, onClose }) => {
               {module.steps?.map((step, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-xl ${module.bgColor} bg-opacity-50 text-center`}
+                  className={`p-4 rounded-xl ${module.bgColor} bg-opacity-80 text-center shadow-sm`}
                 >
-                  <div className={`w-8 h-8 rounded-full ${module.iconColor} bg-opacity-20 flex items-center justify-center mx-auto mb-2`}>
+                  <div className={`w-8 h-8 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mx-auto mb-2`}>
                     {index + 1}
                   </div>
                   <p className="text-sm font-medium text-gray-800">{step}</p>
@@ -996,17 +996,17 @@ const ModuleDetail = ({ module, onClose }) => {
             {module.benefits?.map((benefit, index) => (
               <div
                 key={index}
-                className={`p-4 rounded-xl bg-gray-900 text-white`}
+                className={`p-4 rounded-xl ${module.bgColor} bg-opacity-90 shadow-sm`}
               >
                 <div className="flex items-center mb-2">
-                  <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-20 flex items-center justify-center mr-3`}>
+                  <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mr-3`}>
                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h4 className="font-medium">{benefit.title}</h4>
+                  <h4 className={`font-medium ${module.iconColor}`}>{benefit.title}</h4>
                 </div>
-                <p className="text-sm text-gray-300 ml-8">{benefit.description}</p>
+                <p className="text-sm text-gray-700 ml-8">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -1020,7 +1020,7 @@ const ServiceCard = ({ service, index, onClick }) => {
   return (
     <motion.div
       onClick={() => onClick({ ...service, colorIndex: index })}
-      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor}`}
+      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor} hover:bg-opacity-90`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
