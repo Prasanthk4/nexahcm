@@ -1,4 +1,7 @@
-{{ ... }}
+import React, { useState } from 'react';
+import { getCardColor } from '../utils/colors';
+import ServiceCard from '../components/ServiceCard';
+import { modules } from '../data/modules';
 
 const ModuleDetail = ({ module, onClose }) => {
   const colors = getCardColor(module.colorIndex || 0);
@@ -133,4 +136,4 @@ const Services = () => {
   );
 };
 
-{{ ... }}
+export default Services;
