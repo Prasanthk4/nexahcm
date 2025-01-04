@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
+  base: '/nexahcm/',
   plugins: [react()],
   build: {
     // Optimize chunk size
@@ -29,6 +30,8 @@ export default defineConfig({
   },
   // Enable fast refresh
   server: {
+    port: 3000,
+    open: true,
     hmr: {
       overlay: true
     }

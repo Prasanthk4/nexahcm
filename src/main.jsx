@@ -11,12 +11,12 @@ const root = createRoot(container);
 // Disable strict mode in production for better performance
 const app = import.meta.env.DEV ? (
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/nexahcm">
       <App />
     </BrowserRouter>
   </React.StrictMode>
 ) : (
-  <BrowserRouter>
+  <BrowserRouter basename="/nexahcm">
     <App />
   </BrowserRouter>
 );
