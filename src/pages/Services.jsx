@@ -891,33 +891,6 @@ const modules = [
   }
 ];
 
-const processSteps = [
-  {
-    title: "Position Creation",
-    description: "Create and define new job positions with detailed requirements."
-  },
-  {
-    title: "Requisition Process",
-    description: "Initiate and manage hiring requisitions with proper approvals."
-  },
-  {
-    title: "Multi-level Approval",
-    description: "Route requisitions through configurable approval workflows."
-  },
-  {
-    title: "Interview Feedback",
-    description: "Collect and manage interview feedback from all participants."
-  },
-  {
-    title: "Offer Generation",
-    description: "Create and send professional offer letters to candidates."
-  },
-  {
-    title: "Onboarding",
-    description: "Streamline the new hire onboarding process digitally."
-  }
-];
-
 const getCardColor = (index) => {
   const colors = [
     // Professional blues and teals
@@ -1137,16 +1110,18 @@ const ModuleDetail = ({ module, onClose }) => {
 
 const ProcessStep = ({ step, index, isLast }) => (
   <div className="relative group md:flex-1">
-    <div className="flex md:flex-col items-start md:items-center p-3 md:p-0">
-      <div className="flex md:flex-col items-center">
+    <div className="flex md:flex-col items-center">
+      {/* Mobile: Horizontal layout with number on left, text on right */}
+      {/* Desktop: Vertical layout with number on top, text below */}
+      <div className="flex md:flex-col items-center w-full">
         {/* Number circle */}
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
           <span className="text-base md:text-lg">{index + 1}</span>
         </div>
         
         {/* Title - next to number on mobile, below on desktop */}
-        <div className="ml-4 md:ml-0 md:mt-3">
-          <p className="text-sm text-white md:text-center">
+        <div className="ml-4 md:ml-0 md:mt-3 flex-1">
+          <p className="text-sm text-white md:text-center whitespace-normal">
             {step.title}
           </p>
         </div>
@@ -1154,7 +1129,7 @@ const ProcessStep = ({ step, index, isLast }) => (
     </div>
     
     {/* Description tooltip on hover */}
-    <div className="absolute left-14 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-full md:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
       <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
         <p className="text-xs text-gray-400">{step.description}</p>
       </div>
@@ -1216,12 +1191,12 @@ const Services = () => {
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
-            {processSteps.map((step, index) => (
+            {modules.map((service, index) => (
               <ProcessStep
                 key={index}
-                step={step}
+                step={service.steps[0]}
                 index={index}
-                isLast={index === processSteps.length - 1}
+                isLast={index === modules.length - 1}
               />
             ))}
           </div>
