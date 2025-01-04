@@ -1111,20 +1111,23 @@ const ModuleDetail = ({ module, onClose }) => {
 const ProcessStep = ({ step, index, isLast }) => (
   <div className="relative group">
     <div className="flex flex-col items-center">
-      <div className="flex items-center justify-center">
-        <div className="w-10 h-10 rounded-full bg-[#1d2639] border border-blue-500/30 flex items-center justify-center">
-          <span className="text-blue-400">{index + 1}</span>
-        </div>
+      {/* Number circle */}
+      <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
+        <span className="text-lg">{index + 1}</span>
       </div>
-      <div className="mt-2">
-        <p className="text-white text-sm text-center">
+      
+      {/* Title below number */}
+      <div className="mt-4">
+        <p className="text-sm text-white text-center">
           {step.title}
         </p>
       </div>
+
+      {/* Connector line */}
+      {!isLast && (
+        <div className="absolute top-5 left-[100%] w-[calc(100%-2rem)] h-[2px] bg-blue-500/20"></div>
+      )}
     </div>
-    {!isLast && (
-      <div className="absolute top-5 left-[60%] w-[80%] h-[1px] bg-blue-500/20"></div>
-    )}
   </div>
 );
 
