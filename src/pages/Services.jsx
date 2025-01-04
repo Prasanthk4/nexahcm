@@ -1175,35 +1175,53 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <motion.div 
-      className="min-h-screen bg-[#151923] text-white py-20 px-4 sm:px-6 lg:px-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {selectedModule ? (
-        <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-      ) : (
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">Our Services</h1>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Discover our comprehensive range of services designed to meet your needs
-            </p>
-          </div>
-
-          {/* Process Steps */}
-          <div className="mb-20">
-            <h2 className="text-2xl font-bold mb-8 text-center">Process Steps</h2>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
-              {modules.map((service, index) => (
-                <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
-              ))}
-            </div>
-          </div>
+    <div className="min-h-screen bg-[#0B1120] relative overflow-hidden">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
+      
+      {/* Subtle Gradient Accent */}
+      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+      
+      <div className="container mx-auto px-4 py-20 relative pb-32">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Our Services
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+            Comprehensive HR management solutions designed to transform and streamline your business operations
+          </p>
         </div>
-      )}
-    </motion.div>
+
+        {selectedModule ? (
+          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+            {modules.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Extra gradient at bottom to ensure no white space */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
+
+      <style jsx>{`
+        @keyframes subtleFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+
+        .service-card-hover {
+          transition: all 0.3s ease;
+        }
+
+        .service-card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
+    </div>
   );
 };
 
