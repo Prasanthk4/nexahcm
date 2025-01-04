@@ -1205,24 +1205,24 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-gray-100 to-indigo-50 
+    <div className="min-h-screen bg-gradient-to-br from-slate-200 via-blue-100 to-slate-200
       py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -right-1/2 w-full h-full 
-          bg-gradient-to-bl from-blue-100/50 to-purple-100/50 blur-3xl" />
+          bg-gradient-to-bl from-blue-200/40 to-purple-200/40 blur-3xl" />
         <div className="absolute -bottom-1/2 -left-1/2 w-full h-full 
-          bg-gradient-to-tr from-emerald-100/50 to-cyan-100/50 blur-3xl" />
+          bg-gradient-to-tr from-slate-300/40 to-blue-200/40 blur-3xl" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl font-bold text-slate-800 mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
         </div>
