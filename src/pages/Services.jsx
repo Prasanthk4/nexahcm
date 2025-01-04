@@ -891,33 +891,6 @@ const modules = [
   }
 ];
 
-const processSteps = [
-  {
-    title: "Position Creation",
-    description: "Create and manage job positions efficiently"
-  },
-  {
-    title: "Requisition Process",
-    description: "Streamlined requisition workflow"
-  },
-  {
-    title: "Multi-level Approval",
-    description: "Structured approval hierarchy"
-  },
-  {
-    title: "Interview Feedback",
-    description: "Real-time feedback collection"
-  },
-  {
-    title: "Offer Generation",
-    description: "Automated offer letter creation"
-  },
-  {
-    title: "Onboarding",
-    description: "Seamless transition process"
-  }
-];
-
 const getCardColor = (index) => {
   const colors = [
     // Professional blues and teals
@@ -1136,27 +1109,28 @@ const ModuleDetail = ({ module, onClose }) => {
 };
 
 const ProcessStep = ({ step, index, isLast }) => (
-  <div className="relative group md:flex-1">
-    <div className="flex md:flex-col items-center">
-      {/* Mobile: Horizontal layout with number on left, text on right */}
-      {/* Desktop: Vertical layout with number on top, text below */}
-      <div className="flex md:flex-col items-center w-full">
-        {/* Number circle */}
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
-          <span className="text-base md:text-lg">{index + 1}</span>
-        </div>
-        
-        {/* Title - next to number on mobile, below on desktop */}
-        <div className="ml-4 md:ml-0 md:mt-3 flex-1">
-          <p className="text-sm text-white md:text-center whitespace-normal pl-2">
-            {step.title}
-          </p>
-        </div>
+  <div className="relative group flex-1">
+    <div className="flex items-center">
+      {/* Number circle */}
+      <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
+        <span className="text-base">{index + 1}</span>
       </div>
+      
+      {/* Title - always next to number */}
+      <div className="ml-3">
+        <p className="text-sm text-white whitespace-normal">
+          {step.title}
+        </p>
+      </div>
+
+      {/* Connector line */}
+      {!isLast && (
+        <div className="ml-3 flex-1 h-[2px] bg-blue-500/20"></div>
+      )}
     </div>
     
     {/* Description tooltip on hover */}
-    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-full md:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+    <div className="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
       <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
         <p className="text-xs text-gray-400">{step.description}</p>
       </div>
@@ -1214,16 +1188,16 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Process Steps */}
+        {/* Process Steps Section */}
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
-            {processSteps.map((step, index) => (
+          <div className="flex flex-row gap-2 overflow-x-auto pb-4 max-w-full mx-auto">
+            {modules.map((service, index) => (
               <ProcessStep
                 key={index}
-                step={step}
+                step={service.steps[0]}
                 index={index}
-                isLast={index === processSteps.length - 1}
+                isLast={index === modules.length - 1}
               />
             ))}
           </div>
@@ -1242,6 +1216,22 @@ const Services = () => {
 
       {/* Extra gradient at bottom to ensure no white space */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
+
+      <style jsx>{`
+        @keyframes subtleFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+
+        .service-card-hover {
+          transition: all 0.3s ease;
+        }
+
+        .service-card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
     </div>
   );
 };
