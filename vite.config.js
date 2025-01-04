@@ -6,18 +6,16 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: false,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
+    rollupOptions: {
+      external: ['three-stdlib'],
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'three']
+        }
       }
     }
   },
-  server: {
-    port: 3000,
-    open: true
+  optimizeDeps: {
+    exclude: ['three-stdlib']
   }
 });
