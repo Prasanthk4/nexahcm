@@ -17,7 +17,7 @@ const TechnologyStackTable = () => {
       aspect: "Cost",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
         </svg>
       ),
       onPremises: "High upfront costs for servers and SQL licenses, with ongoing maintenance expenses.",
@@ -57,7 +57,7 @@ const TechnologyStackTable = () => {
       aspect: "Access & Mobility",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
         </svg>
       ),
       onPremises: "Limited to local access or VPNs for ASP.NET apps and SQL databases.",
@@ -66,7 +66,7 @@ const TechnologyStackTable = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden rounded-xl bg-[#1a2234] p-1">
+    <div className="w-full overflow-hidden rounded-xl bg-gradient-to-br from-[#1a2234] to-[#1d2639] p-1">
       <div className="relative overflow-x-auto rounded-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
         <table className="w-full border-collapse">
@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0H3m2 0h5m-9 0H0m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -949,69 +949,80 @@ const ModuleDetail = ({ module, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="bg-[#0B1221] rounded-3xl p-8 shadow-lg relative"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50`}
     >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+      <motion.div
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.95 }}
+        className={`bg-gradient-to-b ${module.cardColor} rounded-3xl p-8 shadow-lg relative w-full max-w-6xl max-h-[90vh] overflow-y-auto`}
       >
-        <span className="text-sm font-medium">Close ×</span>
-      </button>
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 bg-white bg-opacity-50 rounded-full p-2"
+        >
+          <span className="text-sm font-medium">Close ×</span>
+        </button>
 
-      <div className="flex items-center mb-6">
-        <div className="w-12 h-12 rounded-xl bg-[#1a2234] text-blue-400 flex items-center justify-center mr-4">
-          {module.icon}
-        </div>
-        <h2 className="text-2xl font-bold text-white">{module.title}</h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <div className="mb-8">
-            <h3 className="text-xl font-semibold text-white mb-4">Overview</h3>
-            <p className="text-gray-400">{module.overview}</p>
+        <div className="flex items-center mb-6">
+          <div className={`w-12 h-12 rounded-xl ${module.bgColor} ${module.iconColor} flex items-center justify-center mr-4`}>
+            {module.icon}
           </div>
+          <h2 className="text-2xl font-bold text-gray-800">{module.title}</h2>
+        </div>
 
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Process Steps</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {module.steps?.map((step, index) => (
-                <div
-                  key={index}
-                  className="p-4 rounded-xl bg-[#1a2234] text-center"
-                >
-                  <div className="w-8 h-8 rounded-full bg-blue-400/20 text-blue-400 flex items-center justify-center mx-auto mb-2">
-                    {index + 1}
-                  </div>
-                  <p className="text-sm font-medium text-gray-300">{step}</p>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Overview</h3>
+              <p className="text-gray-600">{module.overview || module.description}</p>
             </div>
-          </div>
-        </div>
 
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Key Benefits</h3>
-          <div className="space-y-4">
-            {module.benefits?.map((benefit, index) => (
-              <div
-                key={index}
-                className="p-4 rounded-xl bg-[#1a2234]"
-              >
-                <div className="flex items-center mb-2">
-                  <div className="w-5 h-5 rounded-full bg-blue-400/20 text-blue-400 flex items-center justify-center mr-3">
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h4 className="font-medium text-blue-400">{benefit.title}</h4>
+            {module.steps && (
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">Process Steps</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  {module.steps.map((step, index) => (
+                    <div
+                      key={index}
+                      className={`p-4 rounded-xl ${module.bgColor} bg-opacity-80 text-center shadow-sm`}
+                    >
+                      <div className={`w-8 h-8 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mx-auto mb-2`}>
+                        {index + 1}
+                      </div>
+                      <p className="text-sm font-medium text-gray-800">{step}</p>
+                    </div>
+                  ))}
                 </div>
-                <p className="text-sm text-gray-400 ml-8">{benefit.description}</p>
               </div>
-            ))}
+            )}
           </div>
+
+          {module.benefits && (
+            <div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Key Benefits</h3>
+              <div className="space-y-4">
+                {module.benefits.map((benefit, index) => (
+                  <div
+                    key={index}
+                    className={`p-4 rounded-xl ${module.bgColor} bg-opacity-90 shadow-sm`}
+                  >
+                    <div className="flex items-center mb-2">
+                      <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mr-3`}>
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <h4 className={`font-medium ${module.iconColor}`}>{benefit.title}</h4>
+                    </div>
+                    <p className="text-sm text-gray-700 ml-8">{benefit.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -1020,21 +1031,19 @@ const ServiceCard = ({ service, index, onClick }) => {
   return (
     <motion.div
       onClick={() => onClick({ ...service, colorIndex: index })}
-      className="bg-[#0B1221] hover:bg-[#141e33] rounded-2xl p-6 shadow-lg transition-all duration-300 cursor-pointer"
+      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor} hover:bg-opacity-90`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
     >
-      <div className="w-12 h-12 rounded-lg bg-[#1a2234] flex items-center justify-center mb-4">
-        <div className="text-blue-400">
-          {service.icon}
-        </div>
+      <div className={`w-12 h-12 rounded-lg ${service.bgColor} ${service.iconColor} flex items-center justify-center mb-4`}>
+        {service.icon}
       </div>
-      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+      <h3 className={`text-xl font-semibold text-gray-800 mb-3 group-hover:${service.iconColor} transition-colors`}>
         {service.title}
       </h3>
-      <p className="text-gray-400">
+      <p className="text-gray-600">
         {service.shortDesc}
       </p>
     </motion.div>
@@ -1045,13 +1054,65 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#080c15] text-white py-20 px-4 sm:px-6">
-      <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          {/* Floating Elements */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <motion.div
+                key={index}
+                className="absolute"
+                initial={{ x: 0, y: 0 }}
+                animate={{ 
+                  x: [0, Math.random() * 100 - 50],
+                  y: [0, Math.random() * 100 - 50]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: 100 + Math.random() * 100,
+                  height: 100 + Math.random() * 100,
+                }}
+              >
+                <div className="w-full h-full bg-slate-700/10 rounded-full backdrop-blur-sm border border-slate-600/10" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl text-gray-400">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Services
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Comprehensive HR management solutions designed to transform and streamline your business operations
-          </p>
+          </motion.p>
         </div>
 
         {selectedModule ? (
@@ -1069,7 +1130,7 @@ const Services = () => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
