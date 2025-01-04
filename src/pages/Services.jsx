@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H8m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -347,7 +347,7 @@ const modules = [
     title: 'ESS / Life Cycle',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
     ),
     shortDesc: 'Comprehensive employee self-service portal for managing work life.',
@@ -1219,28 +1219,33 @@ const Services = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {modules.map((service, index) => (
-            <motion.div
-              key={service.title}
-              className={`bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mb-4">
-                {service.icon}
-              </div>
-              <h3 className="text-lg font-bold text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-white/80">
-                {service.shortDesc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {selectedModule ? (
+          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {modules.map((service, index) => (
+              <motion.div
+                key={service.title}
+                className="group cursor-pointer bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setSelectedModule(service)}
+              >
+                <div className={`w-12 h-12 rounded-lg ${service.bgColor} bg-opacity-20 flex items-center justify-center mb-4`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600">
+                  {service.shortDesc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );
