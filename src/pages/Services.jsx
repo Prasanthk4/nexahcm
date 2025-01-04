@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0H2m2 0h5m-9 0H0" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -1144,24 +1144,59 @@ const ServiceCard = ({ service, index, onClick }) => {
   return (
     <motion.div
       key={service.title}
-      className={`group cursor-pointer ${bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
+      className={`group cursor-pointer ${bgColor} rounded-2xl p-6 
+        backdrop-blur-md bg-opacity-90 border border-white/10
+        shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
+        hover:shadow-[0_8px_30px_rgb(0,0,0,0.24)]
+        backdrop-filter relative overflow-hidden
+        transition-all duration-300 ease-in-out`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02 }}
-      onClick={() => onClick({ ...service, colorIndex: index })}
+      whileHover={{ scale: 1.02, y: -5 }}
+      onClick={() => onClick(service)}
     >
-      <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4">
-        <div className="text-white">
-          {service.icon}
+      {/* Glassmorphism overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-10 rounded-2xl" />
+      
+      {/* Decorative circle */}
+      <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-white/5" />
+      <div className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-white/5" />
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="w-12 h-12 mb-4">
+          <div className={`w-full h-full rounded-lg bg-white/10 
+            flex items-center justify-center transform 
+            group-hover:scale-110 transition-transform duration-300
+            shadow-[0_4px_15px_rgb(0,0,0,0.1)]`}
+          >
+            <div className="text-white">
+              {service.icon}
+            </div>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-semibold text-white mb-3 
+          group-hover:translate-x-1 transition-transform duration-300">
+          {service.title}
+        </h3>
+
+        <p className="text-white/80 text-sm leading-relaxed 
+          group-hover:text-white transition-colors duration-300">
+          {service.description || service.shortDesc}
+        </p>
+
+        {/* Hover indicator */}
+        <div className="absolute bottom-4 right-6 opacity-0 transform translate-x-2 
+          group-hover:opacity-100 group-hover:translate-x-0 
+          transition-all duration-300 text-white/60">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+              d="M9 5l7 7-7 7" />
+          </svg>
         </div>
       </div>
-      <h3 className="text-xl font-semibold text-white mb-3">
-        {service.title}
-      </h3>
-      <p className="text-white/80">
-        {service.description || service.shortDesc}
-      </p>
     </motion.div>
   );
 };
@@ -1170,65 +1205,26 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0">
-          {/* Floating Elements */}
-          <div className="absolute inset-0">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <motion.div
-                key={index}
-                className="absolute"
-                initial={{ x: 0, y: 0 }}
-                animate={{ 
-                  x: [0, Math.random() * 100 - 50],
-                  y: [0, Math.random() * 100 - 50]
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }}
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: 100 + Math.random() * 100,
-                  height: 100 + Math.random() * 100,
-                }}
-              >
-                <div className="w-full h-full bg-slate-700/10 rounded-full backdrop-blur-sm border border-slate-600/10" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 
+      py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/2 -right-1/2 w-full h-full 
+          bg-gradient-to-bl from-blue-500/10 to-purple-500/10 blur-3xl" />
+        <div className="absolute -bottom-1/2 -left-1/2 w-full h-full 
+          bg-gradient-to-tr from-emerald-500/10 to-cyan-500/10 blur-3xl" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <h2 className="text-4xl font-bold text-white mb-4">
             Our Services
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Comprehensive HR management solutions designed to transform and streamline your business operations
-          </motion.p>
+          </p>
         </div>
 
         {selectedModule ? (
@@ -1246,7 +1242,7 @@ const Services = () => {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
