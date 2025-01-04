@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { getCardColor } from '../utils/colors';
-import ServiceCard from '../components/ServiceCard';
-import { modules } from '../data/modules';
+{{ ... }}
 
 const ModuleDetail = ({ module, onClose }) => {
   const colors = getCardColor(module.colorIndex || 0);
@@ -33,28 +30,13 @@ const ModuleDetail = ({ module, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="mt-6 space-y-8">
+        <div className="mt-6 space-y-6">
           {/* Overview Section */}
           <div>
             <h3 className="text-xl font-semibold text-white mb-4">Overview</h3>
             <p className="text-gray-300 leading-relaxed">
               {module.description}
             </p>
-          </div>
-
-          {/* Process Steps */}
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Process Steps</h3>
-            <div className="space-y-4">
-              {module.steps?.map((step, index) => (
-                <div key={index} className="flex items-center space-x-4 py-2">
-                  <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30">
-                    <span className="text-lg">{index + 1}</span>
-                  </div>
-                  <p className="text-white">{step.title}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Key Benefits */}
@@ -136,4 +118,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+{{ ... }}
