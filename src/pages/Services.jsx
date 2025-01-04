@@ -1192,10 +1192,25 @@ const Services = () => {
           </p>
         </div>
 
+        {/* Process Steps Section */}
+        <div className="mb-20">
+          <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
+            {modules.map((service, index) => (
+              <ProcessStep
+                key={index}
+                step={service.steps[0]}
+                index={index}
+                isLast={index === modules.length - 1}
+              />
+            ))}
+          </div>
+        </div>
+
         {selectedModule ? (
           <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {modules.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
             ))}
