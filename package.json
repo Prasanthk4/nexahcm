@@ -9,10 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:github": "GITHUB_PAGES=true vite build",
-    "build:vercel": "VITE_BUILD_OUTDIR=dist-vercel vite build",
+    "build:github": "cross-env GITHUB_PAGES=true vite build",
+    "build:vercel": "cross-env VITE_BUILD_OUTDIR=dist-vercel vite build",
     "preview": "vite preview",
-    "deploy": "GITHUB_PAGES=true vite build && gh-pages -d dist"
+    "deploy": "cross-env GITHUB_PAGES=true vite build && gh-pages -d dist"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "cross-env": "^7.0.3",
     "gh-pages": "^6.1.1",
     "postcss": "^8.4.32",
     "terser": "^5.26.0",
