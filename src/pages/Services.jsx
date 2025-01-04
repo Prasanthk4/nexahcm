@@ -57,7 +57,7 @@ const TechnologyStackTable = () => {
       aspect: "Access & Mobility",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
         </svg>
       ),
       onPremises: "Limited to local access or VPNs for ASP.NET apps and SQL databases.",
@@ -66,7 +66,7 @@ const TechnologyStackTable = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden rounded-xl bg-gradient-to-br from-[#1a2234] to-[#1d2639] p-1">
+    <div className="w-full overflow-hidden rounded-xl bg-[#1a2234] p-1">
       <div className="relative overflow-x-auto rounded-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
         <table className="w-full border-collapse">
@@ -943,155 +943,101 @@ const modules = [
   }
 ];
 
-const ServiceCard = ({ service, index, onClick }) => {
+const ModuleDetail = ({ module, onClose }) => {
   return (
     <motion.div
-      onClick={() => onClick({ ...service, colorIndex: index })}
-      className="relative p-6 rounded-xl bg-[#0d1829] backdrop-blur-sm border border-gray-800 cursor-pointer
-        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl
-        hover:shadow-black/5 group"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-[#0B1221] rounded-3xl p-8 shadow-lg relative"
     >
-      <div className="relative z-10">
-        <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl 
-          bg-opacity-20 ${service.bgColor} group-hover:scale-110 transition-transform duration-300`}
-        >
-          <div className="text-white w-6 h-6 flex items-center justify-center">
-            {service.icon}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+      >
+        <span className="text-sm font-medium">Close ×</span>
+      </button>
+
+      <div className="flex items-center mb-6">
+        <div className="w-12 h-12 rounded-xl bg-[#1a2234] text-blue-400 flex items-center justify-center mr-4">
+          {module.icon}
+        </div>
+        <h2 className="text-2xl font-bold text-white">{module.title}</h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold text-white mb-4">Overview</h3>
+            <p className="text-gray-400">{module.overview}</p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-4">Process Steps</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {module.steps?.map((step, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-xl bg-[#1a2234] text-center"
+                >
+                  <div className="w-8 h-8 rounded-full bg-blue-400/20 text-blue-400 flex items-center justify-center mx-auto mb-2">
+                    {index + 1}
+                  </div>
+                  <p className="text-sm font-medium text-gray-300">{step}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
-          {service.title}
-        </h3>
-        <p className="text-gray-400 group-hover:text-opacity-90">
-          {service.shortDesc}
-        </p>
+
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-4">Key Benefits</h3>
+          <div className="space-y-4">
+            {module.benefits?.map((benefit, index) => (
+              <div
+                key={index}
+                className="p-4 rounded-xl bg-[#1a2234]"
+              >
+                <div className="flex items-center mb-2">
+                  <div className="w-5 h-5 rounded-full bg-blue-400/20 text-blue-400 flex items-center justify-center mr-3">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="font-medium text-blue-400">{benefit.title}</h4>
+                </div>
+                <p className="text-sm text-gray-400 ml-8">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
 };
 
-const ModuleDetail = ({ module, onClose }) => {
+const ServiceCard = ({ service, index, onClick }) => {
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        className="bg-[#0d1829] rounded-xl shadow-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto"
-      >
-        <div className="p-8">
-          {/* Header */}
-          <div className="flex items-center justify-between pb-6 border-b border-gray-800">
-            <div className="flex items-center space-x-4">
-              <div className={`p-3 ${module.bgColor} bg-opacity-20 rounded-xl backdrop-blur-sm flex items-center justify-center`}>
-                <div className="text-white w-8 h-8 flex items-center justify-center">
-                  {module.icon}
-                </div>
-              </div>
-              <h2 className="text-2xl font-bold text-white">
-                {module.title}
-              </h2>
-            </div>
-            <button
-              onClick={onClose}
-              className="flex items-center px-3 py-1.5 text-gray-400 hover:text-white transition-colors"
-            >
-              <span className="mr-2">Close</span>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <div className="mt-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left Column - Overview and Process Steps */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Overview Section */}
-                <div>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className={`w-1 h-6 ${module.bgColor}`}></div>
-                    <h3 className="text-xl font-semibold text-white">Overview</h3>
-                  </div>
-                  <div className="p-6 rounded-xl backdrop-blur-sm border border-gray-800 bg-black/20">
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                      {module.overview}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Process Steps Section */}
-                {module.steps && (
-                  <div className="mt-8">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${module.bgColor}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Process Steps</h3>
-                    </div>
-                    <div className="p-8 rounded-xl bg-black/20 border border-gray-800">
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                        {module.steps.map((step, index) => (
-                          <div key={index} className="relative group">
-                            <div className="flex flex-col items-center">
-                              <div className="w-10 h-10 rounded-full bg-gray-800/50 flex items-center justify-center text-white border border-gray-700">
-                                <span className="text-lg">{index + 1}</span>
-                              </div>
-                              <div className="mt-4">
-                                <p className="text-sm text-gray-300 text-center">
-                                  {step}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Column - Benefits */}
-              {module.benefits && (
-                <div className="lg:col-span-1">
-                  <div className="rounded-xl p-6 sticky top-8 bg-black/20 border border-gray-800">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${module.bgColor}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
-                    </div>
-                    <div className="space-y-4">
-                      {module.benefits.map((benefit, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start space-x-3 p-4 rounded-lg bg-gray-800/30 hover:bg-gray-800/50 transition-all duration-300 group hover:translate-x-1 border border-gray-700"
-                        >
-                          <div className="flex-shrink-0 w-6 h-6 mt-1">
-                            <div className={`w-5 h-5 rounded-full ${module.bgColor} bg-opacity-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className="font-medium text-white mb-1">
-                              {benefit.title}
-                            </h4>
-                            <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+    <motion.div
+      onClick={() => onClick({ ...service, colorIndex: index })}
+      className="bg-[#0B1221] hover:bg-[#141e33] rounded-2xl p-6 shadow-lg transition-all duration-300 cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className="w-12 h-12 rounded-lg bg-[#1a2234] flex items-center justify-center mb-4">
+        <div className="text-blue-400">
+          {service.icon}
         </div>
-      </motion.div>
-    </div>
+      </div>
+      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+        {service.title}
+      </h3>
+      <p className="text-gray-400">
+        {service.shortDesc}
+      </p>
+    </motion.div>
   );
 };
 
@@ -1099,31 +1045,29 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#0d1829] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen bg-[#080c15] text-white py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Our Services</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
           <p className="text-xl text-gray-400">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
         </div>
 
-        <AnimatePresence mode="wait">
-          {selectedModule ? (
-            <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {modules.map((service, index) => (
-                <ServiceCard
-                  key={service.title}
-                  service={service}
-                  index={index}
-                  onClick={setSelectedModule}
-                />
-              ))}
-            </div>
-          )}
-        </AnimatePresence>
+        {selectedModule ? (
+          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {modules.map((service, index) => (
+              <ServiceCard
+                key={service.title}
+                service={service}
+                index={index}
+                onClick={setSelectedModule}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
