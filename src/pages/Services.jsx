@@ -1109,28 +1109,28 @@ const ModuleDetail = ({ module, onClose }) => {
 };
 
 const ProcessStep = ({ step, index, isLast }) => (
-  <div className="relative group flex-1">
-    <div className="flex items-center">
+  <div className="relative group md:flex-1">
+    <div className="flex flex-col items-center">
       {/* Number circle */}
       <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
         <span className="text-base">{index + 1}</span>
       </div>
       
-      {/* Title - always next to number */}
-      <div className="ml-3">
-        <p className="text-sm text-white whitespace-normal">
+      {/* Title below number */}
+      <div className="mt-3 text-center">
+        <p className="text-sm text-white whitespace-normal max-w-[120px]">
           {step.title}
         </p>
       </div>
 
       {/* Connector line */}
       {!isLast && (
-        <div className="ml-3 flex-1 h-[2px] bg-blue-500/20"></div>
+        <div className="absolute top-5 left-[60%] w-full h-[2px] bg-blue-500/20"></div>
       )}
     </div>
     
     {/* Description tooltip on hover */}
-    <div className="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+    <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
       <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
         <p className="text-xs text-gray-400">{step.description}</p>
       </div>
