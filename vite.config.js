@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Check if we're building for GitHub Pages or Vercel
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+
 export default defineConfig({
-  base: '/nexahcm/',
+  base: isGitHubPages ? '/nexahcm/' : '/',
   plugins: [react()],
   build: {
     outDir: 'dist',
