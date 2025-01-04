@@ -89,7 +89,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
                     </svg>
                   </div>
                   <span>Feature/Aspect</span>
@@ -1049,8 +1049,8 @@ const ModuleDetail = ({ module, onClose }) => {
                       <div className={`w-1 h-6 ${colors.accent}`}></div>
                       <h3 className="text-xl font-semibold text-white">Process Steps</h3>
                     </div>
-                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
-                      <div className="flex items-center justify-between">
+                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border} overflow-x-auto`}>
+                      <div className="flex items-center justify-between min-w-[600px]">
                         {module.steps.map((step, index) => (
                           <ProcessStep
                             key={step.title}
@@ -1137,55 +1137,25 @@ const ServiceCard = ({ service, index, onClick }) => {
   );
 };
 
-const ProcessStep = ({ step, index, isLast }) => (
-  <div className="flex-shrink-0 w-[200px] md:w-auto md:flex-1 relative group">
-    <div className="flex flex-col items-center">
-      <div className="flex items-center justify-center w-full">
-        {/* Number circle */}
-        <div className="flex flex-col items-center relative z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
-            <span className="text-lg">{index + 1}</span>
-          </div>
-          {/* Title below number */}
-          <div className="h-16 flex items-start justify-center">
-            <p className="text-sm text-white mt-3 text-center w-32">
-              {step.title}
-            </p>
-          </div>
+const ProcessStep = ({ step, index, isLast }) => {
+  return (
+    <div className="flex flex-col items-center text-center px-4">
+      <div className="relative">
+        <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-semibold">
+          {index + 1}
         </div>
+        {!isLast && (
+          <div className="absolute top-1/2 -right-full w-full h-[2px] bg-gradient-to-r from-blue-500/50 to-purple-500/50 transform -translate-y-1/2" />
+        )}
       </div>
+      <h4 className="mt-4 text-lg font-medium text-white whitespace-nowrap">{step.title}</h4>
+      <p className="mt-2 text-sm text-gray-400 max-w-[150px]">{step.description}</p>
     </div>
-    
-    {/* Description tooltip on hover */}
-    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
-      <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
-        <p className="text-xs text-gray-400">{step.description}</p>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
-
-  const processSteps = [
-    {
-      title: "Position Creation",
-      description: "Create and define new positions with detailed requirements"
-    },
-    {
-      title: "Requisition Process",
-      description: "Submit and track hiring requests through the approval chain"
-    },
-    {
-      title: "Multi-level Approval",
-      description: "Streamlined approval process with multiple stakeholders"
-    },
-    {
-      title: "Talent Acquisition",
-      description: "Efficient candidate sourcing and recruitment workflow"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-[#0B1120] relative overflow-hidden">
@@ -1203,23 +1173,6 @@ const Services = () => {
           <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
-        </div>
-
-        {/* Process Steps Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-8">Process Steps</h2>
-          <div className="overflow-x-auto pb-6">
-            <div className="flex space-x-6 min-w-max px-4">
-              {processSteps.map((step, index) => (
-                <ProcessStep
-                  key={index}
-                  step={step}
-                  index={index}
-                  isLast={index === processSteps.length - 1}
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
         {selectedModule ? (
