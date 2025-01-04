@@ -17,7 +17,7 @@ const TechnologyStackTable = () => {
       aspect: "Cost",
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       onPremises: "High upfront costs for servers and SQL licenses, with ongoing maintenance expenses.",
@@ -89,7 +89,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                     </svg>
                   </div>
                   <span>Feature/Aspect</span>
@@ -99,7 +99,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
@@ -109,7 +109,7 @@ const TechnologyStackTable = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 110 5.292M15 21H3v-1a6 6 0 10 9 9v1zm0 0h6v-1a6 6 0 0110 0v1z" />
                     </svg>
                   </div>
                   <span>On-Cloud (AWS)</span>
@@ -152,13 +152,9 @@ const modules = [
   {
     id: 'recruitment',
     title: 'Recruitment Process',
-    bgColor: 'bg-blue-200',
-    cardColor: 'from-blue-100 to-blue-200',
-    iconColor: 'text-blue-700',
-    borderColor: 'border-blue-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
     shortDesc: 'Streamline your hiring process with our advanced recruitment module.',
@@ -215,10 +211,6 @@ const modules = [
   {
     id: 'onboarding',
     title: 'Onboarding Process',
-    bgColor: 'bg-emerald-200',
-    cardColor: 'from-emerald-100 to-emerald-200',
-    iconColor: 'text-emerald-700',
-    borderColor: 'border-emerald-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -282,13 +274,9 @@ const modules = [
   {
     id: 'attendance',
     title: 'Leave & Attendance',
-    bgColor: 'bg-violet-200',
-    cardColor: 'from-violet-100 to-violet-200',
-    iconColor: 'text-violet-700',
-    borderColor: 'border-violet-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
       </svg>
     ),
     shortDesc: 'Manage employee time-off and attendance tracking efficiently.',
@@ -357,13 +345,9 @@ const modules = [
   {
     id: 'lifecycle',
     title: 'ESS / Life Cycle',
-    bgColor: 'bg-orange-200',
-    cardColor: 'from-orange-100 to-orange-200',
-    iconColor: 'text-orange-700',
-    borderColor: 'border-orange-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 10 9 9v1zm0 0h6v-1a6 6 0 0110 0v1z" />
       </svg>
     ),
     shortDesc: 'Comprehensive employee self-service portal for managing work life.',
@@ -424,10 +408,6 @@ const modules = [
   {
     id: 'payroll',
     title: 'Payroll',
-    bgColor: 'bg-green-200',
-    cardColor: 'from-green-100 to-green-200',
-    iconColor: 'text-green-700',
-    borderColor: 'border-green-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -483,10 +463,6 @@ const modules = [
   {
     id: 'travel-expenses',
     title: 'Travel & Expenses',
-    bgColor: 'bg-amber-200',
-    cardColor: 'from-amber-100 to-amber-200',
-    iconColor: 'text-amber-700',
-    borderColor: 'border-amber-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -542,10 +518,6 @@ const modules = [
   {
     id: 'performance',
     title: 'Performance Management',
-    bgColor: 'bg-red-200',
-    cardColor: 'from-red-100 to-red-200',
-    iconColor: 'text-red-700',
-    borderColor: 'border-red-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -605,10 +577,6 @@ const modules = [
   {
     id: 'benefits',
     title: 'Employee Benefits',
-    bgColor: 'bg-pink-200',
-    cardColor: 'from-pink-100 to-pink-200',
-    iconColor: 'text-pink-700',
-    borderColor: 'border-pink-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -668,10 +636,6 @@ const modules = [
   {
     id: 'askhr',
     title: 'Ask HR',
-    bgColor: 'bg-teal-200',
-    cardColor: 'from-teal-100 to-teal-200',
-    iconColor: 'text-teal-700',
-    borderColor: 'border-teal-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z M12 9V5m0 0v4m0-4h4m-4 0H8" />
@@ -727,10 +691,6 @@ const modules = [
   {
     id: 'exit',
     title: 'Exit Management',
-    bgColor: 'bg-slate-200',
-    cardColor: 'from-slate-100 to-slate-200',
-    iconColor: 'text-slate-700',
-    borderColor: 'border-slate-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -798,13 +758,9 @@ const modules = [
   {
     id: 'compliance',
     title: 'HR Compliance Calendar',
-    bgColor: 'bg-purple-200',
-    cardColor: 'from-purple-100 to-purple-200',
-    iconColor: 'text-purple-700',
-    borderColor: 'border-purple-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
       </svg>
     ),
     shortDesc: 'Comprehensive compliance tracking and management system.',
@@ -861,10 +817,6 @@ const modules = [
   {
     id: 'visitor',
     title: 'Visitor Management',
-    bgColor: 'bg-indigo-200',
-    cardColor: 'from-indigo-100 to-indigo-200',
-    iconColor: 'text-indigo-700',
-    borderColor: 'border-indigo-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -928,10 +880,6 @@ const modules = [
   {
     id: 'tech-stack',
     title: 'Technology Stack',
-    bgColor: 'bg-cyan-200',
-    cardColor: 'from-cyan-100 to-cyan-200',
-    iconColor: 'text-cyan-700',
-    borderColor: 'border-cyan-300',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -943,184 +891,362 @@ const modules = [
   }
 ];
 
-const handleModuleClick = (module) => {
-  const completeModule = {
-    ...module,
-    overview: module.overview || module.description,
-    steps: module.steps || [
-      'Position Creation',
-      'Requisition Process',
-      'Multi-level Approval',
-      'Interview Feedback',
-      'Offer Generation',
-      'Onboarding'
-    ],
-    benefits: module.benefits || [
-      {
-        title: 'Streamlined Process',
-        description: 'Efficient and automated workflow'
-      },
-      {
-        title: 'Real-time Tracking',
-        description: 'Monitor progress instantly'
-      },
-      {
-        title: 'Enhanced Efficiency',
-        description: 'Accelerated processing and improved productivity'
-      },
-      {
-        title: 'Better Compliance',
-        description: 'Ensures adherence to policies and regulations'
-      }
-    ]
-  };
-  setSelectedModule(completeModule);
+const getCardColor = (index) => {
+  const colors = [
+    // Professional blues and teals
+    {
+      gradient: 'from-blue-500/20 to-blue-600/20 border-blue-500/30 hover:border-blue-400/50',
+      bg: 'bg-blue-900/10',
+      accent: 'bg-blue-500',
+      border: 'border-blue-500/20',
+      text: 'text-blue-400'
+    },
+    {
+      gradient: 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/30 hover:border-cyan-400/50',
+      bg: 'bg-cyan-900/10',
+      accent: 'bg-cyan-500',
+      border: 'border-cyan-500/20',
+      text: 'text-cyan-400'
+    },
+    {
+      gradient: 'from-teal-500/20 to-teal-600/20 border-teal-500/30 hover:border-teal-400/50',
+      bg: 'bg-teal-900/10',
+      accent: 'bg-teal-500',
+      border: 'border-teal-500/20',
+      text: 'text-teal-400'
+    },
+    // Purple and indigo tones
+    {
+      gradient: 'from-purple-500/20 to-purple-600/20 border-purple-500/30 hover:border-purple-400/50',
+      bg: 'bg-purple-900/10',
+      accent: 'bg-purple-500',
+      border: 'border-purple-500/20',
+      text: 'text-purple-400'
+    },
+    {
+      gradient: 'from-indigo-500/20 to-indigo-600/20 border-indigo-500/30 hover:border-indigo-400/50',
+      bg: 'bg-indigo-900/10',
+      accent: 'bg-indigo-500',
+      border: 'border-indigo-500/20',
+      text: 'text-indigo-400'
+    },
+    // Warm accents
+    {
+      gradient: 'from-rose-500/20 to-rose-600/20 border-rose-500/30 hover:border-rose-400/50',
+      bg: 'bg-rose-900/10',
+      accent: 'bg-rose-500',
+      border: 'border-rose-500/20',
+      text: 'text-rose-400'
+    },
+    {
+      gradient: 'from-orange-500/20 to-orange-600/20 border-orange-500/30 hover:border-orange-400/50',
+      bg: 'bg-orange-900/10',
+      accent: 'bg-orange-500',
+      border: 'border-orange-500/20',
+      text: 'text-orange-400'
+    },
+    // Cool greens
+    {
+      gradient: 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/30 hover:border-emerald-400/50',
+      bg: 'bg-emerald-900/10',
+      accent: 'bg-emerald-500',
+      border: 'border-emerald-500/20',
+      text: 'text-emerald-400'
+    },
+    {
+      gradient: 'from-green-500/20 to-green-600/20 border-green-500/30 hover:border-green-400/50',
+      bg: 'bg-green-900/10',
+      accent: 'bg-green-500',
+      border: 'border-green-500/20',
+      text: 'text-green-400'
+    },
+    // Additional variations
+    {
+      gradient: 'from-sky-500/20 to-sky-600/20 border-sky-500/30 hover:border-sky-400/50',
+      bg: 'bg-sky-900/10',
+      accent: 'bg-sky-500',
+      border: 'border-sky-500/20',
+      text: 'text-sky-400'
+    },
+    {
+      gradient: 'from-violet-500/20 to-violet-600/20 border-violet-500/30 hover:border-violet-400/50',
+      bg: 'bg-violet-900/10',
+      accent: 'bg-violet-500',
+      border: 'border-violet-500/20',
+      text: 'text-violet-400'
+    },
+    {
+      gradient: 'from-fuchsia-500/20 to-fuchsia-600/20 border-fuchsia-500/30 hover:border-fuchsia-400/50',
+      bg: 'bg-fuchsia-900/10',
+      accent: 'bg-fuchsia-500',
+      border: 'border-fuchsia-500/20',
+      text: 'text-fuchsia-400'
+    },
+    {
+      gradient: 'from-blue-500/20 to-indigo-600/20 border-blue-500/30 hover:border-indigo-400/50',
+      bg: 'bg-blue-900/10',
+      accent: 'bg-blue-500',
+      border: 'border-blue-500/20',
+      text: 'text-blue-400'
+    }
+  ];
+  return colors[index % colors.length];
+};
+
+const ModuleDetail = ({ module, onClose }) => {
+  const colors = getCardColor(module.colorIndex || 0);
+  
+  return (
+    <div className={`rounded-xl shadow-lg ${colors.bg}`}>
+      <div className="p-8">
+        {/* Header */}
+        <div className={`flex items-center justify-between pb-6 border-b ${colors.border}`}>
+          <div className="flex items-center space-x-4">
+            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
+              <div className={`${colors.text} w-8 h-8 flex items-center justify-center`}>
+                {module.icon}
+              </div>
+            </div>
+            <h2 className="text-2xl font-bold text-white">
+              {module.title}
+            </h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex items-center px-3 py-1.5 text-gray-400 hover:text-white transition-colors"
+          >
+            <span className="mr-2">Close</span>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mt-8">
+          {module.title === "Technology Stack" ? (
+            <TechnologyStackTable />
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Overview and Process Steps */}
+              <div className="lg:col-span-2 space-y-8">
+                {/* Overview Section */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className={`w-1 h-6 ${colors.accent}`}></div>
+                    <h3 className="text-xl font-semibold text-white">Overview</h3>
+                  </div>
+                  <div className={`p-6 rounded-xl backdrop-blur-sm ${colors.border} bg-[#1d2639]/50`}>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {module.overview}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Process Steps Section */}
+                {module.steps && (
+                  <div className="mt-8">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className={`w-1 h-6 ${colors.accent}`}></div>
+                      <h3 className="text-xl font-semibold text-white">Process Steps</h3>
+                    </div>
+                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
+                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        {module.steps.map((step, index) => (
+                          <ProcessStep
+                            key={step.title}
+                            step={step}
+                            index={index}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column - Benefits */}
+              {module.benefits && (
+                <div className="lg:col-span-1">
+                  <div className={`rounded-xl p-6 sticky top-8 ${colors.bg}`}>
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className={`w-1 h-6 ${colors.accent}`}></div>
+                      <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
+                    </div>
+                    <div className="space-y-4">
+                      {module.benefits.map((benefit) => (
+                        <div
+                          key={benefit.title}
+                          className={`flex items-start space-x-3 p-4 rounded-lg bg-[#1a2234] hover:bg-[#1d2639] transition-all duration-300 group hover:translate-x-1 ${colors.border}`}
+                        >
+                          <div className="flex-shrink-0 w-6 h-6 mt-1">
+                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className={`font-medium mb-1 ${colors.text} transition-colors`}>
+                              {benefit.title}
+                            </h4>
+                            <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                              {benefit.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProcessStep = ({ step, index }) => (
+  <div className="relative group">
+    <div className="flex flex-col items-center">
+      {/* Number circle */}
+      <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
+        <span className="text-lg">{index + 1}</span>
+      </div>
+      
+      {/* Title below number */}
+      <div className="mt-4">
+        <p className="text-sm text-white text-center">
+          {step.title}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const ServiceCard = ({ service, index, onClick }) => {
+  const colors = getCardColor(index);
+  
+  return (
+    <div
+      onClick={() => onClick({ ...service, colorIndex: index })}
+      className={`relative p-6 rounded-xl bg-gradient-to-br ${colors.gradient} backdrop-blur-sm border cursor-pointer
+        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl
+        hover:shadow-black/5 group`}
+    >
+      <div className="relative z-10">
+        <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl 
+          bg-gradient-to-br ${colors.gradient} group-hover:scale-110 transition-transform duration-300`}
+        >
+          <div className="text-white w-6 h-6 flex items-center justify-center">
+            {service.icon}
+          </div>
+        </div>
+        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
+          {service.title}
+        </h3>
+        <p className="text-white/80 group-hover:text-opacity-90">
+          {service.shortDesc}
+        </p>
+      </div>
+    </div>
+  );
 };
 
 const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Our Services
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Comprehensive HR solutions designed to streamline your workforce management
-        </p>
-      </div>
-
-      <div className="max-w-7xl mx-auto">
-        {selectedModule ? (
-          <ModuleDetail
-            module={selectedModule}
-            onClose={() => setSelectedModule(null)}
-          />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {modules.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                index={index}
-                onClick={handleModuleClick}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-const ServiceCard = ({ service, index, onClick }) => {
-  return (
-    <motion.div
-      onClick={() => onClick(service)}
-      className={`group cursor-pointer bg-gradient-to-b ${service.cardColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${service.borderColor} hover:bg-opacity-90`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.02 }}
-    >
-      <div className={`w-12 h-12 rounded-lg ${service.bgColor} ${service.iconColor} flex items-center justify-center mb-4`}>
-        {service.icon}
-      </div>
-      <h3 className={`text-xl font-semibold text-gray-800 mb-3 group-hover:${service.iconColor} transition-colors`}>
-        {service.title}
-      </h3>
-      <p className="text-gray-600">
-        {service.shortDesc}
-      </p>
-    </motion.div>
-  );
-};
-
-const ModuleDetail = ({ module, onClose }) => {
-  if (!module) return null;
-
-  return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
+      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
     >
-      <motion.div
-        initial={{ scale: 0.95 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0.95 }}
-        className={`bg-gradient-to-b ${module.cardColor} rounded-3xl p-8 shadow-lg relative w-full max-w-6xl max-h-[90vh] overflow-y-auto`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 bg-white bg-opacity-50 rounded-full p-2"
-        >
-          <span className="text-sm font-medium">Close ×</span>
-        </button>
-
-        <div className="flex items-center mb-6">
-          <div className={`w-12 h-12 rounded-xl ${module.bgColor} ${module.iconColor} flex items-center justify-center mr-4`}>
-            {module.icon}
-          </div>
-          <h2 className="text-2xl font-bold text-gray-800">{module.title}</h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Overview</h3>
-              <p className="text-gray-600">{module.overview || module.shortDesc}</p>
-            </div>
-
-            {module.steps && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Process Steps</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {module.steps.map((step, index) => (
-                    <div
-                      key={index}
-                      className={`p-4 rounded-xl ${module.bgColor} bg-opacity-80 text-center shadow-sm`}
-                    >
-                      <div className={`w-8 h-8 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mx-auto mb-2`}>
-                        {index + 1}
-                      </div>
-                      <p className="text-sm font-medium text-gray-800">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Key Benefits</h3>
-            <div className="space-y-4">
-              {module.benefits?.map((benefit, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-xl ${module.bgColor} bg-opacity-90 shadow-sm`}
-                >
-                  <div className="flex items-center mb-2">
-                    <div className={`w-5 h-5 rounded-full ${module.iconColor} bg-opacity-30 flex items-center justify-center mr-3`}>
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <h4 className={`font-medium ${module.iconColor}`}>{benefit.title}</h4>
-                  </div>
-                  <p className="text-sm text-gray-700 ml-8">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          {/* Floating Elements */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <motion.div
+                key={index}
+                className="absolute"
+                initial={{ x: 0, y: 0 }}
+                animate={{ 
+                  x: [0, Math.random() * 100 - 50],
+                  y: [0, Math.random() * 100 - 50]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: 100 + Math.random() * 100,
+                  height: 100 + Math.random() * 100,
+                }}
+              >
+                <div className="w-full h-full bg-slate-700/10 rounded-full backdrop-blur-sm border border-slate-600/10" />
+              </motion.div>
+            ))}
           </div>
         </div>
-      </motion.div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Services
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Comprehensive HR management solutions designed to transform and streamline your business operations
+          </motion.p>
+        </div>
+
+        {selectedModule ? (
+          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {modules.map((service, index) => (
+              <motion.div
+                key={service.title}
+                className="group cursor-pointer bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => setSelectedModule(service)}
+              >
+                <div className={`w-12 h-12 rounded-lg ${service.bgColor} bg-opacity-20 flex items-center justify-center`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600">
+                  {service.shortDesc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 };
