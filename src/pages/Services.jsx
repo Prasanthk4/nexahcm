@@ -994,161 +994,75 @@ const getCardColor = (index) => {
 };
 
 const ModuleDetail = ({ module, onClose }) => {
-  const colors = getCardColor(module.colorIndex || 0);
-  
   return (
-    <div className={`rounded-xl shadow-lg ${colors.bg}`}>
-      <div className="p-8">
-        {/* Header */}
-        <div className={`flex items-center justify-between pb-6 border-b ${colors.border}`}>
-          <div className="flex items-center space-x-4">
-            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
-              <div className={`${colors.text} w-8 h-8 flex items-center justify-center`}>
-                {module.icon}
-              </div>
-            </div>
-            <h2 className="text-2xl font-bold text-white">
-              {module.title}
-            </h2>
-          </div>
-          <button
-            onClick={onClose}
-            className="flex items-center px-3 py-1.5 text-gray-400 hover:text-white transition-colors"
-          >
-            <span className="mr-2">Close</span>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="mt-8">
-          {module.title === "Technology Stack" ? (
-            <TechnologyStackTable />
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left Column - Overview and Process Steps */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Overview Section */}
-                <div>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className={`w-1 h-6 ${colors.accent}`}></div>
-                    <h3 className="text-xl font-semibold text-white">Overview</h3>
-                  </div>
-                  <div className={`p-6 rounded-xl backdrop-blur-sm ${colors.border} bg-[#1d2639]/50`}>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                      {module.overview}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Process Steps Section */}
-                {module.steps && (
-                  <div className="mt-8">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${colors.accent}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Process Steps</h3>
-                    </div>
-                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
-                      <div className="flex items-center justify-between">
-                        {module.steps.map((step, index) => (
-                          <ProcessStep
-                            key={step.title}
-                            step={step}
-                            index={index}
-                            isLast={index === module.steps.length - 1}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Column - Benefits */}
-              {module.benefits && (
-                <div className="lg:col-span-1">
-                  <div className={`rounded-xl p-6 sticky top-8 ${colors.bg}`}>
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${colors.accent}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
-                    </div>
-                    <div className="space-y-4">
-                      {module.benefits.map((benefit) => (
-                        <div
-                          key={benefit.title}
-                          className={`flex items-start space-x-3 p-4 rounded-lg bg-[#1a2234] hover:bg-[#1d2639] transition-all duration-300 group hover:translate-x-1 ${colors.border}`}
-                        >
-                          <div className="flex-shrink-0 w-6 h-6 mt-1">
-                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className={`font-medium mb-1 ${colors.text} transition-colors`}>
-                              {benefit.title}
-                            </h4>
-                            <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ServiceCard = ({ service, index, onClick }) => {
-  const colors = getCardColor(index);
-  
-  return (
-    <div
-      onClick={() => onClick({ ...service, colorIndex: index })}
-      className={`relative p-6 rounded-xl bg-gradient-to-br ${colors.gradient} backdrop-blur-sm border cursor-pointer
-        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl
-        hover:shadow-black/5 group`}
-    >
-      <div className="relative z-10">
-        <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl 
-          bg-gradient-to-br ${colors.gradient} group-hover:scale-110 transition-transform duration-300`}
+    <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+      >
+        <svg
+          className="w-6 h-6 text-gray-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          <div className="text-white w-6 h-6 flex items-center justify-center">
-            {service.icon}
-          </div>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div className="flex items-center space-x-4 mb-6">
+        <div className="p-3 rounded-xl bg-blue-50">
+          <module.icon className="w-8 h-8 text-blue-600" />
         </div>
-        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-opacity-90">
-          {service.title}
-        </h3>
-        <p className="text-gray-300 text-sm leading-relaxed group-hover:text-opacity-90">
-          {service.shortDesc}
-        </p>
+        <h2 className="text-2xl font-bold text-gray-900">{module.title}</h2>
+      </div>
+
+      <div className="prose prose-blue max-w-none">
+        <p className="text-gray-600 mb-6">{module.description}</p>
+        
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Features:</h3>
+        <ul className="space-y-3">
+          {module.features.map((feature, index) => (
+            <li key={index} className="flex items-start space-x-3">
+              <svg
+                className="w-5 h-5 text-blue-500 mt-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <span className="text-gray-600">{feature}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 };
 
 const ProcessStep = ({ step, index, isLast }) => (
-  <div className="flex-1 relative group">
+  <div className="flex-shrink-0 w-[200px] md:w-auto md:flex-1 relative group">
     <div className="flex flex-col items-center">
       <div className="flex items-center justify-center w-full">
         {/* Number circle */}
         <div className="flex flex-col items-center relative z-10">
-          <div className="w-12 h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
-            <span className="text-lg">{index + 1}</span>
+          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600 border border-blue-200 group-hover:border-blue-400 transition-colors shadow-sm">
+            <span className="text-lg font-semibold">{index + 1}</span>
           </div>
           {/* Title below number */}
           <div className="h-16 flex items-start justify-center">
-            <p className="text-sm text-white mt-3 text-center whitespace-normal w-32">
+            <p className="text-sm text-gray-700 mt-3 text-center w-32 font-medium">
               {step.title}
             </p>
           </div>
@@ -1158,32 +1072,99 @@ const ProcessStep = ({ step, index, isLast }) => (
     
     {/* Description tooltip on hover */}
     <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
-      <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
-        <p className="text-xs text-gray-400">{step.description}</p>
+      <div className="p-3 rounded-lg bg-white border border-gray-200 shadow-lg">
+        <p className="text-xs text-gray-600">{step.description}</p>
       </div>
     </div>
   </div>
 );
 
+const ServiceCard = ({ service, index, onClick }) => {
+  const colors = getCardColor(index);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="w-full max-w-sm"
+      onClick={() => onClick(service)}
+    >
+      <div className="relative group cursor-pointer">
+        <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-blue-50 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
+        <div className="relative p-6 bg-white ring-1 ring-gray-200 rounded-xl leading-none flex items-top justify-start space-x-6 service-card-hover">
+          <div className="flex-1">
+            <div className="flex items-center space-x-2 mb-2">
+              <service.icon className="h-6 w-6 text-blue-600" />
+              <h3 className="text-lg font-semibold text-gray-900">
+                {service.title}
+              </h3>
+            </div>
+            <p className="text-gray-600 text-sm">
+              {service.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
+  const processSteps = [
+    {
+      title: "Position Creation",
+      description: "Create and define new positions with detailed requirements"
+    },
+    {
+      title: "Requisition Process",
+      description: "Submit and track hiring requests through the approval chain"
+    },
+    {
+      title: "Multi-level Approval",
+      description: "Streamlined approval process with multiple stakeholders"
+    },
+    {
+      title: "Talent Acquisition",
+      description: "Efficient candidate sourcing and recruitment workflow"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0B1120] relative overflow-hidden">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
       
       {/* Subtle Gradient Accent */}
-      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-50 to-transparent"></div>
       
       <div className="container mx-auto px-4 py-20 relative pb-32">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our Services
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+          <p className="text-gray-600 text-lg leading-relaxed">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
+        </div>
+
+        {/* Process Steps Section */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Process Steps</h2>
+          <div className="overflow-x-auto pb-6">
+            <div className="flex space-x-6 min-w-max px-4">
+              {processSteps.map((step, index) => (
+                <ProcessStep
+                  key={index}
+                  step={step}
+                  index={index}
+                  isLast={index === processSteps.length - 1}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {selectedModule ? (
@@ -1197,8 +1178,8 @@ const Services = () => {
         )}
       </div>
 
-      {/* Extra gradient at bottom to ensure no white space */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
+      {/* Extra gradient at bottom */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
 
       <style jsx>{`
         @keyframes subtleFloat {
