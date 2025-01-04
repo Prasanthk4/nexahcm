@@ -1158,19 +1158,19 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#0B1120] relative overflow-hidden">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
       
       {/* Subtle Gradient Accent */}
       <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
       
       <div className="container mx-auto px-4 py-20 relative pb-32">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             Our Services
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+          <p className="text-gray-600 leading-relaxed">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
         </div>
@@ -1187,7 +1187,7 @@ const Services = () => {
       </div>
 
       {/* Extra gradient at bottom to ensure no white space */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
 
       <style jsx>{`
         @keyframes subtleFloat {

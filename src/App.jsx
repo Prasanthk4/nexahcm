@@ -37,7 +37,7 @@ function App() {
 
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-[#0B1120]">
+      <div className="bg-gray-50 min-h-screen">
         <SEO />
         <Preload />
         <ScrollToTop />
