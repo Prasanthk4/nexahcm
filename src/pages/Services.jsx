@@ -1146,7 +1146,7 @@ const ServiceCard = ({ service, index, onClick }) => {
         <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
           {service.title}
         </h3>
-        <p className="text-gray-300 text-sm leading-relaxed group-hover:text-opacity-90">
+        <p className="text-white/80 group-hover:text-opacity-90">
           {service.shortDesc}
         </p>
       </div>
@@ -1158,53 +1158,91 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
-      
-      {/* Subtle Gradient Accent */}
-      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
-      
-      <div className="container mx-auto px-4 py-20 relative pb-32">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Our Services
-          </h1>
-          <p className="text-gray-600 leading-relaxed">
-            Comprehensive HR management solutions designed to transform and streamline your business operations
-          </p>
-        </div>
-
-        {selectedModule ? (
-          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {modules.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} onClick={setSelectedModule} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          {/* Floating Elements */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <motion.div
+                key={index}
+                className="absolute"
+                initial={{ x: 0, y: 0 }}
+                animate={{ 
+                  x: [0, Math.random() * 100 - 50],
+                  y: [0, Math.random() * 100 - 50]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: 100 + Math.random() * 100,
+                  height: 100 + Math.random() * 100,
+                }}
+              >
+                <div className="w-full h-full bg-slate-700/10 rounded-full backdrop-blur-sm border border-slate-600/10" />
+              </motion.div>
             ))}
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Extra gradient at bottom to ensure no white space */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Services
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Comprehensive HR management solutions designed to transform and streamline your business operations
+          </motion.p>
+        </div>
 
-      <style jsx>{`
-        @keyframes subtleFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-
-        .service-card-hover {
-          transition: all 0.3s ease;
-        }
-
-        .service-card-hover:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
-        }
-      `}</style>
-    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {modules.map((service, index) => (
+            <motion.div
+              key={service.title}
+              className={`bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center mb-4">
+                {service.icon}
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">
+                {service.title}
+              </h3>
+              <p className="text-white/80">
+                {service.shortDesc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
