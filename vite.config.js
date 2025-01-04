@@ -9,16 +9,22 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
     rollupOptions: {
-      external: ['three-stdlib'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'three']
-        }
+        },
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js'
       }
     }
   },
-  optimizeDeps: {
-    exclude: ['three-stdlib']
+  server: {
+    headers: {
+      'Cache-Control': 'no-store',
+      'Content-Type': 'application/javascript'
+    }
   }
 });
