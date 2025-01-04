@@ -1050,7 +1050,7 @@ const ModuleDetail = ({ module, onClose }) => {
                       <h3 className="text-xl font-semibold text-white">Process Steps</h3>
                     </div>
                     <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
-                      <div className="flex justify-between">
+                      <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start space-y-8 md:space-y-0">
                         {module.steps.map((step, index) => (
                           <ProcessStep
                             key={step.title}
