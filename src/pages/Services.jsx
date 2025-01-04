@@ -66,7 +66,7 @@ const TechnologyStackTable = () => {
   ];
 
   return (
-    <div className="w-full overflow-hidden rounded-xl bg-white p-1">
+    <div className="w-full overflow-hidden rounded-xl bg-gradient-to-br from-[#1a2234] to-[#1d2639] p-1">
       <div className="relative overflow-x-auto rounded-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
         <table className="w-full border-collapse">
@@ -85,7 +85,7 @@ const TechnologyStackTable = () => {
               </th>
             </tr>
             <tr className="border-b border-gray-700/50">
-              <th className="p-4 text-left text-sm font-medium text-gray-800 bg-white w-1/4">
+              <th className="p-4 text-left text-sm font-medium text-white bg-[#1d2639]/80 w-1/4">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,17 +95,17 @@ const TechnologyStackTable = () => {
                   <span>Feature/Aspect</span>
                 </div>
               </th>
-              <th className="p-4 text-left text-sm font-medium text-gray-800 bg-white w-[37.5%]">
+              <th className="p-4 text-left text-sm font-medium text-white bg-[#1d2639]/80 w-[37.5%]">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m-9 0H8m2 0h5m-9 0H0m2 0h5m-9 0h2m2 0h5m-10 0H0m10 0h2m-10 0H0m10 0h2m-10 0H0m2 0h5m-9 0H3m2 0h5" />
                     </svg>
                   </div>
                   <span>On-Premises</span>
                 </div>
               </th>
-              <th className="p-4 text-left text-sm font-medium text-gray-800 bg-white w-[37.5%]">
+              <th className="p-4 text-left text-sm font-medium text-white bg-[#1d2639]/80 w-[37.5%]">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -123,7 +123,7 @@ const TechnologyStackTable = () => {
                 key={row.aspect}
                 className={`group border-b border-gray-700/50 hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-500/5 transition-colors`}
               >
-                <td className="p-4 text-sm font-medium text-gray-800">
+                <td className="p-4 text-sm font-medium text-white">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all">
                       <div className="text-blue-400 group-hover:scale-110 transition-transform">
@@ -133,10 +133,10 @@ const TechnologyStackTable = () => {
                     <span className="group-hover:text-blue-400 transition-colors">{row.aspect}</span>
                   </div>
                 </td>
-                <td className="p-4 text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
+                <td className="p-4 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
                   {row.onPremises}
                 </td>
-                <td className="p-4 text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
+                <td className="p-4 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
                   {row.onCloud}
                 </td>
               </tr>
@@ -994,117 +994,113 @@ const getCardColor = (index) => {
 };
 
 const ModuleDetail = ({ module, onClose }) => {
-  const colors = getCardColor(module.colorIndex);
+  const colors = getCardColor(module.colorIndex || 0);
   
   return (
-    <div className="fixed inset-0 bg-black/10 backdrop-blur-sm z-50 overflow-y-auto">
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl max-w-6xl w-full animate-scale-up">
-          <div className="p-8">
-            {/* Header */}
-            <div className={`flex items-center justify-between pb-6 border-b border-gray-200`}>
-              <div className="flex items-center space-x-4">
-                <div className={`p-3 rounded-xl flex items-center justify-center ${colors.gradient}`}>
-                  <div className="w-8 h-8 flex items-center justify-center text-white">
-                    {module.icon}
+    <div className={`rounded-xl shadow-lg ${colors.bg}`}>
+      <div className="p-8">
+        {/* Header */}
+        <div className={`flex items-center justify-between pb-6 border-b ${colors.border}`}>
+          <div className="flex items-center space-x-4">
+            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
+              <div className={`${colors.text} w-8 h-8 flex items-center justify-center`}>
+                {module.icon}
+              </div>
+            </div>
+            <h2 className="text-2xl font-bold text-white">
+              {module.title}
+            </h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex items-center px-3 py-1.5 text-gray-400 hover:text-white transition-colors"
+          >
+            <span className="mr-2">Close</span>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mt-8">
+          {module.title === "Technology Stack" ? (
+            <TechnologyStackTable />
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Left Column - Overview and Process Steps */}
+              <div className="lg:col-span-2 space-y-8">
+                {/* Overview Section */}
+                <div>
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className={`w-1 h-6 ${colors.accent}`}></div>
+                    <h3 className="text-xl font-semibold text-white">Overview</h3>
+                  </div>
+                  <div className={`p-6 rounded-xl backdrop-blur-sm ${colors.border} bg-[#1d2639]/50`}>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {module.overview}
+                    </p>
                   </div>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">
-                  {module.title}
-                </h2>
-              </div>
-              <button
-                onClick={onClose}
-                className="flex items-center px-3 py-1.5 text-gray-500 hover:text-gray-700 transition-colors"
-              >
-                <span className="mr-2">Close</span>
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
 
-            <div className="mt-8">
-              {module.title === "Technology Stack" ? (
-                <TechnologyStackTable />
-              ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  {/* Left Column - Overview and Process Steps */}
-                  <div className="lg:col-span-2 space-y-8">
-                    {/* Overview Section */}
-                    <div>
-                      <div className="flex items-center space-x-3 mb-6">
-                        <div className={`w-1 h-6 ${colors.accent}`}></div>
-                        <h3 className="text-xl font-semibold text-gray-800">Overview</h3>
-                      </div>
-                      <div className="p-6 rounded-xl bg-gray-50 border border-gray-200">
-                        <p className="text-gray-600 text-lg leading-relaxed">
-                          {module.overview}
-                        </p>
+                {/* Process Steps Section */}
+                {module.steps && (
+                  <div className="mt-8">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className={`w-1 h-6 ${colors.accent}`}></div>
+                      <h3 className="text-xl font-semibold text-white">Process Steps</h3>
+                    </div>
+                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
+                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        {module.steps.map((step, index) => (
+                          <ProcessStep
+                            key={step.title}
+                            step={step}
+                            index={index}
+                          />
+                        ))}
                       </div>
                     </div>
+                  </div>
+                )}
+              </div>
 
-                    {/* Process Steps Section */}
-                    {module.steps && (
-                      <div className="mt-8">
-                        <div className="flex items-center space-x-3 mb-6">
-                          <div className={`w-1 h-6 ${colors.accent}`}></div>
-                          <h3 className="text-xl font-semibold text-gray-800">Process Steps</h3>
-                        </div>
-                        <div className="p-8 rounded-xl bg-gray-50 border border-gray-200">
-                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                            {module.steps.map((step, index) => (
-                              <ProcessStep
-                                key={step.title}
-                                step={step}
-                                index={index}
-                              />
-                            ))}
+              {/* Right Column - Benefits */}
+              {module.benefits && (
+                <div className="lg:col-span-1">
+                  <div className={`rounded-xl p-6 sticky top-8 ${colors.bg}`}>
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className={`w-1 h-6 ${colors.accent}`}></div>
+                      <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
+                    </div>
+                    <div className="space-y-4">
+                      {module.benefits.map((benefit) => (
+                        <div
+                          key={benefit.title}
+                          className={`flex items-start space-x-3 p-4 rounded-lg bg-[#1a2234] hover:bg-[#1d2639] transition-all duration-300 group hover:translate-x-1 ${colors.border}`}
+                        >
+                          <div className="flex-shrink-0 w-6 h-6 mt-1">
+                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className={`font-medium mb-1 ${colors.text} transition-colors`}>
+                              {benefit.title}
+                            </h4>
+                            <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                              {benefit.description}
+                            </p>
                           </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Right Column - Benefits */}
-                  {module.benefits && (
-                    <div className="lg:col-span-1">
-                      <div className="rounded-xl p-6 sticky top-8 bg-gray-50 border border-gray-200">
-                        <div className="flex items-center space-x-3 mb-6">
-                          <div className={`w-1 h-6 ${colors.accent}`}></div>
-                          <h3 className="text-xl font-semibold text-gray-800">Key Benefits</h3>
-                        </div>
-                        <div className="space-y-4">
-                          {module.benefits.map((benefit) => (
-                            <div
-                              key={benefit.title}
-                              className="flex items-start space-x-3 p-4 rounded-lg bg-white border border-gray-200 hover:border-blue-200 transition-all duration-300 group hover:translate-x-1"
-                            >
-                              <div className="flex-shrink-0 w-6 h-6 mt-1">
-                                <div className={`w-5 h-5 rounded-full ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                  </svg>
-                                </div>
-                              </div>
-                              <div>
-                                <h4 className="font-medium mb-1 text-gray-800 group-hover:text-blue-600 transition-colors">
-                                  {benefit.title}
-                                </h4>
-                                <p className="text-gray-500 text-sm group-hover:text-gray-600 transition-colors">
-                                  {benefit.description}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                      ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               )}
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -1115,13 +1111,13 @@ const ProcessStep = ({ step, index }) => (
   <div className="relative group">
     <div className="flex flex-col items-center">
       {/* Number circle */}
-      <div className="w-10 h-10 rounded-full bg-white border border-blue-200 flex items-center justify-center text-blue-600 group-hover:border-blue-400 transition-colors">
+      <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
         <span className="text-lg">{index + 1}</span>
       </div>
       
       {/* Title below number */}
       <div className="mt-4">
-        <p className="text-sm text-gray-700 text-center">
+        <p className="text-sm text-white text-center">
           {step.title}
         </p>
       </div>
@@ -1135,22 +1131,22 @@ const ServiceCard = ({ service, index, onClick }) => {
   return (
     <div
       onClick={() => onClick({ ...service, colorIndex: index })}
-      className={`relative p-6 rounded-xl bg-white border border-gray-200 cursor-pointer
-        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-lg
-        hover:border-blue-200 group`}
+      className={`relative p-6 rounded-xl bg-gradient-to-br ${colors.gradient} backdrop-blur-sm border cursor-pointer
+        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl
+        hover:shadow-black/5 group`}
     >
       <div className="relative z-10">
         <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl 
-          ${colors.gradient} group-hover:scale-110 transition-transform duration-300`}
+          bg-gradient-to-br ${colors.gradient} group-hover:scale-110 transition-transform duration-300`}
         >
           <div className="text-white w-6 h-6 flex items-center justify-center">
             {service.icon}
           </div>
         </div>
-        <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600">
+        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
           {service.title}
         </h3>
-        <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700">
+        <p className="text-gray-300 text-sm leading-relaxed group-hover:text-opacity-90">
           {service.shortDesc}
         </p>
       </div>
@@ -1167,14 +1163,14 @@ const Services = () => {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
       
       {/* Subtle Gradient Accent */}
-      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-50 to-transparent"></div>
+      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
       
       <div className="container mx-auto px-4 py-20 relative pb-32">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             Our Services
           </h1>
-          <p className="text-gray-600 text-lg leading-relaxed">
+          <p className="text-gray-600 leading-relaxed">
             Comprehensive HR management solutions designed to transform and streamline your business operations
           </p>
         </div>
@@ -1190,8 +1186,24 @@ const Services = () => {
         )}
       </div>
 
-      {/* Extra gradient at bottom */}
+      {/* Extra gradient at bottom to ensure no white space */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+
+      <style jsx>{`
+        @keyframes subtleFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+
+        .service-card-hover {
+          transition: all 0.3s ease;
+        }
+
+        .service-card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
     </div>
   );
 };

@@ -61,7 +61,13 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#0B1120] bg-gradient-to-br from-[#0B1120] via-blue-900/10 to-[#0B1120] relative">
+      <div className="min-h-screen bg-gray-50 relative overflow-hidden">
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
+        
+        {/* Subtle Gradient Accent */}
+        <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+
         {/* Black Overlay */}
         <div className="absolute inset-0 bg-black/30" />
         
@@ -184,8 +190,8 @@ const About = () => {
           </div>
         </div>
 
-        {/* Bottom Gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent z-20" />
+        {/* Extra gradient at bottom to ensure no white space */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </div>
     </PageTransition>
   );

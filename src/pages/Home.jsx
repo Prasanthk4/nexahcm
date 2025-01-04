@@ -10,8 +10,14 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-[#0A192F] via-[#112240] to-[#0A192F]"
+      className="min-h-screen bg-gray-50 relative overflow-hidden"
     >
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
+      
+      {/* Subtle Gradient Accent */}
+      <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* 3D Background */}
@@ -116,6 +122,9 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      {/* Extra gradient at bottom to ensure no white space */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
     </motion.div>
   );
 };
