@@ -1110,8 +1110,8 @@ const ModuleDetail = ({ module, onClose }) => {
 
 const ProcessStep = ({ step, index, isLast }) => (
   <div className="relative group md:flex-1">
-    <div className="flex items-center md:flex-col md:items-center p-3 bg-[#1a2234] rounded-lg">
-      <div className="flex items-center md:flex-col">
+    <div className="flex md:flex-col items-start md:items-center p-3 md:p-0">
+      <div className="flex md:flex-col items-center">
         {/* Number circle */}
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
           <span className="text-base md:text-lg">{index + 1}</span>
@@ -1127,7 +1127,7 @@ const ProcessStep = ({ step, index, isLast }) => (
     </div>
     
     {/* Description tooltip on hover */}
-    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-full md:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+    <div className="absolute left-14 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
       <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
         <p className="text-xs text-gray-400">{step.description}</p>
       </div>
@@ -1188,7 +1188,7 @@ const Services = () => {
         {/* Process Steps Section */}
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
-          <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
             {modules.map((service, index) => (
               <ProcessStep
                 key={index}
