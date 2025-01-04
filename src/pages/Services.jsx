@@ -1187,7 +1187,7 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Process Steps Section */}
+        {/* Process Steps */}
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -1215,22 +1215,6 @@ const Services = () => {
 
       {/* Extra gradient at bottom to ensure no white space */}
       <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
-
-      <style jsx>{`
-        @keyframes subtleFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-
-        .service-card-hover {
-          transition: all 0.3s ease;
-        }
-
-        .service-card-hover:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
-        }
-      `}</style>
     </div>
   );
 };
