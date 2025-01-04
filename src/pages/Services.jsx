@@ -1110,10 +1110,8 @@ const ModuleDetail = ({ module, onClose }) => {
 
 const ProcessStep = ({ step, index, isLast }) => (
   <div className="relative group md:flex-1">
-    <div className="flex md:flex-col items-center">
-      {/* Mobile: Horizontal layout with number on left, text on right */}
-      {/* Desktop: Vertical layout with number on top, text below */}
-      <div className="flex md:flex-col items-center">
+    <div className="flex items-center md:flex-col md:items-center p-3 bg-[#1a2234] rounded-lg">
+      <div className="flex items-center md:flex-col">
         {/* Number circle */}
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
           <span className="text-base md:text-lg">{index + 1}</span>
@@ -1121,16 +1119,11 @@ const ProcessStep = ({ step, index, isLast }) => (
         
         {/* Title - next to number on mobile, below on desktop */}
         <div className="ml-4 md:ml-0 md:mt-3">
-          <p className="text-sm text-white md:text-center whitespace-normal max-w-[200px] md:w-32">
+          <p className="text-sm text-white md:text-center">
             {step.title}
           </p>
         </div>
       </div>
-
-      {/* Connector line - Only show on mobile */}
-      {!isLast && (
-        <div className="hidden md:block absolute top-5 left-full w-full h-[2px] bg-blue-500/20"></div>
-      )}
     </div>
     
     {/* Description tooltip on hover */}
@@ -1195,7 +1188,7 @@ const Services = () => {
         {/* Process Steps Section */}
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-8 max-w-4xl mx-auto">
             {modules.map((service, index) => (
               <ProcessStep
                 key={index}
