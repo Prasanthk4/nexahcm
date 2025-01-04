@@ -891,6 +891,33 @@ const modules = [
   }
 ];
 
+const processSteps = [
+  {
+    title: "Position Creation",
+    description: "Create and define new job positions with detailed requirements."
+  },
+  {
+    title: "Requisition Process",
+    description: "Initiate and manage hiring requisitions with proper approvals."
+  },
+  {
+    title: "Multi-level Approval",
+    description: "Route requisitions through configurable approval workflows."
+  },
+  {
+    title: "Interview Feedback",
+    description: "Collect and manage interview feedback from all participants."
+  },
+  {
+    title: "Offer Generation",
+    description: "Create and send professional offer letters to candidates."
+  },
+  {
+    title: "Onboarding",
+    description: "Streamline the new hire onboarding process digitally."
+  }
+];
+
 const getCardColor = (index) => {
   const colors = [
     // Professional blues and teals
@@ -1189,12 +1216,12 @@ const Services = () => {
         <div className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center text-white">Process Steps</h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 max-w-4xl mx-auto">
-            {modules.map((service, index) => (
+            {processSteps.map((step, index) => (
               <ProcessStep
                 key={index}
-                step={service.steps[0]}
+                step={step}
                 index={index}
-                isLast={index === modules.length - 1}
+                isLast={index === processSteps.length - 1}
               />
             ))}
           </div>
