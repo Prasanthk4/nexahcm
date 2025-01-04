@@ -67,7 +67,7 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-b from-blue-50 via-gray-50 to-blue-50 relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -141,7 +141,7 @@ const Home = () => {
         </div>
 
         {/* Services Section */}
-        <div className="relative z-10 py-20 bg-gray-50/80 backdrop-blur-sm">
+        <div className="relative z-10 py-20 bg-blue-50/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-800">
