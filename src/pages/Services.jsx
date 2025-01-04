@@ -1000,10 +1000,10 @@ const ModuleDetail = ({ module, onClose }) => {
     <div className={`rounded-xl shadow-lg ${colors.bg}`}>
       <div className="p-8">
         {/* Header */}
-        <div className={`flex items-center justify-between pb-6 border-b ${colors.border}`}>
+        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
-            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
-              <div className={`${colors.text} w-8 h-8 flex items-center justify-center`}>
+            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm`}>
+              <div className={`${colors.text} w-8 h-8`}>
                 {module.icon}
               </div>
             </div>
@@ -1013,95 +1013,64 @@ const ModuleDetail = ({ module, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="flex items-center px-3 py-1.5 text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-white transition-colors"
           >
-            <span className="mr-2">Close</span>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span className="sr-only">Close</span>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <div className="mt-8">
-          {module.title === "Technology Stack" ? (
-            <TechnologyStackTable />
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left Column - Overview and Process Steps */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Overview Section */}
-                <div>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className={`w-1 h-6 ${colors.accent}`}></div>
-                    <h3 className="text-xl font-semibold text-white">Overview</h3>
-                  </div>
-                  <div className={`p-6 rounded-xl backdrop-blur-sm ${colors.border} bg-[#1d2639]/50`}>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                      {module.overview}
-                    </p>
-                  </div>
+        {/* Overview Section */}
+        <div className="mb-8">
+          <h3 className="text-lg font-semibold text-white mb-3">Overview</h3>
+          <p className="text-gray-300">{module.description}</p>
+        </div>
+
+        {/* Process Steps Section */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-6">Process Steps</h3>
+          <div className="flex justify-between items-start space-x-4">
+            {module.steps.map((step, index) => (
+              <div key={index} className="flex flex-col items-center text-center">
+                {/* Number Circle */}
+                <div className="w-12 h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30">
+                  <span className="text-lg">{index + 1}</span>
+                </div>
+                
+                {/* Title */}
+                <div className="mt-3">
+                  <p className="text-sm text-white">{step.title}</p>
                 </div>
 
-                {/* Process Steps Section */}
-                {module.steps && (
-                  <div className="mt-8">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${colors.accent}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Process Steps</h3>
-                    </div>
-                    <div className={`p-8 rounded-xl bg-[#1a2234] ${colors.border}`}>
-                      <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-8 justify-center items-start max-w-4xl mx-auto">
-                        {module.steps.map((step, index) => (
-                          <ProcessStep
-                            key={step.title}
-                            step={step}
-                            index={index}
-                            isLast={index === module.steps.length - 1}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                {/* Connector Line */}
+                {index < module.steps.length - 1 && (
+                  <div className="absolute left-[calc(50%+2rem)] top-6 w-[calc(100%-4rem)] h-[2px] bg-blue-500/20" />
                 )}
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Right Column - Benefits */}
-              {module.benefits && (
-                <div className="lg:col-span-1">
-                  <div className={`rounded-xl p-6 sticky top-8 ${colors.bg}`}>
-                    <div className="flex items-center space-x-3 mb-6">
-                      <div className={`w-1 h-6 ${colors.accent}`}></div>
-                      <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
-                    </div>
-                    <div className="space-y-4">
-                      {module.benefits.map((benefit) => (
-                        <div
-                          key={benefit.title}
-                          className={`flex items-start space-x-3 p-4 rounded-lg bg-[#1a2234] hover:bg-[#1d2639] transition-all duration-300 group hover:translate-x-1 ${colors.border}`}
-                        >
-                          <div className="flex-shrink-0 w-6 h-6 mt-1">
-                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className={`font-medium mb-1 ${colors.text} transition-colors`}>
-                              {benefit.title}
-                            </h4>
-                            <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+        {/* Key Benefits Section */}
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-white mb-4">Key Benefits</h3>
+          <div className="space-y-3">
+            {module.benefits.map((benefit, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <div className={`p-1 rounded ${colors.benefitBg}`}>
+                  <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
-              )}
-            </div>
-          )}
+                <div>
+                  <h4 className="text-sm font-medium text-white">{benefit.title}</h4>
+                  <p className="text-sm text-gray-400">{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
