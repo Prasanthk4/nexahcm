@@ -53,24 +53,35 @@ const About = () => {
     }
   ];
 
-  const skills = [
-    { name: 'Frontend', tech: ['React', 'Next.js', 'Tailwind CSS'] },
-    { name: 'Backend', tech: ['Node.js', 'Express', 'MongoDB'] },
-    { name: 'Mobile', tech: ['React Native', 'Flutter'] }
+  const frontendSkills = [
+    { name: 'React', icon: '🔥' },
+    { name: 'Next.js', icon: '📚' },
+    { name: 'Tailwind CSS', icon: '💨' }
+  ];
+
+  const backendSkills = [
+    { name: 'Node.js', icon: '🌐' },
+    { name: 'Express', icon: '🚀' },
+    { name: 'MongoDB', icon: '📈' }
+  ];
+
+  const mobileSkills = [
+    { name: 'React Native', icon: '📱' },
+    { name: 'Flutter', icon: '🎯' }
   ];
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-slate-200 via-blue-100 to-slate-200 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-slate-400 via-slate-300 to-slate-400 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05] bg-center"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.07] bg-center"></div>
         
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/2 -right-1/2 w-full h-full 
-            bg-gradient-to-bl from-blue-200/40 to-purple-200/40 blur-3xl" />
+            bg-gradient-to-bl from-blue-300/30 to-purple-300/30 blur-3xl" />
           <div className="absolute -bottom-1/2 -left-1/2 w-full h-full 
-            bg-gradient-to-tr from-slate-300/40 to-blue-200/40 blur-3xl" />
+            bg-gradient-to-tr from-slate-400/30 to-blue-300/30 blur-3xl" />
         </div>
         
         {/* Content */}
@@ -83,10 +94,10 @@ const About = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-4xl font-bold text-slate-800 sm:text-5xl md:text-6xl mb-6">
+                <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl md:text-6xl mb-6">
                   Hi, I'm Satheesh
                 </h1>
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                <p className="text-xl text-slate-700 max-w-3xl mx-auto">
                   A freelance full-stack developer passionate about crafting beautiful, 
                   functional websites and applications that help businesses grow.
                 </p>
@@ -116,26 +127,62 @@ const About = () => {
                 Technical Expertise
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {skills.map((category, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/50 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50"
-                  >
-                    <h3 className="text-2xl font-semibold text-slate-700 mb-4">
-                      {category.name}
-                    </h3>
-                    <div className="space-y-3">
-                      {category.tech.map((tech, techIndex) => (
-                        <div key={techIndex} className="flex items-center space-x-2">
-                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                            {tech}
-                          </div>
-                          <span className="text-slate-600">{tech}</span>
+                <motion.div
+                  className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-slate-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <h3 className="text-2xl font-semibold text-slate-800 mb-4">Frontend</h3>
+                  <div className="space-y-3">
+                    {frontendSkills.map((skill, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400/30 to-purple-400/30 flex items-center justify-center">
+                          {skill.icon}
                         </div>
-                      ))}
-                    </div>
+                        <span className="text-slate-700">{skill.name}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </motion.div>
+
+                <motion.div
+                  className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-slate-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <h3 className="text-2xl font-semibold text-slate-800 mb-4">Backend</h3>
+                  <div className="space-y-3">
+                    {backendSkills.map((skill, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400/30 to-emerald-400/30 flex items-center justify-center">
+                          {skill.icon}
+                        </div>
+                        <span className="text-slate-700">{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-slate-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <h3 className="text-2xl font-semibold text-slate-800 mb-4">Mobile</h3>
+                  <div className="space-y-3">
+                    {mobileSkills.map((skill, index) => (
+                      <div key={index} className="flex items-center space-x-2">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400/30 to-red-400/30 flex items-center justify-center">
+                          {skill.icon}
+                        </div>
+                        <span className="text-slate-700">{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
 
