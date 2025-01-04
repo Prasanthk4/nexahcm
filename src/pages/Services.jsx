@@ -1109,19 +1109,16 @@ const ModuleDetail = ({ module, onClose }) => {
 };
 
 const ProcessStep = ({ step, index, isLast }) => (
-  <div className="relative group md:flex-1">
-    <div className="flex md:flex-col items-center">
-      {/* Mobile: Horizontal layout with number on left, text on right */}
-      {/* Desktop: Vertical layout with number on top, text below */}
-      <div className="flex md:flex-col items-center pl-4 md:pl-0">
-        {/* Number circle */}
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors shrink-0">
-          <span className="text-base md:text-lg">{index + 1}</span>
+  <div className="relative group">
+    <div className="flex items-center p-2">
+      {/* Number circle */}
+      <div className="flex items-center">
+        <div className="w-10 h-10 rounded-full bg-[#1d2639] flex items-center justify-center text-blue-400 border border-blue-500/30 group-hover:border-blue-500/50 transition-colors">
+          <span className="text-base">{index + 1}</span>
         </div>
-        
-        {/* Title - next to number on mobile, below on desktop */}
-        <div className="ml-6 md:ml-0 md:mt-3">
-          <p className="text-sm text-white md:text-center whitespace-normal max-w-[200px] md:w-32">
+        {/* Title next to number */}
+        <div className="ml-4">
+          <p className="text-sm text-white whitespace-normal">
             {step.title}
           </p>
         </div>
@@ -1129,7 +1126,7 @@ const ProcessStep = ({ step, index, isLast }) => (
     </div>
     
     {/* Description tooltip on hover */}
-    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 mt-2 w-full md:w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+    <div className="absolute left-0 transform mt-2 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
       <div className="p-3 rounded-lg bg-[#1d2639] border border-blue-500/20 shadow-xl">
         <p className="text-xs text-gray-400">{step.description}</p>
       </div>
