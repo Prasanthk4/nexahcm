@@ -1126,31 +1126,38 @@ const ProcessStep = ({ step, index }) => (
 );
 
 const ServiceCard = ({ service, index, onClick }) => {
-  const colors = getCardColor(index);
+  const bgColor = 
+    service.id === 'recruitment' ? 'bg-[#1a237e]' :
+    service.id === 'onboarding' ? 'bg-[#004d40]' :
+    service.id === 'leave' ? 'bg-[#00695c]' :
+    service.id === 'ess' ? 'bg-[#4a148c]' :
+    service.id === 'payroll' ? 'bg-[#1a237e]' :
+    service.id === 'travel' ? 'bg-[#5d1049]' :
+    service.id === 'performance' ? 'bg-[#3e2723]' :
+    'bg-[#004d40]';
   
   return (
-    <div
+    <motion.div
+      key={service.title}
+      className={`group cursor-pointer ${bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.02 }}
       onClick={() => onClick({ ...service, colorIndex: index })}
-      className={`relative p-6 rounded-xl bg-gradient-to-br ${colors.gradient} backdrop-blur-sm border cursor-pointer
-        transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl
-        hover:shadow-black/5 group`}
     >
-      <div className="relative z-10">
-        <div className={`w-12 h-12 mb-4 flex items-center justify-center rounded-xl 
-          bg-gradient-to-br ${colors.gradient} group-hover:scale-110 transition-transform duration-300`}
-        >
-          <div className="text-white w-6 h-6 flex items-center justify-center">
-            {service.icon}
-          </div>
+      <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4">
+        <div className="text-white">
+          {service.icon}
         </div>
-        <h3 className="text-lg font-bold text-white mb-2 group-hover:text-opacity-90">
-          {service.title}
-        </h3>
-        <p className="text-white/80 group-hover:text-opacity-90">
-          {service.shortDesc}
-        </p>
       </div>
-    </div>
+      <h3 className="text-xl font-semibold text-white mb-3">
+        {service.title}
+      </h3>
+      <p className="text-white/80">
+        {service.description || service.shortDesc}
+      </p>
+    </motion.div>
   );
 };
 
@@ -1224,25 +1231,12 @@ const Services = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {modules.map((service, index) => (
-              <motion.div
+              <ServiceCard
                 key={service.title}
-                className="group cursor-pointer bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                onClick={() => setSelectedModule(service)}
-              >
-                <div className={`w-12 h-12 rounded-lg ${service.bgColor} bg-opacity-20 flex items-center justify-center`}>
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600">
-                  {service.shortDesc}
-                </p>
-              </motion.div>
+                service={service}
+                index={index}
+                onClick={setSelectedModule}
+              />
             ))}
           </div>
         )}
