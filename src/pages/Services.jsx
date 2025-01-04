@@ -1056,7 +1056,6 @@ const ModuleDetail = ({ module, onClose }) => {
                             key={step.title}
                             step={step}
                             index={index}
-                            isLast={index === module.steps.length - 1}
                           />
                         ))}
                       </div>
@@ -1108,7 +1107,7 @@ const ModuleDetail = ({ module, onClose }) => {
   );
 };
 
-const ProcessStep = ({ step, index, isLast }) => (
+const ProcessStep = ({ step, index }) => (
   <div className="relative group">
     <div className="flex flex-col items-center">
       {/* Number circle */}
@@ -1122,11 +1121,6 @@ const ProcessStep = ({ step, index, isLast }) => (
           {step.title}
         </p>
       </div>
-
-      {/* Connector line */}
-      {!isLast && (
-        <div className="absolute top-5 left-[100%] w-[calc(100%-2rem)] h-[2px] bg-blue-500/20"></div>
-      )}
     </div>
   </div>
 );
