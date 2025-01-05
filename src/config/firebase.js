@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp, enableIndexedDbPersistence } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -16,51 +16,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-// Enable offline persistence
-enableIndexedDbPersistence(db)
-  .then(() => {
-    console.log('✅ Firestore persistence enabled');
-  })
-  .catch((err) => {
-    console.warn('⚠️ Firestore persistence error:', err);
-    if (err.code === 'failed-precondition') {
-      console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
-    } else if (err.code === 'unimplemented') {
-      console.warn('The current browser does not support persistence.');
-    }
-  });
-
-// Helper function to initialize collections
-const initializeCollections = async () => {
-  try {
-    // Test write to verify database access
-    const testRef = collection(db, '_test_init');
-    await addDoc(testRef, {
-      test: true,
-      timestamp: serverTimestamp()
-    });
-
-    // Initialize chat collections if they don't exist
-    const chatSessionsRef = collection(db, 'chatSessions');
-    await addDoc(chatSessionsRef, {
-      _init: true,
-      timestamp: serverTimestamp()
-    });
-
-    console.log('✅ Firebase and Firestore collections initialized successfully');
-  } catch (error) {
-    console.error('❌ Error initializing Firestore collections:', error);
-    throw error;
-  }
-};
-
-// Initialize collections
-initializeCollections().catch(console.error);
-
-export const analytics = getAnalytics(app);
-export { db };
-export const functions = getFunctions(app);
 
 // Helper function to send contact form data
 export const sendContactForm = async (formData) => {
@@ -96,18 +51,12 @@ export const sendContactForm = async (formData) => {
 };
 
 // Helper function to initialize a chat session
-export const initializeChatSession = async (sessionId) => {
-  if (!db) {
-    throw new Error('Firestore not initialized');
-  }
-
+export const initializeChatSession = async () => {
   try {
-    const chatSessionsRef = collection(db, 'chatSessions');
-    const docRef = await addDoc(chatSessionsRef, {
-      sessionId,
+    const chatRef = collection(db, 'chats');
+    const docRef = await addDoc(chatRef, {
       startTime: serverTimestamp(),
-      status: 'active',
-      lastActivity: serverTimestamp()
+      status: 'active'
     });
     console.log('✅ Chat session initialized:', docRef.id);
     return docRef.id;
@@ -118,13 +67,9 @@ export const initializeChatSession = async (sessionId) => {
 };
 
 // Helper function to send a chat message
-export const sendChatMessage = async (sessionId, message) => {
-  if (!db) {
-    throw new Error('Firestore not initialized');
-  }
-
+export const sendChatMessage = async (chatId, message) => {
   try {
-    const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
+    const messagesRef = collection(db, 'chats', chatId, 'messages');
     const docRef = await addDoc(messagesRef, {
       ...message,
       timestamp: serverTimestamp()
@@ -136,3 +81,7 @@ export const sendChatMessage = async (sessionId, message) => {
     throw error;
   }
 };
+
+export const analytics = getAnalytics(app);
+export { db };
+export const functions = getFunctions(app);

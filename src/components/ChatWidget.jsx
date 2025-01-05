@@ -30,13 +30,12 @@ const ChatWidget = () => {
     if (isOpen && !sessionId) {
       const initChat = async () => {
         try {
-          const newSessionId = `session_${Date.now()}`;
-          const docId = await initializeChatSession(newSessionId);
-          setSessionId(docId);
-          console.log('✅ Chat session initialized:', docId);
+          const chatId = await initializeChatSession();
+          setSessionId(chatId);
+          console.log('✅ Chat session initialized:', chatId);
         } catch (error) {
           console.error('❌ Error initializing chat:', error);
-          addToast('Chat initialization failed. Please try again.', 'error');
+          addToast('Failed to start chat. Please try again.', 'error');
         }
       };
 
@@ -49,7 +48,7 @@ const ChatWidget = () => {
     if (!sessionId) return;
 
     try {
-      const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
+      const messagesRef = collection(db, 'chats', sessionId, 'messages');
       const q = query(messagesRef, orderBy('timestamp', 'asc'), limit(50));
 
       const unsubscribe = onSnapshot(q, 

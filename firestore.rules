@@ -2,8 +2,8 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow public read/write access to chat sessions and messages
-    match /chatSessions/{sessionId} {
+    // Allow read/write access to chats
+    match /chats/{chatId} {
       allow read, write: if true;
       
       match /messages/{messageId} {
@@ -11,9 +11,9 @@ service cloud.firestore {
       }
     }
     
-    // Test collection for initialization
-    match /_test_init/{docId} {
-      allow write: if true;
+    // Allow read/write access to contacts
+    match /contacts/{contactId} {
+      allow read, write: if true;
     }
     
     // Deny access to all other collections by default
