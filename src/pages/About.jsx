@@ -61,7 +61,7 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-blue-50 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="min-h-screen bg-blue-300 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Subtle Grid Background */}
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
         
