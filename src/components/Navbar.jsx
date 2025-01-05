@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/animations.css';
@@ -7,14 +7,24 @@ const Navbar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
+      lastScrollY.current = window.scrollY;
+
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          setScrolled(lastScrollY.current > 20);
+          ticking.current = false;
+        });
+
+        ticking.current = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -27,7 +37,7 @@ const Navbar = ({ children }) => {
 
   return (
     <nav 
-      className={`fixed w-full z-50 top-0 left-0 transition-all duration-300 ${
+      className={`fixed w-full z-50 top-0 left-0 transform-gpu transition-all duration-200 ${
         scrolled 
           ? 'bg-[#0f1729]/95 backdrop-blur-md shadow-lg shadow-black/10' 
           : 'bg-transparent'
