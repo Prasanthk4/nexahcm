@@ -85,29 +85,14 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-400 via-blue-300 to-purple-300">
-        {/* 3D Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating circles */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-          <div className="absolute top-40 right-20 w-40 h-40 bg-purple-200/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-blue-200/20 rounded-full blur-2xl"></div>
-          
-          {/* 3D Shapes */}
-          <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-gradient-to-br from-white/20 to-transparent rounded-xl transform rotate-45 backdrop-blur-sm"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-gradient-to-tl from-white/20 to-transparent rounded-xl transform -rotate-12 backdrop-blur-sm"></div>
-        </div>
-
-        {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
-
-        <div className="container mx-auto px-4 py-16 relative z-10">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-300 to-purple-300 p-4">
+        <div className="max-w-6xl mx-auto">
           {/* Logo Section */}
-          <div className="flex justify-center mb-16 mt-8">
+          <div className="flex justify-center mt-16 mb-12">
             <img 
               src={Logo} 
               alt="Company Logo" 
-              className="w-24 h-24 object-contain bg-white rounded-full shadow-lg"
+              className="w-24 h-24 rounded-full bg-white p-1 shadow-lg"
             />
           </div>
 
