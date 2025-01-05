@@ -1116,6 +1116,80 @@ const Services = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedModule && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedModule(null)}></div>
+          <div className="relative min-h-screen flex items-center justify-center p-4">
+            <div className={`relative w-full max-w-4xl rounded-2xl shadow-2xl ${moduleColors[selectedModule.title].card} 
+                         ${moduleColors[selectedModule.title].border} border backdrop-blur-xl`}>
+              {/* Header */}
+              <div className={`flex items-center justify-between p-6 border-b ${moduleColors[selectedModule.title].border}`}>
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${moduleColors[selectedModule.title].bg} 
+                               flex items-center justify-center`}>
+                    <div className={`${moduleColors[selectedModule.title].text} text-2xl`}>
+                      {selectedModule.icon}
+                    </div>
+                  </div>
+                  <h2 className={`text-2xl font-bold ${moduleColors[selectedModule.title].text}`}>
+                    {selectedModule.title}
+                  </h2>
+                </div>
+                <button
+                  onClick={() => setSelectedModule(null)}
+                  className={`${moduleColors[selectedModule.title].text} hover:opacity-80 rounded-lg p-2 
+                           transition-opacity duration-200`}
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 space-y-6">
+                {/* Overview */}
+                <div>
+                  <h3 className={`text-xl font-semibold mb-4 ${moduleColors[selectedModule.title].text}`}>
+                    Overview
+                  </h3>
+                  <div className={`rounded-xl p-6 ${moduleColors[selectedModule.title].card} 
+                               backdrop-blur-xl ${moduleColors[selectedModule.title].text} leading-relaxed`}>
+                    {selectedModule.description}
+                  </div>
+                </div>
+
+                {/* Steps */}
+                {selectedModule.steps && (
+                  <div>
+                    <h3 className={`text-xl font-semibold mb-4 ${moduleColors[selectedModule.title].text}`}>
+                      Process Steps
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {selectedModule.steps.map((step, index) => (
+                        <div
+                          key={index}
+                          className={`${moduleColors[selectedModule.title].card} rounded-xl p-4 
+                                   ${moduleColors[selectedModule.title].text}`}
+                        >
+                          <div className={`w-8 h-8 mb-3 rounded-full bg-gradient-to-br 
+                                      ${moduleColors[selectedModule.title].bg} 
+                                      flex items-center justify-center mx-auto`}>
+                            {index + 1}
+                          </div>
+                          <p className="text-center">{step.title}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };
