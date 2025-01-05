@@ -55,56 +55,61 @@ const Contact = () => {
 
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <motion.div
+            <motion.a
+              href="mailto:contact@nexahcm.com"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-blue-200/30 hover:bg-blue-100/20 transition-all duration-300 group cursor-pointer"
             >
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <FaEnvelope className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Email</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">contact@nexahcm.com</p>
-            </motion.div>
+              <h3 className="text-blue-900 font-semibold mb-2 group-hover:text-blue-700">Email</h3>
+              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">contact@nexahcm.com</p>
+            </motion.a>
 
-            <motion.div
+            <motion.a
+              href="tel:+918644934132"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-blue-200/30 hover:bg-blue-100/20 transition-all duration-300 group cursor-pointer"
             >
-              <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <FaPhone className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Phone</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">+91 8644934132</p>
-            </motion.div>
+              <h3 className="text-blue-900 font-semibold mb-2 group-hover:text-blue-700">Phone</h3>
+              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">+91 8644934132</p>
+            </motion.a>
 
-            <motion.div
+            <motion.a
+              href="https://wa.me/918644934132"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-blue-200/30 hover:bg-blue-100/20 transition-all duration-300 group cursor-pointer"
             >
-              <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-green-500 to-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <FaWhatsapp className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">WhatsApp</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Click to chat</p>
-            </motion.div>
+              <h3 className="text-blue-900 font-semibold mb-2 group-hover:text-blue-700">WhatsApp</h3>
+              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">Click to chat</p>
+            </motion.a>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-blue-200/30 hover:bg-blue-100/20 transition-all duration-300 group"
             >
-              <div className="bg-gradient-to-br from-sky-500 to-sky-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaMapMarkerAlt className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Location</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Hyderabad, Telangana</p>
+              <h3 className="text-blue-900 font-semibold mb-2">Location</h3>
+              <p className="text-blue-800">Hyderabad, Telangana</p>
             </motion.div>
           </div>
 
@@ -113,46 +118,46 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-lg"
+            className="max-w-2xl mx-auto bg-white/20 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/30 shadow-lg"
           >
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-300 mb-2 text-sm font-medium">Name</label>
+                  <label className="block text-blue-900 mb-2 text-sm font-medium">Name</label>
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 mb-2 text-sm font-medium">Email</label>
+                  <label className="block text-blue-900 mb-2 text-sm font-medium">Email</label>
                   <input
                     type="email"
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-gray-300 mb-2 text-sm font-medium">Subject</label>
+                <label className="block text-blue-900 mb-2 text-sm font-medium">Subject</label>
                 <input
                   type="text"
                   placeholder="Project Discussion"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
                 />
               </div>
               <div>
-                <label className="block text-gray-300 mb-2 text-sm font-medium">Message</label>
+                <label className="block text-blue-900 mb-2 text-sm font-medium">Message</label>
                 <textarea
                   rows="4"
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300 resize-none"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
                 Send Message
               </button>
@@ -166,25 +171,25 @@ const Contact = () => {
             transition={{ delay: 0.8 }}
             className="mt-16 text-center"
           >
-            <h3 className="text-gray-300 mb-6">Connect With Me</h3>
+            <h3 className="text-blue-900 mb-6">Connect With Me</h3>
             <div className="flex justify-center space-x-4">
               <a
                 href="#"
-                className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-all duration-300"
+                className="bg-white/20 p-3 rounded-full hover:bg-blue-100/30 transition-all duration-300 group"
               >
-                <FaTwitter className="text-white text-xl" />
+                <FaTwitter className="text-blue-600 text-xl group-hover:text-blue-700" />
               </a>
               <a
                 href="#"
-                className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-all duration-300"
+                className="bg-white/20 p-3 rounded-full hover:bg-blue-100/30 transition-all duration-300 group"
               >
-                <FaLinkedin className="text-white text-xl" />
+                <FaLinkedin className="text-blue-600 text-xl group-hover:text-blue-700" />
               </a>
               <a
                 href="#"
-                className="bg-white/5 p-3 rounded-full hover:bg-white/10 transition-all duration-300"
+                className="bg-white/20 p-3 rounded-full hover:bg-blue-100/30 transition-all duration-300 group"
               >
-                <FaGithub className="text-white text-xl" />
+                <FaGithub className="text-blue-600 text-xl group-hover:text-blue-700" />
               </a>
             </div>
           </motion.div>
