@@ -59,7 +59,7 @@ export const sendContactForm = async (formData) => {
       ...formData,
       timestamp: serverTimestamp(),
       status: 'new',
-      emailPending: true
+      emailPending: true // Mark that email notification is pending
     });
     console.log('✅ Document written with ID:', docRef.id);
     return { 
