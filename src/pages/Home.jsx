@@ -82,7 +82,7 @@ const Home = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         {/* Hero Section */}
-        <div className="text-center pt-32 pb-48">
+        <div className="text-center pt-32 pb-32">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ const Home = () => {
         </div>
 
         {/* Services Section */}
-        <div className="pt-20">
+        <div className="pt-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
