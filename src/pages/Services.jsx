@@ -1272,13 +1272,13 @@ const ServiceCard = ({ service, index, onClick }) => {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold text-white mb-3 
-          group-hover:translate-x-1 transition-transform duration-300">
+        <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-white
+                             transition-colors duration-300">
           {service.title}
         </h3>
 
-        <p className="text-white/90 text-sm leading-relaxed 
-          group-hover:text-white transition-colors duration-300">
+        <p className="text-white/90 text-sm leading-relaxed group-hover:text-white/90
+                           transition-colors duration-300">
           {service.description || service.shortDesc}
         </p>
 
@@ -1300,43 +1300,72 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-300 p-4 pt-28 relative overflow-hidden">
-      
-      {/* Background decoration */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#7091E6] via-[#8697C4] to-[#ADBBDA]"
+    >
+      {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -right-1/2 w-full h-full 
-          bg-gradient-to-bl from-blue-200/40 to-purple-200/40 blur-3xl" />
-        <div className="absolute -bottom-1/2 -left-1/2 w-full h-full 
-          bg-gradient-to-tr from-slate-300/40 to-blue-200/40 blur-3xl" />
+        {/* Main gradient orbs */}
+        <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-[#3D52A0]/40 to-[#7091E6]/40 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-[#7091E6]/40 to-[#8697C4]/40 rounded-full blur-3xl"></div>
+        
+        {/* Additional color accents */}
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-br from-[#3D52A0]/30 to-[#7091E6]/30 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-[#7091E6]/30 to-[#EDE8F5]/30 rounded-full blur-2xl"></div>
+        
+        {/* Floating elements with animation */}
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute left-1/3 top-1/3 w-48 h-48 bg-gradient-to-br from-[#3D52A0]/20 to-[#7091E6]/20 rounded-full blur-xl"
+        ></motion.div>
+        <motion.div
+          animate={{ 
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute right-1/3 bottom-1/3 w-64 h-64 bg-gradient-to-br from-[#7091E6]/20 to-[#8697C4]/20 rounded-full blur-xl"
+        ></motion.div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            Our Services
-          </h2>
-          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
-            Comprehensive HR management solutions designed to transform and streamline your business operations
-          </p>
-        </div>
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl font-bold text-center mb-12 text-white"
+        >
+          Our Services
+        </motion.h1>
 
-        {selectedModule ? (
-          <ModuleDetail module={selectedModule} onClose={() => setSelectedModule(null)} />
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {modules.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                index={index}
-                onClick={setSelectedModule}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {modules.map((service, index) => (
+            <ServiceCard
+              key={service.title}
+              service={service}
+              index={index}
+              onClick={setSelectedModule}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
