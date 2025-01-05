@@ -81,7 +81,7 @@ const About = () => {
               >
                 <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
                   <img 
-                    src="/Screenshot 2025-01-03 184859.png" 
+                    src="/assets/logo.png"
                     alt="NexaHCM Logo" 
                     className="w-24 h-24 object-contain"
                   />
