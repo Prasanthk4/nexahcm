@@ -6,31 +6,31 @@ import PageTransition from '../components/transitions/PageTransition';
 const Contact = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-400 to-teal-400 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-100 via-sky-100 to-emerald-200 p-4 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Main blurred circles */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
-          <div className="absolute top-40 right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-teal-200/20 rounded-full blur-2xl"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-300/20 rounded-full blur-2xl"></div>
+          <div className="absolute top-40 right-20 w-40 h-40 bg-sky-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-emerald-200/30 rounded-full blur-2xl"></div>
           
           {/* Additional decorative elements */}
-          <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-cyan-200/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-blue-100/20 rounded-full blur-xl"></div>
+          <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-sky-200/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-emerald-100/30 rounded-full blur-xl"></div>
           
           {/* Floating shapes */}
-          <div className="absolute top-32 left-1/2 w-8 h-8 border border-white/20 rounded-lg transform rotate-45"></div>
-          <div className="absolute top-1/2 right-32 w-6 h-6 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-40 left-20 w-10 h-10 border border-white/20 rounded-full"></div>
+          <div className="absolute top-32 left-1/2 w-8 h-8 border border-emerald-300/30 rounded-lg transform rotate-45"></div>
+          <div className="absolute top-1/2 right-32 w-6 h-6 border border-sky-300/30 rounded-full"></div>
+          <div className="absolute bottom-40 left-20 w-10 h-10 border border-emerald-300/30 rounded-full"></div>
           
           {/* Dots pattern */}
-          <div className="absolute top-20 right-40 w-2 h-2 bg-white/30 rounded-full"></div>
-          <div className="absolute top-24 right-36 w-2 h-2 bg-white/20 rounded-full"></div>
-          <div className="absolute top-28 right-44 w-2 h-2 bg-white/30 rounded-full"></div>
+          <div className="absolute top-20 right-40 w-2 h-2 bg-sky-400/30 rounded-full"></div>
+          <div className="absolute top-24 right-36 w-2 h-2 bg-emerald-400/20 rounded-full"></div>
+          <div className="absolute top-28 right-44 w-2 h-2 bg-sky-400/30 rounded-full"></div>
           
           {/* Light beams */}
-          <div className="absolute top-0 left-1/3 w-1 h-32 bg-gradient-to-b from-white/20 to-transparent transform rotate-45"></div>
-          <div className="absolute bottom-0 right-1/4 w-1 h-40 bg-gradient-to-t from-white/20 to-transparent transform -rotate-45"></div>
+          <div className="absolute top-0 left-1/3 w-1 h-32 bg-gradient-to-b from-emerald-300/20 to-transparent transform rotate-45"></div>
+          <div className="absolute bottom-0 right-1/4 w-1 h-40 bg-gradient-to-t from-sky-300/20 to-transparent transform -rotate-45"></div>
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 backdrop-blur-sm">
@@ -39,7 +39,7 @@ const Contact = () => {
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-4"
+              className="text-4xl md:text-5xl font-bold text-emerald-800 mb-4"
             >
               Get in Touch
             </motion.h1>
@@ -47,7 +47,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-white/90 max-w-2xl mx-auto"
+              className="text-lg text-emerald-700 max-w-2xl mx-auto"
             >
               Let's discuss your project and explore how we can work together to achieve your goals.
             </motion.p>
@@ -61,7 +61,7 @@ const Contact = () => {
               transition={{ delay: 0.3 }}
               className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaEnvelope className="text-white text-xl" />
               </div>
               <h3 className="text-white font-semibold mb-2">Email</h3>
@@ -122,7 +122,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300"
                   />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ const Contact = () => {
                   <input
                     type="email"
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300"
                   />
                 </div>
               </div>
@@ -139,7 +139,7 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder="Project Discussion"
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300"
                 />
               </div>
               <div>
@@ -147,12 +147,12 @@ const Contact = () => {
                 <textarea
                   rows="4"
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 transition-colors duration-300 resize-none"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02]"
               >
                 Send Message
               </button>
