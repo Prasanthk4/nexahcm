@@ -6,15 +6,34 @@ import PageTransition from '../components/transitions/PageTransition';
 const Contact = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-500 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-400 to-teal-400 p-4 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
+          {/* Main blurred circles */}
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
           <div className="absolute top-40 right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-teal-200/20 rounded-full blur-2xl"></div>
+          
+          {/* Additional decorative elements */}
+          <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-cyan-200/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-blue-100/20 rounded-full blur-xl"></div>
+          
+          {/* Floating shapes */}
+          <div className="absolute top-32 left-1/2 w-8 h-8 border border-white/20 rounded-lg transform rotate-45"></div>
+          <div className="absolute top-1/2 right-32 w-6 h-6 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-40 left-20 w-10 h-10 border border-white/20 rounded-full"></div>
+          
+          {/* Dots pattern */}
+          <div className="absolute top-20 right-40 w-2 h-2 bg-white/30 rounded-full"></div>
+          <div className="absolute top-24 right-36 w-2 h-2 bg-white/20 rounded-full"></div>
+          <div className="absolute top-28 right-44 w-2 h-2 bg-white/30 rounded-full"></div>
+          
+          {/* Light beams */}
+          <div className="absolute top-0 left-1/3 w-1 h-32 bg-gradient-to-b from-white/20 to-transparent transform rotate-45"></div>
+          <div className="absolute bottom-0 right-1/4 w-1 h-40 bg-gradient-to-t from-white/20 to-transparent transform -rotate-45"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10 backdrop-blur-sm">
           {/* Header Section */}
           <div className="text-center mb-16 pt-10">
             <motion.h1
