@@ -1149,7 +1149,7 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 space-y-6">
+              <div className="p-6 space-y-8">
                 {/* Overview */}
                 <div>
                   <h3 className={`text-xl font-semibold mb-4 ${moduleColors[selectedModule.title].text}`}>
@@ -1157,11 +1157,11 @@ const Services = () => {
                   </h3>
                   <div className={`rounded-xl p-6 ${moduleColors[selectedModule.title].card} 
                                backdrop-blur-xl ${moduleColors[selectedModule.title].text} leading-relaxed`}>
-                    {selectedModule.description}
+                    {selectedModule.overview}
                   </div>
                 </div>
 
-                {/* Steps */}
+                {/* Process Steps */}
                 {selectedModule.steps && (
                   <div>
                     <h3 className={`text-xl font-semibold mb-4 ${moduleColors[selectedModule.title].text}`}>
@@ -1172,7 +1172,7 @@ const Services = () => {
                         <div
                           key={index}
                           className={`${moduleColors[selectedModule.title].card} rounded-xl p-4 
-                                   ${moduleColors[selectedModule.title].text}`}
+                                   ${moduleColors[selectedModule.title].text} hover:opacity-90 transition-opacity`}
                         >
                           <div className={`w-8 h-8 mb-3 rounded-full bg-gradient-to-br 
                                       ${moduleColors[selectedModule.title].bg} 
@@ -1180,6 +1180,39 @@ const Services = () => {
                             {index + 1}
                           </div>
                           <p className="text-center">{step.title}</p>
+                          <p className="text-center text-sm mt-2 opacity-80">{step.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Benefits */}
+                {selectedModule.benefits && (
+                  <div>
+                    <h3 className={`text-xl font-semibold mb-4 ${moduleColors[selectedModule.title].text}`}>
+                      Key Benefits
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {selectedModule.benefits.map((benefit, index) => (
+                        <div
+                          key={index}
+                          className={`${moduleColors[selectedModule.title].card} rounded-xl p-4 
+                                   ${moduleColors[selectedModule.title].text} hover:opacity-90 transition-opacity`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className={`mt-1 w-5 h-5 rounded-full bg-gradient-to-br 
+                                        ${moduleColors[selectedModule.title].bg} 
+                                        flex items-center justify-center flex-shrink-0`}>
+                              <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                            <div>
+                              <h4 className="font-medium mb-1">{benefit.title}</h4>
+                              <p className="text-sm opacity-80">{benefit.description}</p>
+                            </div>
+                          </div>
                         </div>
                       ))}
                     </div>
