@@ -104,7 +104,7 @@ const About = () => {
               transition={{ duration: 0.5 }}
               className="text-5xl md:text-7xl font-bold text-blue-900 text-center mb-6"
             >
-              Transforming Ideas Into Digital Excellence
+              Building Tomorrow's Solutions
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -112,8 +112,8 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl md:text-2xl text-blue-800/80 text-center max-w-3xl mx-auto"
             >
-              A full-stack development team dedicated to crafting innovative digital solutions 
-              that drive business growth and technological advancement.
+              Expert full-stack development team delivering innovative solutions 
+              that empower businesses to thrive in the digital age.
             </motion.p>
           </div>
 
