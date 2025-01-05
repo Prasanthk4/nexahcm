@@ -70,7 +70,7 @@ const Contact = () => {
             </motion.a>
 
             <motion.a
-              href="tel:+918644934132"
+              href="tel:+919849214132"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -80,11 +80,11 @@ const Contact = () => {
                 <FaPhone className="text-white text-xl" />
               </div>
               <h3 className="text-blue-900 font-semibold mb-2 group-hover:text-blue-700">Phone</h3>
-              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">+91 8644934132</p>
+              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">+91 9849214132</p>
             </motion.a>
 
             <motion.a
-              href="https://wa.me/918644934132"
+              href="https://wa.me/919849214132"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
