@@ -64,8 +64,13 @@ const Contact = () => {
               <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaEnvelope className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Email</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">contact@nexahcm.com</p>
+              <h3 className="text-emerald-800 font-semibold mb-2">Email</h3>
+              <a 
+                href="mailto:contact@nexahcm.com" 
+                className="text-emerald-700 hover:text-emerald-900 transition-colors duration-300"
+              >
+                contact@nexahcm.com
+              </a>
             </motion.div>
 
             <motion.div
@@ -74,11 +79,16 @@ const Contact = () => {
               transition={{ delay: 0.4 }}
               className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaPhone className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Phone</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">+91 8644934132</p>
+              <h3 className="text-emerald-800 font-semibold mb-2">Phone</h3>
+              <a 
+                href="tel:+918644934132" 
+                className="text-emerald-700 hover:text-emerald-900 transition-colors duration-300"
+              >
+                +91 8644934132
+              </a>
             </motion.div>
 
             <motion.div
@@ -90,8 +100,15 @@ const Contact = () => {
               <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaWhatsapp className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">WhatsApp</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Click to chat</p>
+              <h3 className="text-emerald-800 font-semibold mb-2">WhatsApp</h3>
+              <a 
+                href="https://wa.me/918644934132" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-emerald-700 hover:text-emerald-900 transition-colors duration-300"
+              >
+                Click to chat
+              </a>
             </motion.div>
 
             <motion.div
@@ -100,11 +117,18 @@ const Contact = () => {
               transition={{ delay: 0.6 }}
               className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="bg-gradient-to-br from-sky-500 to-sky-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+              <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                 <FaMapMarkerAlt className="text-white text-xl" />
               </div>
-              <h3 className="text-white font-semibold mb-2">Location</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Hyderabad, Telangana</p>
+              <h3 className="text-emerald-800 font-semibold mb-2">Location</h3>
+              <a 
+                href="https://maps.google.com/?q=Hyderabad,Telangana" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-emerald-700 hover:text-emerald-900 transition-colors duration-300"
+              >
+                Hyderabad, Telangana
+              </a>
             </motion.div>
           </div>
 
