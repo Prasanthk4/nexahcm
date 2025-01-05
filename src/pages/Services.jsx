@@ -904,19 +904,89 @@ const modules = [
   }
 ];
 
-const getColors = (index) => {
-  const colorSchemes = [
-    { bg: 'from-[#3D52A0] to-[#7091E6]', text: 'text-[#3D52A0]' },
-    { bg: 'from-[#7091E6] to-[#8697C4]', text: 'text-[#7091E6]' },
-    { bg: 'from-[#8697C4] to-[#ADBBDA]', text: 'text-[#8697C4]' },
-    { bg: 'from-[#3D52A0] to-[#8697C4]', text: 'text-[#3D52A0]' },
-    { bg: 'from-[#7091E6] to-[#ADBBDA]', text: 'text-[#7091E6]' },
-  ];
-  return colorSchemes[index % colorSchemes.length];
+const moduleColors = {
+  'Recruitment Process': {
+    bg: 'from-blue-600 to-blue-800',
+    card: 'bg-blue-600/10',
+    border: 'border-blue-200/30',
+    text: 'text-blue-100'
+  },
+  'Onboarding Process': {
+    bg: 'from-emerald-600 to-emerald-800',
+    card: 'bg-emerald-600/10',
+    border: 'border-emerald-200/30',
+    text: 'text-emerald-100'
+  },
+  'Leave & Attendance': {
+    bg: 'from-teal-600 to-teal-800',
+    card: 'bg-teal-600/10',
+    border: 'border-teal-200/30',
+    text: 'text-teal-100'
+  },
+  'ESS / Life Cycle': {
+    bg: 'from-purple-600 to-purple-800',
+    card: 'bg-purple-600/10',
+    border: 'border-purple-200/30',
+    text: 'text-purple-100'
+  },
+  'Payroll': {
+    bg: 'from-indigo-600 to-indigo-800',
+    card: 'bg-indigo-600/10',
+    border: 'border-indigo-200/30',
+    text: 'text-indigo-100'
+  },
+  'Travel & Expenses': {
+    bg: 'from-green-600 to-green-800',
+    card: 'bg-green-600/10',
+    border: 'border-green-200/30',
+    text: 'text-green-100'
+  },
+  'Performance Management': {
+    bg: 'from-amber-600 to-amber-800',
+    card: 'bg-amber-600/10',
+    border: 'border-amber-200/30',
+    text: 'text-amber-100'
+  },
+  'Employee Benefits': {
+    bg: 'from-cyan-600 to-cyan-800',
+    card: 'bg-cyan-600/10',
+    border: 'border-cyan-200/30',
+    text: 'text-cyan-100'
+  },
+  'Ask HR': {
+    bg: 'from-blue-500 to-blue-700',
+    card: 'bg-blue-500/10',
+    border: 'border-blue-200/30',
+    text: 'text-blue-100'
+  },
+  'Exit Management': {
+    bg: 'from-violet-600 to-violet-800',
+    card: 'bg-violet-600/10',
+    border: 'border-violet-200/30',
+    text: 'text-violet-100'
+  },
+  'HR Compliance Calendar': {
+    bg: 'from-rose-600 to-rose-800',
+    card: 'bg-rose-600/10',
+    border: 'border-rose-200/30',
+    text: 'text-rose-100'
+  },
+  'Visitor Management': {
+    bg: 'from-gray-600 to-gray-800',
+    card: 'bg-gray-600/10',
+    border: 'border-gray-200/30',
+    text: 'text-gray-100'
+  },
+  'Technology Stack': {
+    bg: 'from-purple-600 to-purple-800',
+    card: 'bg-purple-600/10',
+    border: 'border-purple-200/30',
+    text: 'text-purple-100'
+  }
 };
 
 const ServiceCard = ({ service, index, onClick }) => {
-  const colors = getColors(index);
+  const colors = moduleColors[service.title];
   
   return (
     <motion.div
@@ -924,9 +994,9 @@ const ServiceCard = ({ service, index, onClick }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
       onClick={() => onClick(service)}
-      className="group relative p-8 rounded-2xl bg-white/10 backdrop-blur-xl
-                 border border-white/20 shadow-lg hover:shadow-xl cursor-pointer
-                 transition-all duration-300 hover:scale-[1.02] overflow-hidden"
+      className={`group relative p-8 rounded-2xl ${colors.card} backdrop-blur-xl
+                 ${colors.border} shadow-lg hover:shadow-xl cursor-pointer
+                 transition-all duration-300 hover:scale-[1.02] overflow-hidden`}
     >
       {/* Background gradient */}
       <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
@@ -936,19 +1006,19 @@ const ServiceCard = ({ service, index, onClick }) => {
       {/* Icon */}
       <div className="relative w-16 h-16 mb-6">
         <div className={`w-full h-full rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
-          <div className="text-white text-2xl">
+          <div className={`${colors.text} text-2xl`}>
             {service.icon}
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="relative text-xl font-semibold mb-4 text-white group-hover:text-white
-                   transition-colors duration-300">
+      <h3 className={`relative text-xl font-semibold mb-4 ${colors.text} group-hover:text-white
+                   transition-colors duration-300`}>
         {service.title}
       </h3>
-      <p className="relative text-white/80 group-hover:text-white/90
-                 transition-colors duration-300">
+      <p className={`relative ${colors.text} opacity-90 group-hover:opacity-100
+                 transition-all duration-300`}>
         {service.description}
       </p>
 
@@ -959,7 +1029,7 @@ const ServiceCard = ({ service, index, onClick }) => {
         <motion.div
           animate={{ x: [0, 5, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-white"
+          className={colors.text}
         >
           →
         </motion.div>
