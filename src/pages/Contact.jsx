@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import PageTransition from '../components/transitions/PageTransition';
+import { sendContactForm } from '../config/firebase';
+import { useToast } from '../components/ui/Toast';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { addToast } = useToast();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendContactForm(formData);
+      if (result.success) {
+        addToast('Message sent successfully! We will get back to you soon.', 'success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      addToast('Failed to send message. Please try again later.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <PageTransition>
       <div className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-200 to-sky-300 p-4 pt-28 relative overflow-hidden">
@@ -120,46 +164,67 @@ const Contact = () => {
             transition={{ delay: 0.7 }}
             className="max-w-2xl mx-auto bg-white/20 backdrop-blur-xl p-8 rounded-2xl border border-blue-200/30 shadow-lg"
           >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-blue-900 mb-2 text-sm font-medium">Name</label>
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-blue-900 mb-2 text-sm font-medium">Email</label>
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
-                  />
-                </div>
-              </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-blue-900 mb-2 text-sm font-medium">Subject</label>
+                <label htmlFor="name" className="block text-blue-900 font-medium mb-2">Name</label>
                 <input
                   type="text"
-                  placeholder="Project Discussion"
-                  className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/30 text-blue-900 placeholder-blue-900/50"
+                  placeholder="Your name"
                 />
               </div>
               <div>
-                <label className="block text-blue-900 mb-2 text-sm font-medium">Message</label>
+                <label htmlFor="email" className="block text-blue-900 font-medium mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/30 text-blue-900 placeholder-blue-900/50"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="subject" className="block text-blue-900 font-medium mb-2">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/30 text-blue-900 placeholder-blue-900/50"
+                  placeholder="What's this about?"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-blue-900 font-medium mb-2">Message</label>
                 <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows="4"
-                  placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 bg-white/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 bg-white/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/30 text-blue-900 placeholder-blue-900/50 resize-none"
+                  placeholder="Tell us about your project..."
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                disabled={isSubmitting}
+                className={`w-full py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium transition-all duration-300 ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg hover:scale-[1.02]'
+                }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>
