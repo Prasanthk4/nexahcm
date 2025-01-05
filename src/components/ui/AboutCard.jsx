@@ -46,12 +46,12 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300`}>
+        <h3 className={`text-2xl font-bold mb-3 text-blue-900 group-hover:text-indigo-600 transition-colors duration-300`}>
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+        <p className="text-blue-800 group-hover:text-indigo-500 transition-colors duration-300">
           {description}
         </p>
 
@@ -61,12 +61,12 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-white/20 backdrop-blur-sm p-3 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/30 hover:border-white/30 cursor-pointer"
+                className="bg-white/20 backdrop-blur-sm p-3 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/30 hover:border-white/30 cursor-pointer group/stat"
               >
-                <div className={`text-lg font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300`}>
+                <div className={`text-lg font-semibold text-blue-900 group-hover/stat:text-indigo-600 transition-colors duration-300`}>
                   {stat.label}
                 </div>
-                <div className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <div className="text-sm text-blue-700 group-hover/stat:text-indigo-500 transition-colors duration-300">
                   {stat.value}
                 </div>
               </div>

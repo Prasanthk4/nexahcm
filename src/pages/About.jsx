@@ -139,7 +139,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-20"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+              <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center hover:text-indigo-600 transition-colors duration-300">
                 Technical Expertise
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -148,14 +148,14 @@ const About = () => {
                     key={index}
                     className="p-6 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 group"
                   >
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors duration-300">
+                    <h3 className="text-xl font-semibold text-blue-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">
                       {category.name}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {category.tech.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 rounded-full text-sm bg-white/20 text-gray-700 backdrop-blur-sm hover:bg-white/30 hover:text-gray-900 transition-all duration-300 cursor-pointer"
+                          className="px-3 py-1 rounded-full text-sm bg-white/20 text-blue-800 backdrop-blur-sm hover:bg-white/30 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
                         >
                           {tech}
                         </span>
@@ -174,15 +174,15 @@ const About = () => {
               className="mt-20 text-center"
             >
               <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 group">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors duration-300">
+                <h2 className="text-3xl font-bold text-blue-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">
                   Ready to Start Your Project?
                 </h2>
-                <p className="text-gray-600 mb-8 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-blue-800 mb-8 group-hover:text-indigo-500 transition-colors duration-300">
                   Let's work together to bring your ideas to life.
                 </p>
                 <button 
                   onClick={() => navigate('/contact')}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm rounded-xl text-gray-800 font-semibold overflow-hidden transition-all duration-300 hover:bg-white/30 hover:text-gray-900 hover:scale-105"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm rounded-xl text-blue-900 font-semibold overflow-hidden transition-all duration-300 hover:bg-white/30 hover:text-indigo-600 hover:scale-105"
                 >
                   <span className="relative z-10">Get in Touch</span>
                   <svg 
