@@ -1119,16 +1119,18 @@ const Services = () => {
 
       {/* Modal */}
       {selectedModule && (
-        <div className="fixed inset-0 z-50 overflow-y-auto" onClick={(e) => {
-          // Close only if clicking the backdrop
-          if (e.target === e.currentTarget) {
-            setSelectedModule(null);
-          }
-        }}>
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedModule(null)}></div>
-          <div className="relative min-h-screen flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
-            <div className={`relative w-full max-w-4xl rounded-2xl shadow-2xl ${moduleColors[selectedModule.title].card} 
-                         ${moduleColors[selectedModule.title].border} border backdrop-blur-xl`}>
+        <div 
+          className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm"
+          onClick={() => setSelectedModule(null)}
+        >
+          <div 
+            className="relative min-h-screen flex items-center justify-center p-4"
+          >
+            <div 
+              className={`relative w-full max-w-4xl rounded-2xl shadow-2xl ${moduleColors[selectedModule.title].card} 
+                       ${moduleColors[selectedModule.title].border} border backdrop-blur-xl`}
+              onClick={(e) => e.stopPropagation()}
+            >
               {/* Header */}
               <div className={`flex items-center justify-between p-6 border-b ${moduleColors[selectedModule.title].border}`}>
                 <div className="flex items-center gap-4">
