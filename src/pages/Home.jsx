@@ -3,26 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import BackgroundScene from '../components/3d/BackgroundScene';
-import { OrbitControls, Float, Sphere } from '@react-three/drei';
-
-const FloatingElement = () => {
-  return (
-    <Float
-      speed={1.5}
-      rotationIntensity={1}
-      floatIntensity={2}
-    >
-      <Sphere args={[1, 32, 32]}>
-        <meshStandardMaterial 
-          color="#4F46E5"
-          opacity={0.5}
-          transparent
-          wireframe
-        />
-      </Sphere>
-    </Float>
-  );
-};
 
 const Home = () => {
   const floatingElements = [
@@ -76,101 +56,124 @@ const Home = () => {
       description: 'End-to-end development services from database design to user interface.',
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
         </svg>
       ),
     },
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50">
-        {/* Decorative elements */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-gradient-to-b from-blue-100 via-gray-100 to-blue-100 relative overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* 3D Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
-        </div>
-
-        {/* 3D Canvas Background */}
-        <div className="absolute inset-0 opacity-40">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <OrbitControls enableZoom={false} enablePan={false} />
-            <group>
-              <FloatingElement position={[-2, 1, 0]} />
-              <FloatingElement position={[2, -1, -2]} />
-              <FloatingElement position={[0, -2, -4]} />
-            </group>
-          </Canvas>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <div className="container mx-auto px-4 pt-32 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1 className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
-              Transforming Ideas into Digital Reality
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              We create cutting-edge software solutions that drive business growth
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium
-                        shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40
-                        transition-all duration-300"
-            >
-              Get Started
-            </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Services Section */}
-        <div className="container mx-auto px-4 py-20">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl font-bold text-center mb-12 text-gray-800"
-          >
-            Our Services
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service Cards */}
-            {services.map((service, index) => (
+          {/* Floating Elements */}
+          <div className="absolute inset-0">
+            {floatingElements.map((element, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, translateY: -5 }}
-                className="p-6 rounded-2xl bg-white/70 backdrop-blur-sm
-                          border border-white/20 shadow-lg hover:shadow-xl
-                          transition-all duration-300"
+                className="absolute"
+                initial={element.initial}
+                animate={element.animate}
+                transition={{
+                  duration: element.duration,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                style={{
+                  left: element.left,
+                  top: element.top,
+                  width: element.size,
+                  height: element.size,
+                }}
               >
-                <div className="w-12 h-12 mb-4 bg-gradient-to-br from-blue-500 to-indigo-600
-                              rounded-xl flex items-center justify-center text-white">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <div className="w-full h-full bg-slate-700/20 rounded-full backdrop-blur-sm border border-slate-600/20" />
               </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div className="text-center">
+            <motion.h1 
+              className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Transforming Ideas into
+              <br />
+              Digital Reality
+            </motion.h1>
+            
+            <motion.p
+              className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              We create cutting-edge software solutions that drive business growth
+            </motion.p>
+
+            <motion.div
+              className="mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 transition-colors duration-300"
+              >
+                Get Started
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Services Section */}
+        <div className="relative z-10 py-20 bg-blue-100/80 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-800">
+                Our Services
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50 hover:shadow-xl transition-shadow duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="text-blue-500 mb-4">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {service.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

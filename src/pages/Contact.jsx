@@ -6,7 +6,7 @@ import PageTransition from '../components/transitions/PageTransition';
 const Contact = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-200 to-sky-300 p-4 pt-28 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 p-4 pt-28 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Main blurred circles */}
