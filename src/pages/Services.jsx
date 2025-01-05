@@ -904,118 +904,217 @@ const modules = [
   }
 ];
 
-const getCardColor = (index) => {
-  const colors = [
-    // Professional blues and teals
-    {
-      gradient: 'from-blue-500/20 to-blue-600/20 border-blue-500/30 hover:border-blue-400/50',
-      bg: 'bg-blue-900/10',
-      accent: 'bg-blue-500',
-      border: 'border-blue-500/20',
-      text: 'text-blue-400'
-    },
-    {
-      gradient: 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/30 hover:border-cyan-400/50',
-      bg: 'bg-cyan-900/10',
-      accent: 'bg-cyan-500',
-      border: 'border-cyan-500/20',
-      text: 'text-cyan-400'
-    },
-    {
-      gradient: 'from-teal-500/20 to-teal-600/20 border-teal-500/30 hover:border-teal-400/50',
-      bg: 'bg-teal-900/10',
-      accent: 'bg-teal-500',
-      border: 'border-teal-500/20',
-      text: 'text-teal-400'
-    },
-    // Purple and indigo tones
-    {
-      gradient: 'from-purple-500/20 to-purple-600/20 border-purple-500/30 hover:border-purple-400/50',
-      bg: 'bg-purple-900/10',
-      accent: 'bg-purple-500',
-      border: 'border-purple-500/20',
-      text: 'text-purple-400'
-    },
-    {
-      gradient: 'from-indigo-500/20 to-indigo-600/20 border-indigo-500/30 hover:border-indigo-400/50',
-      bg: 'bg-indigo-900/10',
-      accent: 'bg-indigo-500',
-      border: 'border-indigo-500/20',
-      text: 'text-indigo-400'
-    },
-    // Warm accents
-    {
-      gradient: 'from-rose-500/20 to-rose-600/20 border-rose-500/30 hover:border-rose-400/50',
-      bg: 'bg-rose-900/10',
-      accent: 'bg-rose-500',
-      border: 'border-rose-500/20',
-      text: 'text-rose-400'
-    },
-    {
-      gradient: 'from-orange-500/20 to-orange-600/20 border-orange-500/30 hover:border-orange-400/50',
-      bg: 'bg-orange-900/10',
-      accent: 'bg-orange-500',
-      border: 'border-orange-500/20',
-      text: 'text-orange-400'
-    },
-    // Cool greens
-    {
-      gradient: 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/30 hover:border-emerald-400/50',
-      bg: 'bg-emerald-900/10',
-      accent: 'bg-emerald-500',
-      border: 'border-emerald-500/20',
-      text: 'text-emerald-400'
-    },
-    {
-      gradient: 'from-green-500/20 to-green-600/20 border-green-500/30 hover:border-green-400/50',
-      bg: 'bg-green-900/10',
-      accent: 'bg-green-500',
-      border: 'border-green-500/20',
-      text: 'text-green-400'
-    },
-    // Additional variations
-    {
-      gradient: 'from-sky-500/20 to-sky-600/20 border-sky-500/30 hover:border-sky-400/50',
-      bg: 'bg-sky-900/10',
-      accent: 'bg-sky-500',
-      border: 'border-sky-500/20',
-      text: 'text-sky-400'
-    },
-    {
-      gradient: 'from-violet-500/20 to-violet-600/20 border-violet-500/30 hover:border-violet-400/50',
-      bg: 'bg-violet-900/10',
-      accent: 'bg-violet-500',
-      border: 'border-violet-500/20',
-      text: 'text-violet-400'
-    },
-    {
-      gradient: 'from-fuchsia-500/20 to-fuchsia-600/20 border-fuchsia-500/30 hover:border-fuchsia-400/50',
-      bg: 'bg-fuchsia-900/10',
-      accent: 'bg-fuchsia-500',
-      border: 'border-fuchsia-500/20',
-      text: 'text-fuchsia-400'
-    },
-    {
-      gradient: 'from-blue-500/20 to-indigo-600/20 border-blue-500/30 hover:border-indigo-400/50',
-      bg: 'bg-blue-900/10',
-      accent: 'bg-blue-500',
-      border: 'border-blue-500/20',
-      text: 'text-blue-400'
-    }
-  ];
-  return colors[index % colors.length];
+const moduleColors = {
+  'Recruitment Process': {
+    bg: 'from-blue-600 to-blue-800',
+    card: 'bg-blue-600/10',
+    border: 'border-blue-200/30',
+    text: 'text-blue-100',
+    overview: 'bg-blue-900/40',
+    benefits: 'bg-blue-950/40',
+    hover: 'hover:bg-blue-700/20'
+  },
+  'Onboarding Process': {
+    bg: 'from-emerald-600 to-emerald-800',
+    card: 'bg-emerald-600/10',
+    border: 'border-emerald-200/30',
+    text: 'text-emerald-100',
+    overview: 'bg-emerald-900/40',
+    benefits: 'bg-emerald-950/40',
+    hover: 'hover:bg-emerald-700/20'
+  },
+  'Leave & Attendance': {
+    bg: 'from-teal-600 to-teal-800',
+    card: 'bg-teal-600/10',
+    border: 'border-teal-200/30',
+    text: 'text-teal-100',
+    overview: 'bg-teal-900/40',
+    benefits: 'bg-teal-950/40',
+    hover: 'hover:bg-teal-700/20'
+  },
+  'ESS / Life Cycle': {
+    bg: 'from-purple-600 to-purple-800',
+    card: 'bg-purple-600/10',
+    border: 'border-purple-200/30',
+    text: 'text-purple-100',
+    overview: 'bg-purple-900/40',
+    benefits: 'bg-purple-950/40',
+    hover: 'hover:bg-purple-700/20'
+  },
+  'Payroll': {
+    bg: 'from-indigo-600 to-indigo-800',
+    card: 'bg-indigo-600/10',
+    border: 'border-indigo-200/30',
+    text: 'text-indigo-100',
+    overview: 'bg-indigo-900/40',
+    benefits: 'bg-indigo-950/40',
+    hover: 'hover:bg-indigo-700/20'
+  },
+  'Travel & Expenses': {
+    bg: 'from-green-600 to-green-800',
+    card: 'bg-green-600/10',
+    border: 'border-green-200/30',
+    text: 'text-green-100',
+    overview: 'bg-green-900/40',
+    benefits: 'bg-green-950/40',
+    hover: 'hover:bg-green-700/20'
+  },
+  'Performance Management': {
+    bg: 'from-amber-600 to-amber-800',
+    card: 'bg-amber-600/10',
+    border: 'border-amber-200/30',
+    text: 'text-amber-100',
+    overview: 'bg-amber-900/40',
+    benefits: 'bg-amber-950/40',
+    hover: 'hover:bg-amber-700/20'
+  },
+  'Employee Benefits': {
+    bg: 'from-cyan-600 to-cyan-800',
+    card: 'bg-cyan-600/10',
+    border: 'border-cyan-200/30',
+    text: 'text-cyan-100',
+    overview: 'bg-cyan-900/40',
+    benefits: 'bg-cyan-950/40',
+    hover: 'hover:bg-cyan-700/20'
+  },
+  'Ask HR': {
+    bg: 'from-blue-500 to-blue-700',
+    card: 'bg-blue-500/10',
+    border: 'border-blue-200/30',
+    text: 'text-blue-100',
+    overview: 'bg-blue-800/40',
+    benefits: 'bg-blue-900/40',
+    hover: 'hover:bg-blue-600/20'
+  },
+  'Exit Management': {
+    bg: 'from-violet-600 to-violet-800',
+    card: 'bg-violet-600/10',
+    border: 'border-violet-200/30',
+    text: 'text-violet-100',
+    overview: 'bg-violet-900/40',
+    benefits: 'bg-violet-950/40',
+    hover: 'hover:bg-violet-700/20'
+  },
+  'HR Compliance Calendar': {
+    bg: 'from-emerald-600 to-emerald-800',
+    card: 'bg-emerald-600/10',
+    border: 'border-emerald-200/30',
+    text: 'text-emerald-100',
+    overview: 'bg-emerald-900/40',
+    benefits: 'bg-emerald-950/40',
+    hover: 'hover:bg-emerald-700/20'
+  },
+  'Visitor Management': {
+    bg: 'from-gray-600 to-gray-800',
+    card: 'bg-gray-600/10',
+    border: 'border-gray-200/30',
+    text: 'text-gray-100',
+    overview: 'bg-gray-900/40',
+    benefits: 'bg-gray-950/40',
+    hover: 'hover:bg-gray-700/20'
+  },
+  'Technology Stack': {
+    bg: 'from-purple-600 to-purple-800',
+    card: 'bg-purple-600/10',
+    border: 'border-purple-200/30',
+    text: 'text-purple-100',
+    overview: 'bg-purple-900/40',
+    benefits: 'bg-purple-950/40',
+    hover: 'hover:bg-purple-700/20'
+  }
+};
+
+const ServiceModal = ({ module, onClose }) => {
+  const colors = moduleColors[module.title];
+  
+  return (
+    <div className="fixed inset-0 z-50 overflow-y-auto">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+      <div className="relative min-h-screen flex items-center justify-center p-4">
+        <div className={`relative w-full max-w-4xl rounded-2xl shadow-2xl ${colors.card} ${colors.border} border backdrop-blur-xl`}>
+          {/* Header */}
+          <div className={`flex items-center justify-between p-6 border-b ${colors.border}`}>
+            <div className="flex items-center gap-4">
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
+                {module.icon}
+              </div>
+              <h2 className={`text-2xl font-bold ${colors.text}`}>{module.title}</h2>
+            </div>
+            <button
+              onClick={onClose}
+              className={`${colors.text} ${colors.hover} rounded-lg p-2 transition-colors duration-200`}
+            >
+              <IoClose className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-6 space-y-6">
+            {/* Overview Section */}
+            <div>
+              <h3 className={`text-xl font-semibold mb-4 ${colors.text}`}>Overview</h3>
+              <div className={`${colors.overview} rounded-xl p-6 ${colors.text} leading-relaxed`}>
+                {module.description}
+              </div>
+            </div>
+
+            {/* Process Steps */}
+            <div>
+              <h3 className={`text-xl font-semibold mb-4 ${colors.text}`}>Process Steps</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {module.steps.map((step, index) => (
+                  <div
+                    key={index}
+                    className={`${colors.overview} rounded-xl p-4 text-center ${colors.text}`}
+                  >
+                    <div className={`w-8 h-8 mx-auto mb-2 rounded-full bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
+                      {index + 1}
+                    </div>
+                    <p className="text-sm">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Key Benefits */}
+            <div>
+              <h3 className={`text-xl font-semibold mb-4 ${colors.text}`}>Key Benefits</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {module.benefits.map((benefit, index) => (
+                  <div
+                    key={index}
+                    className={`${colors.benefits} rounded-xl p-4 ${colors.text}`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className={`mt-1 w-5 h-5 rounded-full bg-gradient-to-br ${colors.bg} flex items-center justify-center flex-shrink-0`}>
+                        <IoCheckmark className="w-3 h-3 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium mb-1">{benefit.title}</h4>
+                        <p className={`text-sm opacity-80`}>{benefit.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const ModuleDetail = ({ module, onClose }) => {
-  const colors = getCardColor(module.colorIndex || 0);
+  const colors = moduleColors[module.title];
   
   return (
-    <div className={`rounded-xl shadow-lg ${colors.bg}`}>
+    <div className={`rounded-xl shadow-lg ${colors.card}`}>
       <div className="p-8">
         {/* Header */}
         <div className={`flex items-center justify-between pb-6 border-b ${colors.border}`}>
           <div className="flex items-center space-x-4">
-            <div className={`p-3 bg-gradient-to-br ${colors.gradient} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
+            <div className={`p-3 bg-gradient-to-br ${colors.bg} rounded-xl backdrop-blur-sm flex items-center justify-center`}>
               <div className={`${colors.text} w-8 h-8 flex items-center justify-center`}>
                 {module.icon}
               </div>
@@ -1080,7 +1179,7 @@ const ModuleDetail = ({ module, onClose }) => {
               {/* Right Column - Benefits */}
               {module.benefits && (
                 <div className="lg:col-span-1">
-                  <div className={`rounded-xl p-6 sticky top-8 ${colors.bg}`}>
+                  <div className={`rounded-xl p-6 sticky top-8 ${colors.card}`}>
                     <div className="flex items-center space-x-3 mb-6">
                       <div className={`w-1 h-6 ${colors.accent}`}></div>
                       <h3 className="text-xl font-semibold text-white">Key Benefits</h3>
@@ -1092,7 +1191,7 @@ const ModuleDetail = ({ module, onClose }) => {
                           className={`flex items-start space-x-3 p-4 rounded-lg bg-[#1a2234] hover:bg-[#1d2639] transition-all duration-300 group hover:translate-x-1 ${colors.border}`}
                         >
                           <div className="flex-shrink-0 w-6 h-6 mt-1">
-                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${colors.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                               <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                               </svg>
@@ -1139,12 +1238,12 @@ const ProcessStep = ({ step, index }) => (
 );
 
 const ServiceCard = ({ service, index, onClick }) => {
-  const bgColor = service.bgColor;
+  const colors = moduleColors[service.title];
   
   return (
     <motion.div
       key={service.title}
-      className={`group cursor-pointer ${bgColor} rounded-2xl p-6 
+      className={`group cursor-pointer ${colors.card} rounded-2xl p-6 
         backdrop-blur-md bg-opacity-95 border border-white/20
         shadow-[0_8px_30px_rgb(0,0,0,0.08)] 
         hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]
@@ -1166,12 +1265,8 @@ const ServiceCard = ({ service, index, onClick }) => {
       {/* Content */}
       <div className="relative z-10">
         <div className="w-12 h-12 mb-4">
-          <div className={`w-full h-full rounded-lg bg-white/20 
-            flex items-center justify-center transform 
-            group-hover:scale-110 transition-transform duration-300
-            shadow-[0_4px_15px_rgb(0,0,0,0.1)]`}
-          >
-            <div className="text-white">
+          <div className={`w-full h-full rounded-lg bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
+            <div className={`text-white`}>
               {service.icon}
             </div>
           </div>
