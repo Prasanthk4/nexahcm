@@ -6,12 +6,12 @@ import PageTransition from '../components/transitions/PageTransition';
 const Contact = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-500 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-500 p-4 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
           <div className="absolute top-40 right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-purple-200/20 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-teal-200/20 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
