@@ -32,7 +32,7 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
       <div className={`absolute -inset-0.5 ${gradient} opacity-60 blur-lg group-hover:opacity-85 transition duration-300 rounded-2xl`} />
       
       {/* Card Content */}
-      <div className="relative bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-white/20">
+      <div className="relative bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-white/20 transition-all duration-300 group-hover:bg-white/15">
         {/* Icon Container */}
         <div className="h-28 mb-4 relative flex items-center justify-center">
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
@@ -46,12 +46,12 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl font-bold mb-3 text-white`}>
+        <h3 className={`text-2xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors duration-300`}>
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-white/80">
+        <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
           {description}
         </p>
 
@@ -61,12 +61,12 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10"
+                className="bg-white/20 backdrop-blur-sm p-3 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/30 hover:border-white/30 cursor-pointer"
               >
-                <div className={`text-lg font-semibold text-white`}>
+                <div className={`text-lg font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300`}>
                   {stat.label}
                 </div>
-                <div className="text-sm text-white/70">
+                <div className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   {stat.value}
                 </div>
               </div>
