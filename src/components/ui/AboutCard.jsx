@@ -29,10 +29,10 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
       className="relative group"
     >
       {/* Background Glow */}
-      <div className={`absolute -inset-0.5 ${gradient} opacity-50 blur-lg group-hover:opacity-75 transition duration-300 rounded-2xl`} />
+      <div className={`absolute -inset-0.5 ${gradient} opacity-60 blur-lg group-hover:opacity-85 transition duration-300 rounded-2xl`} />
       
       {/* Card Content */}
-      <div className="relative bg-[#0B1120]/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-800/50">
+      <div className="relative bg-white/10 backdrop-blur-xl p-6 rounded-2xl border border-white/20">
         {/* Icon Container */}
         <div className="h-28 mb-4 relative flex items-center justify-center">
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
@@ -46,31 +46,33 @@ const AboutCard = ({ title, description, icon, stats, color, gradient }) => {
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+        <h3 className={`text-2xl font-bold mb-3 text-white`}>
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-400 mb-6">
+        <p className="text-white/80">
           {description}
         </p>
 
-        {/* Stats Grid */}
+        {/* Stats */}
         {stats && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-2 gap-4">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-3 rounded-lg bg-gray-800/30 backdrop-blur-sm">
-                <div className={`text-2xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm p-3 rounded-xl border border-white/10"
+              >
+                <div className={`text-lg font-semibold text-white`}>
+                  {stat.label}
+                </div>
+                <div className="text-sm text-white/70">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
         )}
-
-        {/* Hover Effects */}
-        <div className="absolute -bottom-1 -right-1 w-24 h-24 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
     </motion.div>
   );

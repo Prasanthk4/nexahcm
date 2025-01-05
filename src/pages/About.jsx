@@ -12,44 +12,44 @@ const About = () => {
       title: 'Who I Am',
       description: 'A passionate full-stack developer with a keen eye for design and a drive for creating exceptional digital experiences.',
       icon: '👨‍💻',
-      color: '#60A5FA',
-      gradient: 'from-blue-500 to-cyan-500',
+      color: '#60A5FA', // blue-400
+      gradient: 'from-blue-400 to-blue-300',
       stats: [
-        { value: 'Expert', label: 'Developer' },
-        { value: 'Full Stack', label: 'Solutions' }
+        { label: 'Expert', value: 'Developer' },
+        { label: 'Full Stack', value: 'Solutions' }
       ]
     },
     {
       title: 'My Approach',
       description: 'I believe in clean code, user-centric design, and delivering solutions that not only meet but exceed expectations.',
       icon: '🎯',
-      color: '#C084FC',
-      gradient: 'from-purple-500 to-pink-500',
+      color: '#C084FC', // purple-400
+      gradient: 'from-purple-400 to-purple-300',
       stats: [
-        { value: 'Quality', label: 'Focused' },
-        { value: 'Reliable', label: 'Support' }
+        { label: 'Quality', value: 'Focused' },
+        { label: 'Reliable', value: 'Support' }
       ]
     },
     {
       title: 'Services',
       description: 'Specializing in modern web development, mobile apps, and custom software solutions tailored to your needs.',
       icon: '⚡',
-      color: '#34D399',
-      gradient: 'from-emerald-500 to-teal-500',
+      color: '#34D399', // emerald-400
+      gradient: 'from-emerald-400 to-emerald-300',
       stats: [
-        { value: 'Custom', label: 'Solutions' },
-        { value: 'Modern', label: 'Tech Stack' }
+        { label: 'Custom', value: 'Solutions' },
+        { label: 'Modern', value: 'Tech Stack' }
       ]
     },
     {
       title: 'Collaboration',
       description: 'Working closely with clients to understand their vision and transform it into reality through innovative solutions.',
       icon: '🤝',
-      color: '#F472B6',
-      gradient: 'from-pink-500 to-rose-500',
+      color: '#F472B6', // pink-400
+      gradient: 'from-pink-400 to-pink-300',
       stats: [
-        { value: 'Client', label: 'Focused' },
-        { value: 'Global', label: 'Reach' }
+        { label: 'Client', value: 'Focused' },
+        { label: 'Global', value: 'Reach' }
       ]
     }
   ];
