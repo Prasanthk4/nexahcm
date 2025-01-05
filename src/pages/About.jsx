@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PageTransition from '../components/transitions/PageTransition';
 import AboutCard from '../components/ui/AboutCard';
+import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiExpress, SiMongodb, SiFlutter } from 'react-icons/si';
+import { TbBrandReactNative } from 'react-icons/tb';
 import Logo from '../assets/logo.png';
 
 const About = () => {
@@ -55,9 +58,29 @@ const About = () => {
   ];
 
   const skills = [
-    { name: 'Frontend', tech: ['React', 'Next.js', 'Tailwind CSS'] },
-    { name: 'Backend', tech: ['Node.js', 'Express', 'MongoDB'] },
-    { name: 'Mobile', tech: ['React Native', 'Flutter'] }
+    {
+      name: 'Frontend',
+      tech: [
+        { name: 'React', icon: <FaReact className="mr-2 text-[#61DAFB]" /> },
+        { name: 'Next.js', icon: <SiNextdotjs className="mr-2 text-black" /> },
+        { name: 'Tailwind CSS', icon: <SiTailwindcss className="mr-2 text-[#06B6D4]" /> }
+      ]
+    },
+    {
+      name: 'Backend',
+      tech: [
+        { name: 'Node.js', icon: <FaNodeJs className="mr-2 text-[#339933]" /> },
+        { name: 'Express', icon: <SiExpress className="mr-2 text-[#000000]" /> },
+        { name: 'MongoDB', icon: <SiMongodb className="mr-2 text-[#47A248]" /> }
+      ]
+    },
+    {
+      name: 'Mobile',
+      tech: [
+        { name: 'React Native', icon: <TbBrandReactNative className="mr-2 text-[#61DAFB]" /> },
+        { name: 'Flutter', icon: <SiFlutter className="mr-2 text-[#02569B]" /> }
+      ]
+    }
   ];
 
   return (
@@ -155,9 +178,10 @@ const About = () => {
                       {category.tech.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 rounded-full text-sm bg-white/20 text-blue-800 backdrop-blur-sm hover:bg-white/30 hover:text-indigo-500 transition-all duration-300 cursor-pointer"
+                          className="px-3 py-1.5 rounded-full text-sm bg-white/20 text-blue-800 backdrop-blur-sm hover:bg-white/30 hover:text-indigo-500 transition-all duration-300 cursor-pointer flex items-center"
                         >
-                          {tech}
+                          {tech.icon}
+                          {tech.name}
                         </span>
                       ))}
                     </div>
