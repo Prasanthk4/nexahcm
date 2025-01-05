@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const BackToTop = () => {
+const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const BackToTop = () => {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    window.addEventListener('scroll', toggleVisibility);
 
     return () => {
       window.removeEventListener('scroll', toggleVisibility);
@@ -31,14 +31,12 @@ const BackToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
           onClick={scrollToTop}
-          className="fixed bottom-24 right-8 z-40 p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:scale-110 transition-all duration-300 ease-in-out"
+          className="fixed bottom-24 right-8 z-40 p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:scale-110 transition-transform"
           aria-label="Scroll to top"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
         >
           <svg
             className="w-6 h-6"
@@ -60,4 +58,4 @@ const BackToTop = () => {
   );
 };
 
-export default BackToTop;
+export default ScrollToTop;
