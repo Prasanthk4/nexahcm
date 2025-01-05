@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -12,7 +12,6 @@ import CookieConsent from './components/CookieConsent';
 import { ToastProvider } from './components/ui/Toast';
 import ChatWidget from './components/ChatWidget';
 import Search from './components/Search';
-import { requestNotificationPermission, listenToContactSubmissions } from './config/firebase';
 import './index.css';
 
 // Lazy load pages
@@ -35,20 +34,6 @@ const PageLoader = () => (
 function App() {
   const location = useLocation();
   useKeyboardNavigation();
-
-  useEffect(() => {
-    // Request notification permission when the app loads
-    const setupNotifications = async () => {
-      const granted = await requestNotificationPermission();
-      if (granted) {
-        // Start listening for new contact submissions
-        const unsubscribe = listenToContactSubmissions();
-        return () => unsubscribe && unsubscribe();
-      }
-    };
-
-    setupNotifications();
-  }, []);
 
   return (
     <ToastProvider>
