@@ -78,13 +78,17 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-blue-500/50 p-1"
+                className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-xl"
               >
-                <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                <div className="w-full h-full bg-white flex items-center justify-center p-2">
                   <img 
                     src={Logo}
                     alt="NexaHCM Logo" 
-                    className="w-24 h-24 object-contain"
+                    className="w-full h-full object-contain rounded-full"
+                    style={{
+                      filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+                      backgroundColor: 'transparent'
+                    }}
                   />
                 </div>
               </motion.div>
