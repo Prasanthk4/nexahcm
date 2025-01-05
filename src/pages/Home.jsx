@@ -80,8 +80,9 @@ const Home = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="text-center mb-32">
+      <div className="relative z-10 container mx-auto px-4">
+        {/* Hero Section */}
+        <div className="text-center pt-32 pb-48">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,6 +103,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-20"
           >
             <Link
               to="/contact"
@@ -115,62 +117,64 @@ const Home = () => {
         </div>
 
         {/* Services Section */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
-        >
-          Our Services
-        </motion.h2>
+        <div className="pt-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
+          >
+            Our Services
+          </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-                rotateX: 5,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative p-8 rounded-2xl bg-white/80 backdrop-blur-xl
-                       border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)]
-                       hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.2)]
-                       transition-all duration-300 transform-gpu
-                       before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br
-                       before:from-blue-500/5 before:to-blue-400/5 before:opacity-0
-                       before:transition-opacity before:duration-300 hover:before:opacity-100
-                       after:absolute after:inset-0 after:rounded-2xl after:border-2
-                       after:border-transparent after:bg-gradient-to-br
-                       after:from-blue-500/10 after:to-blue-400/10
-                       after:opacity-0 after:transition-opacity after:duration-300
-                       hover:after:opacity-100 overflow-hidden"
-            >
-              {/* Floating 3D elements */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-blue-300/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-violet-300/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  rotateX: 5,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative p-8 rounded-2xl bg-white/80 backdrop-blur-xl
+                         border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)]
+                         hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.2)]
+                         transition-all duration-300 transform-gpu
+                         before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br
+                         before:from-blue-500/5 before:to-blue-400/5 before:opacity-0
+                         before:transition-opacity before:duration-300 hover:before:opacity-100
+                         after:absolute after:inset-0 after:rounded-2xl after:border-2
+                         after:border-transparent after:bg-gradient-to-br
+                         after:from-blue-500/10 after:to-blue-400/10
+                         after:opacity-0 after:transition-opacity after:duration-300
+                         hover:after:opacity-100 overflow-hidden"
+              >
+                {/* Floating 3D elements */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-blue-300/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-violet-300/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
 
-              {/* Icon with animation */}
-              <div className="relative w-16 h-16 mb-6 transform-gpu group-hover:scale-110 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-400 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                <div className="relative w-full h-full flex items-center justify-center text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
-                  {service.icon}
+                {/* Icon with animation */}
+                <div className="relative w-16 h-16 mb-6 transform-gpu group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-400 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                  <div className="relative w-full h-full flex items-center justify-center text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
+                    {service.icon}
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <h3 className="relative text-xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                {service.title}
-              </h3>
-              <p className="relative text-gray-600 group-hover:text-gray-500 transition-colors duration-300">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
+                {/* Content */}
+                <h3 className="relative text-xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  {service.title}
+                </h3>
+                <p className="relative text-gray-600 group-hover:text-gray-500 transition-colors duration-300">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
