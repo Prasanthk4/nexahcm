@@ -16,12 +16,29 @@ const firebaseConfig = {
 // Initialize Firebase
 let app;
 let db;
+
 try {
   app = initializeApp(firebaseConfig);
   db = getFirestore(app);
-  console.log('Firebase initialized successfully');
+  
+  // Verify initialization
+  const verifyDb = async () => {
+    try {
+      const testCollection = collection(db, '_test_init');
+      await addDoc(testCollection, {
+        test: true,
+        timestamp: serverTimestamp()
+      });
+      console.log('✅ Firebase and Firestore initialized successfully');
+    } catch (error) {
+      console.error('❌ Error verifying Firestore:', error);
+      throw error;
+    }
+  };
+  
+  verifyDb().catch(console.error);
 } catch (error) {
-  console.error('Error initializing Firebase:', error);
+  console.error('❌ Error initializing Firebase:', error);
 }
 
 export const analytics = getAnalytics(app);
@@ -31,22 +48,22 @@ export const functions = getFunctions(app);
 // Helper function to send contact form data
 export const sendContactForm = async (formData) => {
   if (!db) {
-    console.error('Firestore not initialized');
+    console.error('❌ Firestore not initialized');
     return { success: false, error: 'Database not initialized' };
   }
 
   try {
-    console.log('Attempting to send form data:', formData);
+    console.log('📤 Attempting to send form data:', formData);
     const contactsRef = collection(db, 'contacts');
     const docRef = await addDoc(contactsRef, {
       ...formData,
       timestamp: serverTimestamp(),
       status: 'new'
     });
-    console.log('Document written with ID:', docRef.id);
+    console.log('✅ Document written with ID:', docRef.id);
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Detailed error sending contact form:', error);
+    console.error('❌ Detailed error sending contact form:', error);
     return { 
       success: false, 
       error: error.message,
