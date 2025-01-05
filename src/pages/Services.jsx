@@ -1264,24 +1264,18 @@ const ServiceCard = ({ service, index, onClick }) => {
 
       {/* Content */}
       <div className="relative z-10">
-        <div className="w-12 h-12 mb-4">
-          <div className={`w-full h-full rounded-lg bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
-            <div className={`text-white`}>
-              {service.icon}
-            </div>
-          </div>
+        <div className="w-16 h-16 mb-6 text-white/90 group-hover:text-white
+                              transition-colors duration-300">
+          {service.icon}
         </div>
-
-        <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-white
+        <h3 className="text-xl font-semibold mb-4 text-white/90 group-hover:text-white
                              transition-colors duration-300">
           {service.title}
         </h3>
-
-        <p className="text-white/90 text-sm leading-relaxed group-hover:text-white/90
+        <p className="text-white/80 group-hover:text-white/90
                            transition-colors duration-300">
-          {service.description || service.shortDesc}
+          {service.description}
         </p>
-
         {/* Hover indicator */}
         <div className="absolute bottom-4 right-6 opacity-0 transform translate-x-2 
           group-hover:opacity-100 group-hover:translate-x-0 
@@ -1349,19 +1343,45 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-center mb-12 text-white"
+          className="text-5xl font-bold text-center mb-6 text-white"
         >
           Our Services
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-xl text-white/90 text-center mb-16 max-w-3xl mx-auto"
+        >
+          Comprehensive HR management solutions designed to transform and streamline your business operations
+        </motion.p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {modules.map((service, index) => (
-            <ServiceCard
+            <motion.div
               key={service.title}
-              service={service}
-              index={index}
-              onClick={setSelectedModule}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="group p-8 rounded-2xl bg-[#3D52A0]/15 backdrop-blur-xl
+                         border border-white/20 shadow-lg hover:shadow-xl
+                         transition-all duration-300 hover:scale-[1.02]
+                         hover:bg-[#3D52A0]/20"
+            >
+              <div className="w-16 h-16 mb-6 text-white/90 group-hover:text-white
+                              transition-colors duration-300">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-white/90 group-hover:text-white
+                             transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-white/80 group-hover:text-white/90
+                           transition-colors duration-300">
+                {service.description}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
