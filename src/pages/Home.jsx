@@ -117,7 +117,7 @@ const Home = () => {
         </div>
 
         {/* Services Section */}
-        <div className="pt-8">
+        <div className="pt-8 pb-32">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ const Home = () => {
             Our Services
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
