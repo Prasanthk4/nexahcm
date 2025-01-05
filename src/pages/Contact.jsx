@@ -103,7 +103,7 @@ const Contact = () => {
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <motion.a
-              href="mailto:contact@nexahcm.com"
+              href="mailto:nexahcm@gmail.com"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -113,7 +113,14 @@ const Contact = () => {
                 <FaEnvelope className="text-white text-xl" />
               </div>
               <h3 className="text-blue-900 font-semibold mb-2 group-hover:text-blue-700">Email</h3>
-              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">contact@nexahcm.com</p>
+              <p className="text-blue-800 group-hover:text-blue-600 transition-colors duration-300">
+                <a
+                  href="mailto:nexahcm@gmail.com"
+                  className="text-blue-500 hover:text-blue-600 transition-colors"
+                >
+                  nexahcm@gmail.com
+                </a>
+              </p>
             </motion.a>
 
             <motion.a
