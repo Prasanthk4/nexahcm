@@ -121,28 +121,28 @@ const ChatWidget = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-20 right-4 z-40 w-80 h-96 bg-white/10 backdrop-blur-md rounded-lg shadow-lg border border-white/20 flex flex-col"
+            className="fixed bottom-24 right-8 z-50 w-96 h-[32rem] bg-gradient-to-br from-blue-600/95 to-purple-600/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 border-b border-white/20">
-              <h3 className="text-lg font-semibold text-white">Chat Support</h3>
+            <div className="p-6 border-b border-white/20 bg-gradient-to-r from-blue-500/30 to-purple-500/30">
+              <h3 className="text-xl font-semibold text-white">Chat Support</h3>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-4">
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[75%] break-words p-3 rounded-lg ${
+                    className={`max-w-[75%] break-words p-3 rounded-xl ${
                       message.sender === 'user'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-700 text-white'
+                        ? 'bg-white/20 text-white'
+                        : 'bg-white/10 text-white'
                     }`}
                   >
-                    <div className="text-xs text-gray-300 mb-1">
+                    <div className="text-xs text-white/70 mb-1">
                       {message.timestamp}
                     </div>
                     <div className="whitespace-pre-wrap">
@@ -153,7 +153,7 @@ const ChatWidget = () => {
               ))}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-700 text-white px-4 py-2 rounded-lg">
+                  <div className="bg-white/10 text-white px-4 py-2 rounded-xl">
                     <div className="flex gap-1">
                       <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -167,12 +167,12 @@ const ChatWidget = () => {
 
             {/* Quick Replies */}
             {messages.length === 0 && (
-              <div className="px-4 pb-2 flex flex-wrap gap-2">
+              <div className="px-6 pb-4 flex flex-wrap gap-2">
                 {quickReplies.map((reply, index) => (
                   <button
                     key={index}
                     onClick={() => handleQuickReply(reply)}
-                    className="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
+                    className="px-4 py-2 text-sm bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all hover:scale-105"
                   >
                     {reply.text}
                   </button>
@@ -181,26 +181,26 @@ const ChatWidget = () => {
             )}
 
             {/* Input */}
-            <form onSubmit={handleSubmit} className="p-4 border-t border-white/20">
-              <div className="flex items-center gap-2">
+            <form onSubmit={handleSubmit} className="p-6 border-t border-white/20 bg-gradient-to-r from-blue-500/30 to-purple-500/30">
+              <div className="flex items-center gap-3">
                 <div className="flex-1 relative">
                   <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Type your message..."
-                    className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
+                    className="w-full px-4 py-3 bg-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/50"
                     required
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-3 bg-blue-500 text-white rounded-lg transition-colors ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'
+                  className={`px-6 py-3 bg-white/20 text-white rounded-xl transition-all ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/30 hover:scale-105'
                   }`}
                 >
-                  {isSubmitting ? '...' : 'Send'}
+                  Send
                 </button>
               </div>
             </form>
@@ -209,40 +209,34 @@ const ChatWidget = () => {
       </AnimatePresence>
 
       {/* Toggle Button */}
-      <motion.button
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-40 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transition-transform hover:scale-110 ${
+          unreadCount > 0 ? 'animate-bounce' : ''
+        }`}
       >
-        {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs flex items-center justify-center rounded-full">
-            {unreadCount}
-          </span>
+        {isOpen ? (
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <>
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-4 4-4-4z"
+              />
+            </svg>
+            {unreadCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                {unreadCount}
+              </span>
+            )}
+          </>
         )}
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          {isOpen ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-            />
-          )}
-        </svg>
-      </motion.button>
+      </button>
     </>
   );
 };
