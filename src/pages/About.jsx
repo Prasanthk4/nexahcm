@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PageTransition from '../components/transitions/PageTransition';
 import AboutCard from '../components/ui/AboutCard';
+import Logo from '../assets/logo.png';
 
 const About = () => {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ const About = () => {
               >
                 <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
                   <img 
-                    src="/assets/logo.png"
+                    src={Logo}
                     alt="NexaHCM Logo" 
                     className="w-24 h-24 object-contain"
                   />
