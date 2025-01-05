@@ -80,7 +80,11 @@ const About = () => {
                 className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-2 border-blue-500/50 p-1"
               >
                 <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
-                  <span className="text-4xl">👨‍💻</span>
+                  <img 
+                    src="/Screenshot 2025-01-03 184859.png" 
+                    alt="NexaHCM Logo" 
+                    className="w-24 h-24 object-contain"
+                  />
                 </div>
               </motion.div>
               <motion.h1
