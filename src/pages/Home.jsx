@@ -40,17 +40,17 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#bfdbfe] via-[#c7d2fe] to-[#e9d5ff]"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#e8f2ff] via-white to-[#f0f5ff]"
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main gradient orbs */}
-        <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-blue-300/80 to-indigo-300/80 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-violet-300/80 to-purple-300/80 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-blue-400/60 to-blue-300/60 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-blue-300/60 to-violet-300/30 rounded-full blur-3xl"></div>
         
         {/* Additional color accents */}
-        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-br from-indigo-300/60 to-purple-300/60 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-blue-300/60 to-violet-300/60 rounded-full blur-2xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-br from-blue-400/40 to-blue-300/40 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-blue-300/40 to-violet-300/20 rounded-full blur-2xl"></div>
         
         {/* Floating elements with animation */}
         <motion.div
@@ -63,7 +63,7 @@ const Home = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute left-1/3 top-1/3 w-48 h-48 bg-gradient-to-br from-blue-400/40 to-purple-400/40 rounded-full blur-xl"
+          className="absolute left-1/3 top-1/3 w-48 h-48 bg-gradient-to-br from-blue-400/30 to-blue-300/30 rounded-full blur-xl"
         ></motion.div>
         <motion.div
           animate={{ 
@@ -75,7 +75,7 @@ const Home = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute right-1/3 bottom-1/3 w-64 h-64 bg-gradient-to-br from-indigo-400/40 to-violet-400/40 rounded-full blur-xl"
+          className="absolute right-1/3 bottom-1/3 w-64 h-64 bg-gradient-to-br from-blue-300/30 to-violet-300/20 rounded-full blur-xl"
         ></motion.div>
       </div>
 
@@ -86,7 +86,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
+            className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
           >
             Transforming Ideas into Digital Reality
           </motion.h1>
@@ -107,9 +107,9 @@ const Home = () => {
           >
             <Link
               to="/contact"
-              className="inline-block px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium
+              className="inline-block px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-blue-400 text-white font-medium
                        transform transition-all duration-300 hover:scale-105 hover:shadow-xl
-                       hover:from-indigo-600 hover:to-blue-500"
+                       hover:from-blue-400 hover:to-blue-500"
             >
               Get Started
             </Link>
@@ -123,7 +123,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
         >
           Our Services
         </motion.h2>
@@ -141,46 +141,38 @@ const Home = () => {
                 rotateX: 5,
                 transition: { duration: 0.3 }
               }}
-              className="group relative p-8 rounded-2xl bg-white/10 backdrop-blur-xl
+              className="group relative p-8 rounded-2xl bg-white/80 backdrop-blur-xl
                        border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.1)]
                        hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.2)]
                        transition-all duration-300 transform-gpu
                        before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br
-                       before:from-blue-500/5 before:to-purple-500/5 before:opacity-0
+                       before:from-blue-500/5 before:to-blue-400/5 before:opacity-0
                        before:transition-opacity before:duration-300 hover:before:opacity-100
                        after:absolute after:inset-0 after:rounded-2xl after:border-2
                        after:border-transparent after:bg-gradient-to-br
-                       after:from-blue-500/10 after:to-purple-500/10
+                       after:from-blue-500/10 after:to-blue-400/10
                        after:opacity-0 after:transition-opacity after:duration-300
                        hover:after:opacity-100 overflow-hidden"
             >
               {/* Floating 3D elements */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-blue-300/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-blue-300/20 to-violet-300/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
 
               {/* Icon with animation */}
               <div className="relative w-16 h-16 mb-6 transform-gpu group-hover:scale-110 transition-transform duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-400 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
                 <div className="relative w-full h-full flex items-center justify-center text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
                   {service.icon}
                 </div>
               </div>
 
               {/* Content */}
-              <h3 className="relative text-xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <h3 className="relative text-xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                 {service.title}
               </h3>
               <p className="relative text-gray-600 group-hover:text-gray-500 transition-colors duration-300">
                 {service.description}
               </p>
-
-              {/* Hover button */}
-              <div className="relative mt-6 transform opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium
-                                 hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
-                  Learn More
-                </button>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -200,7 +192,7 @@ const Home = () => {
               repeat: Infinity,
               ease: "linear"
             }}
-            className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl backdrop-blur-sm"
+            className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-400/20 rounded-xl backdrop-blur-sm"
           />
         </div>
         <div className="absolute bottom-1/4 left-1/4 w-16 h-16">
@@ -215,7 +207,7 @@ const Home = () => {
               repeat: Infinity,
               ease: "linear"
             }}
-            className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full backdrop-blur-sm"
+            className="w-full h-full bg-gradient-to-br from-blue-400/20 to-violet-300/10 rounded-full backdrop-blur-sm"
           />
         </div>
       </div>
