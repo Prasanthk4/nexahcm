@@ -40,30 +40,42 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#e0f2fe] via-[#ddd6fe] to-[#fae8ff]"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#bfdbfe] via-[#c7d2fe] to-[#e9d5ff]"
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Main gradient orbs */}
-        <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-sky-200/70 to-indigo-200/70 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-violet-200/70 to-pink-200/70 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-blue-300/80 to-indigo-300/80 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-violet-300/80 to-purple-300/80 rounded-full blur-3xl"></div>
         
         {/* Additional color accents */}
-        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-br from-blue-200/40 to-purple-200/40 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-fuchsia-200/40 to-rose-200/40 rounded-full blur-2xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-gradient-to-br from-indigo-300/60 to-purple-300/60 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-gradient-to-br from-blue-300/60 to-violet-300/60 rounded-full blur-2xl"></div>
         
-        {/* Floating elements */}
+        {/* Floating elements with animation */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute left-1/3 top-1/3 w-48 h-48 bg-gradient-to-br from-blue-300/30 to-purple-300/30 rounded-full blur-xl"
+          animate={{ 
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute left-1/3 top-1/3 w-48 h-48 bg-gradient-to-br from-blue-400/40 to-purple-400/40 rounded-full blur-xl"
         ></motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="absolute right-1/3 bottom-1/3 w-64 h-64 bg-gradient-to-br from-indigo-300/30 to-pink-300/30 rounded-full blur-xl"
+          animate={{ 
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute right-1/3 bottom-1/3 w-64 h-64 bg-gradient-to-br from-indigo-400/40 to-violet-400/40 rounded-full blur-xl"
         ></motion.div>
       </div>
 
