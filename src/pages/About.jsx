@@ -62,12 +62,21 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-blue-200 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-300 to-purple-300 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* 3D Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Floating circles */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="absolute top-40 right-20 w-40 h-40 bg-purple-200/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-blue-200/20 rounded-full blur-2xl"></div>
+          
+          {/* 3D Shapes */}
+          <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-gradient-to-br from-white/20 to-transparent rounded-xl transform rotate-45 backdrop-blur-sm"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-gradient-to-tl from-white/20 to-transparent rounded-xl transform -rotate-12 backdrop-blur-sm"></div>
+        </div>
+
         {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] bg-center"></div>
-        
-        {/* Subtle Gradient Accent */}
-        <div className="absolute top-0 inset-x-0 h-64 bg-gradient-to-b from-blue-100/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] bg-center"></div>
         
         {/* Content */}
         <div className="relative z-10">
@@ -78,7 +87,7 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-xl"
+                className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden shadow-xl backdrop-blur-sm bg-white/90"
               >
                 <div className="w-full h-full bg-white flex items-center justify-center p-2">
                   <img 
@@ -96,7 +105,7 @@ const About = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-6"
+                className="text-5xl md:text-6xl font-bold text-white mb-6"
               >
                 Hi, I'm Satheesh
               </motion.h1>
@@ -104,7 +113,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl text-gray-600 max-w-2xl mx-auto"
+                className="text-xl text-white/90 max-w-2xl mx-auto"
               >
                 A freelance full-stack developer passionate about crafting beautiful, 
                 functional websites and applications that help businesses grow.
@@ -123,30 +132,30 @@ const About = () => {
               ))}
             </motion.div>
 
-            {/* Skills Section */}
+            {/* Skills Section with glass effect */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-20"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">
                 Technical Expertise
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {skills.map((category, index) => (
                   <div
                     key={index}
-                    className="p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-blue-100"
+                    className="p-6 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
                   >
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                    <h3 className="text-xl font-semibold text-white mb-4">
                       {category.name}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {category.tech.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 rounded-full text-sm bg-blue-50 text-blue-600"
+                          className="px-3 py-1 rounded-full text-sm bg-white/20 text-white backdrop-blur-sm"
                         >
                           {tech}
                         </span>
@@ -157,23 +166,23 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* New Contact CTA */}
+            {/* Contact CTA with glass effect */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-20 text-center"
             >
-              <div className="max-w-2xl mx-auto bg-white p-8 rounded-2xl border border-blue-100 shadow-lg">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-4">
                   Ready to Start Your Project?
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-white/90 mb-8">
                   Let's work together to bring your ideas to life.
                 </p>
                 <button 
                   onClick={() => navigate('/contact')}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 rounded-xl text-white font-semibold overflow-hidden transition-all duration-300 hover:scale-105"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm rounded-xl text-white font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:bg-white/30"
                 >
                   <span className="relative z-10">Get in Touch</span>
                   <svg 
@@ -189,7 +198,6 @@ const About = () => {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
               </div>
             </motion.div>
