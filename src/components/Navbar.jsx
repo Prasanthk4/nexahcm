@@ -73,15 +73,15 @@ const Navbar = ({ children }) => {
                     to={link.path}
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 group ${
                       location.pathname === link.path
-                        ? 'text-blue-100'
-                        : 'text-slate-200 hover:text-blue-100'
+                        ? 'text-blue-900'
+                        : 'text-slate-900 hover:text-blue-900'
                     }`}
                   >
                     <motion.span
                       className={`px-3 py-2 rounded-md text-sm font-medium ${
                         location.pathname === link.path
-                          ? 'text-blue-100 bg-blue-500/30'
-                          : 'text-slate-200 hover:text-blue-100 hover:bg-blue-500/20'
+                          ? 'text-blue-900 bg-blue-800/40'
+                          : 'text-slate-900 hover:text-blue-900 hover:bg-blue-800/30'
                       } transition-colors`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
