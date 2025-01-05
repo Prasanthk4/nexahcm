@@ -85,7 +85,7 @@ const About = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 p-4 pt-28 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-300 p-4 pt-28 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           {/* Logo Section */}
           <div className="flex justify-center mt-16 mb-12">

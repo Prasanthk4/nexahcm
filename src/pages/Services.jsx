@@ -1300,7 +1300,7 @@ const Services = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 pt-28 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-300 p-4 pt-28 relative overflow-hidden">
       
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
