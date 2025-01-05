@@ -6,12 +6,12 @@ import PageTransition from '../components/transitions/PageTransition';
 const Contact = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-blue-900 p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-500 p-4 relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl"></div>
-          <div className="absolute top-40 right-20 w-40 h-40 bg-indigo-400/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-sky-400/10 rounded-full blur-2xl"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-2xl"></div>
+          <div className="absolute top-40 right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-1/3 w-36 h-36 bg-purple-200/20 rounded-full blur-2xl"></div>
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -28,7 +28,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-gray-300 max-w-2xl mx-auto"
+              className="text-lg text-white/90 max-w-2xl mx-auto"
             >
               Let's discuss your project and explore how we can work together to achieve your goals.
             </motion.p>
