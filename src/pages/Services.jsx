@@ -158,7 +158,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
-    shortDesc: 'Streamline your hiring process with our advanced recruitment module.',
+    description: 'Streamline your hiring process with our comprehensive recruitment management system.',
     steps: [
       {
         title: "Position Creation",
@@ -218,7 +218,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
-    shortDesc: 'Transform employee onboarding experience with digital-first approach.',
+    description: 'Seamlessly integrate new employees with automated onboarding workflows.',
     steps: [
       {
         title: "Customizable Workflows",
@@ -282,7 +282,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
       </svg>
     ),
-    shortDesc: 'Manage employee time-off and attendance tracking efficiently.',
+    description: 'Track and manage employee attendance and leave requests efficiently.',
     steps: [
       {
         title: "Attendance Tracking",
@@ -354,7 +354,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
-    shortDesc: 'Comprehensive employee self-service portal for managing work life.',
+    description: 'Manage complete employee lifecycle from hiring to retirement.',
     steps: [
       {
         title: "Leave Management",
@@ -418,7 +418,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    shortDesc: 'Comprehensive payroll management with statutory compliance.',
+    description: 'Automated payroll processing with tax compliance and reporting.',
     steps: [
       {
         title: "Employee Self-service Portal",
@@ -474,7 +474,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    shortDesc: 'Efficient travel and expense management system.',
+    description: 'Simplify travel requests and expense management processes.',
     steps: [
       {
         title: "Expense Submission",
@@ -530,7 +530,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
       </svg>
     ),
-    shortDesc: 'Comprehensive performance evaluation and management system.',
+    description: 'Track and improve employee performance with detailed analytics.',
     steps: [
       {
         title: "KRAs Settings",
@@ -590,7 +590,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
-    shortDesc: 'Comprehensive employee benefits management system.',
+    description: 'Comprehensive benefits management and enrollment system.',
     steps: [
       {
         title: "Benefits Requisition",
@@ -650,7 +650,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z M12 9V5m0 0v4m0-4h4m-4 0H8" />
       </svg>
     ),
-    shortDesc: 'Streamlined HR inquiry and resolution system.',
+    description: 'Direct communication channel with HR for quick query resolution.',
     steps: [
       {
         title: "Concern Submission",
@@ -706,7 +706,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
       </svg>
     ),
-    shortDesc: 'Streamlined employee exit process management.',
+    description: 'Structured offboarding process for departing employees.',
     steps: [
       {
         title: "Resignation Process",
@@ -774,7 +774,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
       </svg>
     ),
-    shortDesc: 'Comprehensive compliance tracking and management system.',
+    description: 'Stay updated with compliance deadlines and requirements.',
     steps: [
       {
         title: "Compliance Tracking",
@@ -834,7 +834,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     ),
-    shortDesc: 'Efficient visitor tracking and management system.',
+    description: 'Digital visitor tracking and management system.',
     steps: [
       {
         title: "Visitor Check-in",
@@ -898,7 +898,7 @@ const modules = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
       </svg>
     ),
-    shortDesc: 'Compare On-Premises vs Cloud deployment options for optimal infrastructure choice.',
+    description: 'Modern tech infrastructure for seamless HR operations.',
     customComponent: TechnologyStackTable,
     overview: "NexaHCM offers flexible deployment options with both On-Premises and Cloud (AWS) hosting for its ASP.NET and SQL Database infrastructure. The On-Premises solution requires physical servers and local IT management, with higher upfront costs but complete control over the environment. In contrast, the Cloud deployment on AWS provides scalable, pay-as-you-go infrastructure with automated management and global accessibility. AWS hosting includes built-in security features, automated scaling, and managed maintenance, reducing the operational overhead while providing enterprise-grade reliability and performance. This comparison helps organizations choose the deployment model that best suits their specific needs, compliance requirements, and budget constraints."
   }
@@ -994,7 +994,7 @@ const ServiceCard = ({ service, index, onClick }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
       onClick={() => onClick(service)}
-      className={`group relative p-8 rounded-2xl ${colors.card} backdrop-blur-xl
+      className={`group relative p-6 rounded-2xl ${colors.card} backdrop-blur-xl
                  ${colors.border} shadow-lg hover:shadow-xl cursor-pointer
                  transition-all duration-300 hover:scale-[1.02] overflow-hidden`}
     >
@@ -1004,26 +1004,26 @@ const ServiceCard = ({ service, index, onClick }) => {
       </div>
 
       {/* Icon */}
-      <div className="relative w-16 h-16 mb-6">
+      <div className="relative w-12 h-12 mb-4">
         <div className={`w-full h-full rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center`}>
-          <div className={`${colors.text} text-2xl`}>
+          <div className={`${colors.text} text-xl`}>
             {service.icon}
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <h3 className={`relative text-xl font-semibold mb-4 ${colors.text} group-hover:text-white
+      <h3 className={`relative text-lg font-semibold mb-2 ${colors.text} group-hover:text-white
                    transition-colors duration-300`}>
         {service.title}
       </h3>
-      <p className={`relative ${colors.text} opacity-90 group-hover:opacity-100
-                 transition-all duration-300`}>
+      <p className={`relative text-sm ${colors.text} opacity-90 group-hover:opacity-100
+                 transition-all duration-300 line-clamp-2`}>
         {service.description}
       </p>
 
       {/* Hover indicator */}
-      <div className="absolute bottom-4 right-6 opacity-0 transform translate-x-2 
+      <div className="absolute bottom-3 right-4 opacity-0 transform translate-x-2 
         group-hover:opacity-100 group-hover:translate-x-0 
         transition-all duration-300">
         <motion.div
@@ -1105,7 +1105,7 @@ const Services = () => {
           Comprehensive HR management solutions designed to transform and streamline your business operations
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {modules.map((service, index) => (
             <ServiceCard
               key={service.title}
