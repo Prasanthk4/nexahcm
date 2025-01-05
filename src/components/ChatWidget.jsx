@@ -190,23 +190,23 @@ const ChatWidget = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 right-8 z-50 w-96 h-[32rem] bg-gradient-to-br from-slate-800/95 to-blue-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-blue-200/10 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-4 md:right-8 z-50 w-[95vw] md:w-96 h-[80vh] md:h-[32rem] bg-gradient-to-br from-slate-800/95 to-blue-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-blue-200/10 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-6 border-b border-blue-200/10 bg-gradient-to-r from-blue-500/20 to-blue-600/20">
+            <div className="p-4 md:p-6 border-b border-blue-200/10 bg-gradient-to-r from-blue-500/20 to-blue-600/20">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-white">Chat Support</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-white">Chat Support</h3>
                 <div className="flex items-center space-x-2">
                   <span className="flex items-center">
                     <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    <span className="text-sm text-green-400">Online</span>
+                    <span className="text-xs md:text-sm text-green-400">Online</span>
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar">
+            <div className="flex-1 p-3 md:p-4 overflow-y-auto space-y-4 custom-scrollbar">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -258,14 +258,14 @@ const ChatWidget = () => {
             )}
 
             {/* Input */}
-            <form onSubmit={handleSubmit} className="p-4 border-t border-blue-200/10">
+            <form onSubmit={handleSubmit} className="p-3 md:p-4 border-t border-blue-200/10">
               <div className="flex items-center space-x-2">
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="p-2 text-blue-200 hover:text-blue-100 transition-colors"
+                  className="p-1.5 md:p-2 text-blue-200 hover:text-blue-100 transition-colors"
                 >
-                  <FaPaperclip className="w-5 h-5" />
+                  <FaPaperclip className="w-4 h-4 md:w-5 md:h-5" />
                 </button>
                 <input
                   ref={fileInputRef}
@@ -279,17 +279,17 @@ const ChatWidget = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 bg-blue-900/20 text-white placeholder-blue-200/50 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+                  className="flex-1 bg-blue-900/20 text-white text-sm md:text-base placeholder-blue-200/50 rounded-xl px-3 md:px-4 py-1.5 md:py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
                   disabled={isSubmitting}
                 />
                 <button
                   type="submit"
                   disabled={isSubmitting || !inputValue.trim()}
-                  className={`p-2 text-blue-200 hover:text-blue-100 transition-colors -ml-2 ${
+                  className={`p-1.5 md:p-2 text-blue-200 hover:text-blue-100 transition-colors -ml-2 ${
                     isSubmitting || !inputValue.trim() ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
-                  <FaPaperPlane className="w-5 h-5" />
+                  <FaPaperPlane className="w-4 h-4 md:w-5 md:h-5" />
                 </button>
               </div>
             </form>
@@ -300,7 +300,7 @@ const ChatWidget = () => {
       {/* Chat Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="fixed bottom-8 right-4 md:right-8 z-50 p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
