@@ -28,7 +28,10 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('Submitting form data:', formData);
       const result = await sendContactForm(formData);
+      console.log('Form submission result:', result);
+      
       if (result.success) {
         addToast('Message sent successfully! We will get back to you soon.', 'success');
         setFormData({
@@ -38,11 +41,11 @@ const Contact = () => {
           message: ''
         });
       } else {
-        throw new Error(result.error);
+        throw new Error(result.error || 'Failed to send message');
       }
     } catch (error) {
-      console.error('Error:', error);
-      addToast('Failed to send message. Please try again later.', 'error');
+      console.error('Form submission error:', error);
+      addToast(error.message || 'Failed to send message. Please try again later.', 'error');
     } finally {
       setIsSubmitting(false);
     }

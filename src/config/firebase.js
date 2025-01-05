@@ -13,22 +13,45 @@ const firebaseConfig = {
   measurementId: "G-XWJJYS30X6"
 };
 
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+let app;
+let db;
+try {
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+  console.log('Firebase initialized successfully');
+} catch (error) {
+  console.error('Error initializing Firebase:', error);
+}
+
 export const analytics = getAnalytics(app);
-export const db = getFirestore(app);
+export { db };
 export const functions = getFunctions(app);
 
 // Helper function to send contact form data
 export const sendContactForm = async (formData) => {
+  if (!db) {
+    console.error('Firestore not initialized');
+    return { success: false, error: 'Database not initialized' };
+  }
+
   try {
-    const docRef = await addDoc(collection(db, 'contacts'), {
+    console.log('Attempting to send form data:', formData);
+    const contactsRef = collection(db, 'contacts');
+    const docRef = await addDoc(contactsRef, {
       ...formData,
       timestamp: serverTimestamp(),
       status: 'new'
     });
+    console.log('Document written with ID:', docRef.id);
     return { success: true, id: docRef.id };
   } catch (error) {
-    console.error('Error sending contact form:', error);
-    return { success: false, error: error.message };
+    console.error('Detailed error sending contact form:', error);
+    return { 
+      success: false, 
+      error: error.message,
+      code: error.code,
+      details: error.toString()
+    };
   }
 };
