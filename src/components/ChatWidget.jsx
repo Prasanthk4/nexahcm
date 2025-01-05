@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from './ui/Toast';
 import { db, initializeChatSession, sendChatMessage } from '../config/firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
-import { FaPaperPlane, FaSmile, FaPaperclip } from 'react-icons/fa';
+import { FaPaperPlane, FaPaperclip } from 'react-icons/fa';
 
 const quickReplies = [
   { text: 'How can I help you?', type: 'greeting' },
@@ -283,15 +283,9 @@ const ChatWidget = () => {
                   disabled={isSubmitting}
                 />
                 <button
-                  type="button"
-                  className="p-2 text-blue-200 hover:text-blue-100 transition-colors"
-                >
-                  <FaSmile className="w-5 h-5" />
-                </button>
-                <button
                   type="submit"
                   disabled={isSubmitting || !inputValue.trim()}
-                  className={`p-2 text-blue-200 hover:text-blue-100 transition-colors ${
+                  className={`p-2 text-blue-200 hover:text-blue-100 transition-colors -ml-2 ${
                     isSubmitting || !inputValue.trim() ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
