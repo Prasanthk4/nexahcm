@@ -28,37 +28,61 @@ const ChatWidget = () => {
   // Initialize chat session
   useEffect(() => {
     if (isOpen && !sessionId) {
-      const newSessionId = `session_${Date.now()}`;
-      setSessionId(newSessionId);
+      const initializeChat = async () => {
+        try {
+          const newSessionId = `session_${Date.now()}`;
+          setSessionId(newSessionId);
+          
+          if (!db) {
+            throw new Error('Firestore not initialized');
+          }
+          
+          // Create a new chat session in Firestore
+          const chatSessionsRef = collection(db, 'chatSessions');
+          await addDoc(chatSessionsRef, {
+            sessionId: newSessionId,
+            startTime: serverTimestamp(),
+            status: 'active',
+            userAgent: navigator.userAgent,
+            platform: navigator.platform
+          });
+          
+          console.log('✅ Chat session initialized:', newSessionId);
+        } catch (error) {
+          console.error('❌ Error initializing chat:', error);
+          addToast('Chat initialization failed. Please refresh the page.', 'error');
+        }
+      };
       
-      // Create a new chat session in Firestore
-      addDoc(collection(db, 'chatSessions'), {
-        sessionId: newSessionId,
-        startTime: serverTimestamp(),
-        status: 'active',
-        userAgent: navigator.userAgent,
-        platform: navigator.platform
-      });
+      initializeChat();
     }
-  }, [isOpen, sessionId]);
+  }, [isOpen, sessionId, addToast]);
 
   // Listen for messages
   useEffect(() => {
-    if (!sessionId) return;
+    if (!sessionId || !db) return;
 
-    const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
-    const q = query(messagesRef, orderBy('timestamp', 'asc'), limit(50));
+    try {
+      const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
+      const q = query(messagesRef, orderBy('timestamp', 'asc'), limit(50));
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const newMessages = [];
-      snapshot.forEach((doc) => {
-        newMessages.push({ id: doc.id, ...doc.data() });
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const newMessages = [];
+        snapshot.forEach((doc) => {
+          newMessages.push({ id: doc.id, ...doc.data() });
+        });
+        setMessages(newMessages);
+      }, (error) => {
+        console.error('❌ Error listening to messages:', error);
+        addToast('Failed to load messages. Please refresh the page.', 'error');
       });
-      setMessages(newMessages);
-    });
 
-    return () => unsubscribe();
-  }, [sessionId]);
+      return () => unsubscribe();
+    } catch (error) {
+      console.error('❌ Error setting up message listener:', error);
+      addToast('Failed to connect to chat. Please refresh the page.', 'error');
+    }
+  }, [sessionId, addToast]);
 
   useEffect(() => {
     if (messages.length > 0 && !isOpen) {
@@ -96,12 +120,17 @@ const ChatWidget = () => {
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-    if (!inputValue.trim() || !sessionId) return;
+    if (!inputValue.trim()) return;
+    if (!sessionId || !db) {
+      addToast('Chat not initialized. Please refresh the page.', 'error');
+      return;
+    }
 
     setIsSubmitting(true);
     try {
       // Add message to Firestore
-      await addDoc(collection(db, 'chatSessions', sessionId, 'messages'), {
+      const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
+      await addDoc(messagesRef, {
         text: inputValue,
         sender: 'user',
         timestamp: serverTimestamp(),
@@ -115,7 +144,7 @@ const ChatWidget = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Add bot response to Firestore
-      await addDoc(collection(db, 'chatSessions', sessionId, 'messages'), {
+      await addDoc(messagesRef, {
         text: getAutomatedResponse(inputValue),
         sender: 'bot',
         timestamp: serverTimestamp(),
@@ -123,7 +152,7 @@ const ChatWidget = () => {
       });
 
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('❌ Error sending message:', error);
       addToast('Failed to send message. Please try again.', 'error');
     } finally {
       setIsSubmitting(false);
