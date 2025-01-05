@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from './ui/Toast';
-import { db } from '../config/firebase';
-import { collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp } from 'firebase/firestore';
+import { db, initializeChatSession, sendChatMessage } from '../config/firebase';
+import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { FaPaperPlane, FaSmile, FaPaperclip } from 'react-icons/fa';
 
 const quickReplies = [
@@ -28,59 +28,48 @@ const ChatWidget = () => {
   // Initialize chat session
   useEffect(() => {
     if (isOpen && !sessionId) {
-      const initializeChat = async () => {
+      const initChat = async () => {
         try {
           const newSessionId = `session_${Date.now()}`;
-          setSessionId(newSessionId);
-          
-          if (!db) {
-            throw new Error('Firestore not initialized');
-          }
-          
-          // Create a new chat session in Firestore
-          const chatSessionsRef = collection(db, 'chatSessions');
-          await addDoc(chatSessionsRef, {
-            sessionId: newSessionId,
-            startTime: serverTimestamp(),
-            status: 'active',
-            userAgent: navigator.userAgent,
-            platform: navigator.platform
-          });
-          
-          console.log('✅ Chat session initialized:', newSessionId);
+          const docId = await initializeChatSession(newSessionId);
+          setSessionId(docId);
+          console.log('✅ Chat session initialized:', docId);
         } catch (error) {
           console.error('❌ Error initializing chat:', error);
-          addToast('Chat initialization failed. Please refresh the page.', 'error');
+          addToast('Chat initialization failed. Please try again.', 'error');
         }
       };
-      
-      initializeChat();
+
+      initChat();
     }
   }, [isOpen, sessionId, addToast]);
 
   // Listen for messages
   useEffect(() => {
-    if (!sessionId || !db) return;
+    if (!sessionId) return;
 
     try {
       const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
       const q = query(messagesRef, orderBy('timestamp', 'asc'), limit(50));
 
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        const newMessages = [];
-        snapshot.forEach((doc) => {
-          newMessages.push({ id: doc.id, ...doc.data() });
-        });
-        setMessages(newMessages);
-      }, (error) => {
-        console.error('❌ Error listening to messages:', error);
-        addToast('Failed to load messages. Please refresh the page.', 'error');
-      });
+      const unsubscribe = onSnapshot(q, 
+        (snapshot) => {
+          const newMessages = [];
+          snapshot.forEach((doc) => {
+            newMessages.push({ id: doc.id, ...doc.data() });
+          });
+          setMessages(newMessages);
+        },
+        (error) => {
+          console.error('❌ Error listening to messages:', error);
+          addToast('Failed to load messages. Please try again.', 'error');
+        }
+      );
 
       return () => unsubscribe();
     } catch (error) {
       console.error('❌ Error setting up message listener:', error);
-      addToast('Failed to connect to chat. Please refresh the page.', 'error');
+      addToast('Failed to connect to chat. Please try again.', 'error');
     }
   }, [sessionId, addToast]);
 
@@ -120,20 +109,14 @@ const ChatWidget = () => {
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
-    if (!inputValue.trim()) return;
-    if (!sessionId || !db) {
-      addToast('Chat not initialized. Please refresh the page.', 'error');
-      return;
-    }
+    if (!inputValue.trim() || !sessionId) return;
 
     setIsSubmitting(true);
     try {
-      // Add message to Firestore
-      const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
-      await addDoc(messagesRef, {
+      // Send user message
+      await sendChatMessage(sessionId, {
         text: inputValue,
         sender: 'user',
-        timestamp: serverTimestamp(),
         status: 'sent'
       });
 
@@ -143,11 +126,10 @@ const ChatWidget = () => {
       // Simulate bot typing
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Add bot response to Firestore
-      await addDoc(messagesRef, {
+      // Send bot response
+      await sendChatMessage(sessionId, {
         text: getAutomatedResponse(inputValue),
         sender: 'bot',
-        timestamp: serverTimestamp(),
         status: 'sent'
       });
 

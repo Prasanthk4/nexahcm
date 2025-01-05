@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, enableIndexedDbPersistence } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -14,32 +14,49 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app;
-let db;
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-try {
-  app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-  
-  // Verify initialization
-  const verifyDb = async () => {
-    try {
-      const testCollection = collection(db, '_test_init');
-      await addDoc(testCollection, {
-        test: true,
-        timestamp: serverTimestamp()
-      });
-      console.log('✅ Firebase and Firestore initialized successfully');
-    } catch (error) {
-      console.error('❌ Error verifying Firestore:', error);
-      throw error;
+// Enable offline persistence
+enableIndexedDbPersistence(db)
+  .then(() => {
+    console.log('✅ Firestore persistence enabled');
+  })
+  .catch((err) => {
+    console.warn('⚠️ Firestore persistence error:', err);
+    if (err.code === 'failed-precondition') {
+      console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+    } else if (err.code === 'unimplemented') {
+      console.warn('The current browser does not support persistence.');
     }
-  };
-  
-  verifyDb().catch(console.error);
-} catch (error) {
-  console.error('❌ Error initializing Firebase:', error);
-}
+  });
+
+// Helper function to initialize collections
+const initializeCollections = async () => {
+  try {
+    // Test write to verify database access
+    const testRef = collection(db, '_test_init');
+    await addDoc(testRef, {
+      test: true,
+      timestamp: serverTimestamp()
+    });
+
+    // Initialize chat collections if they don't exist
+    const chatSessionsRef = collection(db, 'chatSessions');
+    await addDoc(chatSessionsRef, {
+      _init: true,
+      timestamp: serverTimestamp()
+    });
+
+    console.log('✅ Firebase and Firestore collections initialized successfully');
+  } catch (error) {
+    console.error('❌ Error initializing Firestore collections:', error);
+    throw error;
+  }
+};
+
+// Initialize collections
+initializeCollections().catch(console.error);
 
 export const analytics = getAnalytics(app);
 export { db };
@@ -59,7 +76,7 @@ export const sendContactForm = async (formData) => {
       ...formData,
       timestamp: serverTimestamp(),
       status: 'new',
-      emailPending: true // Mark that email notification is pending
+      emailPending: true
     });
     console.log('✅ Document written with ID:', docRef.id);
     return { 
@@ -75,5 +92,47 @@ export const sendContactForm = async (formData) => {
       code: error.code,
       details: error.toString()
     };
+  }
+};
+
+// Helper function to initialize a chat session
+export const initializeChatSession = async (sessionId) => {
+  if (!db) {
+    throw new Error('Firestore not initialized');
+  }
+
+  try {
+    const chatSessionsRef = collection(db, 'chatSessions');
+    const docRef = await addDoc(chatSessionsRef, {
+      sessionId,
+      startTime: serverTimestamp(),
+      status: 'active',
+      lastActivity: serverTimestamp()
+    });
+    console.log('✅ Chat session initialized:', docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error initializing chat session:', error);
+    throw error;
+  }
+};
+
+// Helper function to send a chat message
+export const sendChatMessage = async (sessionId, message) => {
+  if (!db) {
+    throw new Error('Firestore not initialized');
+  }
+
+  try {
+    const messagesRef = collection(db, 'chatSessions', sessionId, 'messages');
+    const docRef = await addDoc(messagesRef, {
+      ...message,
+      timestamp: serverTimestamp()
+    });
+    console.log('✅ Chat message sent:', docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error('❌ Error sending chat message:', error);
+    throw error;
   }
 };
