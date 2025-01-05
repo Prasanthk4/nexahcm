@@ -17,6 +17,7 @@ const ChatWidget = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const messagesEndRef = useRef(null);
+  const chatRef = useRef(null);
   const { addToast } = useToast();
 
   useEffect(() => {
@@ -37,6 +38,22 @@ const ChatWidget = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (chatRef.current && !chatRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const handleSubmit = async (e) => {
     e?.preventDefault();
@@ -118,6 +135,7 @@ const ChatWidget = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={chatRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
