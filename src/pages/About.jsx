@@ -98,22 +98,22 @@ const About = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-5xl md:text-6xl font-bold text-white mb-6"
+              transition={{ duration: 0.5 }}
+              className="text-5xl md:text-7xl font-bold text-blue-900 text-center mb-6"
             >
-              Hi, I'm Satheesh
-            </motion.h1>
+              Transforming Ideas Into Digital Excellence
+            </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-white/90 max-w-2xl mx-auto"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl md:text-2xl text-blue-800/80 text-center max-w-3xl mx-auto"
             >
-              A freelance full-stack developer passionate about crafting beautiful, 
-              functional websites and applications that help businesses grow.
+              A full-stack development team dedicated to crafting innovative digital solutions 
+              that drive business growth and technological advancement.
             </motion.p>
           </div>
 
