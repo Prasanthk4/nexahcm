@@ -121,10 +121,10 @@ const ChatWidget = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 right-8 z-50 w-96 h-[32rem] bg-gradient-to-br from-blue-600/95 to-purple-600/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-8 z-50 w-96 h-[32rem] bg-gradient-to-br from-slate-800/95 to-blue-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-blue-200/10 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-6 border-b border-white/20 bg-gradient-to-r from-blue-500/30 to-purple-500/30">
+            <div className="p-6 border-b border-blue-200/10 bg-gradient-to-r from-blue-500/20 to-blue-600/20">
               <h3 className="text-xl font-semibold text-white">Chat Support</h3>
             </div>
 
@@ -138,11 +138,11 @@ const ChatWidget = () => {
                   <div
                     className={`max-w-[75%] break-words p-3 rounded-xl ${
                       message.sender === 'user'
-                        ? 'bg-white/20 text-white'
-                        : 'bg-white/10 text-white'
+                        ? 'bg-blue-500/30 text-white'
+                        : 'bg-slate-700/40 text-white'
                     }`}
                   >
-                    <div className="text-xs text-white/70 mb-1">
+                    <div className="text-xs text-blue-100/70 mb-1">
                       {message.timestamp}
                     </div>
                     <div className="whitespace-pre-wrap">
@@ -153,11 +153,11 @@ const ChatWidget = () => {
               ))}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-white/10 text-white px-4 py-2 rounded-xl">
+                  <div className="bg-slate-700/40 text-white px-4 py-2 rounded-xl">
                     <div className="flex gap-1">
-                      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <span className="w-2 h-2 bg-blue-200/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-2 h-2 bg-blue-200/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 bg-blue-200/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ const ChatWidget = () => {
                   <button
                     key={index}
                     onClick={() => handleQuickReply(reply)}
-                    className="px-4 py-2 text-sm bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all hover:scale-105"
+                    className="px-4 py-2 text-sm bg-blue-500/20 hover:bg-blue-500/30 text-white rounded-xl transition-all hover:scale-105"
                   >
                     {reply.text}
                   </button>
@@ -181,7 +181,7 @@ const ChatWidget = () => {
             )}
 
             {/* Input */}
-            <form onSubmit={handleSubmit} className="p-6 border-t border-white/20 bg-gradient-to-r from-blue-500/30 to-purple-500/30">
+            <form onSubmit={handleSubmit} className="p-6 border-t border-blue-200/10 bg-gradient-to-r from-blue-500/20 to-blue-600/20">
               <div className="flex items-center gap-3">
                 <div className="flex-1 relative">
                   <input
@@ -189,15 +189,15 @@ const ChatWidget = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Type your message..."
-                    className="w-full px-4 py-3 bg-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/50"
+                    className="w-full px-4 py-3 bg-slate-700/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400/30 text-white placeholder-blue-100/50"
                     required
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-3 bg-white/20 text-white rounded-xl transition-all ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/30 hover:scale-105'
+                  className={`px-6 py-3 bg-blue-500/20 text-white rounded-xl transition-all ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500/30 hover:scale-105'
                   }`}
                 >
                   Send
@@ -211,7 +211,7 @@ const ChatWidget = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transition-transform hover:scale-110 ${
+        className={`fixed bottom-8 right-8 z-50 p-4 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg transition-transform hover:scale-110 ${
           unreadCount > 0 ? 'animate-bounce' : ''
         }`}
       >
