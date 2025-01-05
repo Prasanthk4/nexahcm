@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -45,6 +45,54 @@ export const analytics = getAnalytics(app);
 export { db };
 export const functions = getFunctions(app);
 
+// Request notification permission
+export const requestNotificationPermission = async () => {
+  if (!('Notification' in window)) {
+    console.log('This browser does not support notifications');
+    return false;
+  }
+
+  try {
+    const permission = await Notification.requestPermission();
+    return permission === 'granted';
+  } catch (error) {
+    console.error('Error requesting notification permission:', error);
+    return false;
+  }
+};
+
+// Show notification
+const showNotification = (data) => {
+  if (Notification.permission === 'granted') {
+    const notification = new Notification('New Contact Form Submission', {
+      body: `From: ${data.name}\nSubject: ${data.subject}`,
+      icon: '/logo.png', // Add your logo path here
+    });
+
+    notification.onclick = () => {
+      window.focus();
+      notification.close();
+    };
+  }
+};
+
+// Listen for new contact form submissions
+export const listenToContactSubmissions = () => {
+  if (!db) return;
+
+  const contactsRef = collection(db, 'contacts');
+  const q = query(contactsRef, orderBy('timestamp', 'desc'), limit(1));
+
+  return onSnapshot(q, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === 'added') {
+        const data = change.doc.data();
+        showNotification(data);
+      }
+    });
+  });
+};
+
 // Helper function to send contact form data
 export const sendContactForm = async (formData) => {
   if (!db) {
@@ -58,10 +106,15 @@ export const sendContactForm = async (formData) => {
     const docRef = await addDoc(contactsRef, {
       ...formData,
       timestamp: serverTimestamp(),
-      status: 'new'
+      status: 'new',
+      emailPending: true // Mark that email notification is pending
     });
     console.log('✅ Document written with ID:', docRef.id);
-    return { success: true, id: docRef.id };
+    return { 
+      success: true, 
+      id: docRef.id,
+      message: 'Your message has been received! We will get back to you soon.'
+    };
   } catch (error) {
     console.error('❌ Detailed error sending contact form:', error);
     return { 
