@@ -81,25 +81,23 @@ const Home = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="text-center mb-32">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
+            className="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
           >
             Transforming Ideas into Digital Reality
           </motion.h1>
-          
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-600 mb-8"
+            className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto"
           >
             We create cutting-edge software solutions that drive business growth
           </motion.p>
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,10 +113,8 @@ const Home = () => {
             </Link>
           </motion.div>
         </div>
-      </div>
 
-      {/* Services Section */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+        {/* Services Section */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
