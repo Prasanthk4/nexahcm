@@ -33,12 +33,6 @@ const Contact = () => {
       console.log('Form submission result:', result);
       
       if (result.success) {
-        // Create mailto link
-        const mailtoLink = `mailto:nexahcm@gmail.com?subject=New Contact Form Submission: ${formData.subject}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ASubject: ${formData.subject}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-        
-        // Open default email client
-        window.open(mailtoLink);
-
         addToast(result.message || 'Message sent successfully! We will get back to you soon.', 'success');
         setFormData({
           name: '',
